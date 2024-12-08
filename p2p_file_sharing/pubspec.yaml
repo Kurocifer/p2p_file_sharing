@@ -1,5 +1,5 @@
 name: p2p_file_sharing
-description: "A new Flutter project."
+description: "A P2P file transfer app."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -30,6 +30,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  file_picker: ^5.0.0
+  path_provider: ^2.0.9
+  permission_handler: ^10.0.0
 
 
   # The following adds the Cupertino Icons font to your application.
