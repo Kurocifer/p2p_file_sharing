@@ -20,7 +20,7 @@ class TransferService {
   Future<void> uploadFile(String peerIP, int peerPort, String fileName) async {
     final file = File(fileName);
     if (!(await file.exists())) {
-      Logger.logMessage(
+      logger.logMessage(
         message: "[ERROR] File $fileName does not exist.",
         onLog: onLog,
       );
@@ -30,7 +30,7 @@ class TransferService {
     final fileSize = await file.length();
     final udpSocket = await UDP.bind(Endpoint.any());
 
-    Logger.logMessage(
+    logger.logMessage(
       message: '[INFO] Connected to UDP socket for sending...',
       onLog: onLog,
     );
@@ -50,7 +50,7 @@ class TransferService {
       ),
     );
 
-    Logger.logMessage(message: '[INFO] Metadata sent: $metadata', onLog: onLog);
+    logger.logMessage(message: '[INFO] Metadata sent: $metadata', onLog: onLog);
 
     // Send file data in chunks
     final fileStream = file.openRead();
@@ -69,7 +69,7 @@ class TransferService {
           port: Port(dataPort),
         ),
       );
-      Logger.logMessage(
+      logger.logMessage(
         message:
             "[INFO] Sent chunk $sequenceNumber of size ${chunk.length} bytes.",
         onLog: onLog,
@@ -86,7 +86,7 @@ class TransferService {
         port: Port(dataPort),
       ),
     );
-    Logger.logMessage(message: '[INFO] File transfer completed.', onLog: onLog);
+    logger.logMessage(message: '[INFO] File transfer completed.', onLog: onLog);
 
     udpSocket.close();
   }
@@ -101,7 +101,7 @@ class TransferService {
     String? fileName;
     int? fileSize;
 
-    Logger.logMessage(
+    logger.logMessage(
       message:
           '[INFO] Listening for incoming file on metadata port $metadataPort and data port $dataPort...',
       onLog: onLog,
@@ -117,7 +117,7 @@ class TransferService {
           fileName = metadata['fileName'];
           fileSize = metadata['fileSize'];
 
-          Logger.logMessage(
+          logger.logMessage(
             message: '[INFO] Receiving file: $fileName ($fileSize bytes)',
             onLog: onLog,
           );
@@ -135,13 +135,13 @@ class TransferService {
           final chunkData = base64Decode(packet['data']);
 
           fileChunks[sequenceNumber] = chunkData;
-          Logger.logMessage(
+          logger.logMessage(
             message:
                 '[INFO] Received chunk $sequenceNumber of size ${chunkData.length} bytes.',
             onLog: onLog,
           );
         } else if (packet.containsKey('done') && packet['done'] == true) {
-          Logger.logMessage(
+          logger.logMessage(
             message: '[INFO] File transfer completed. Assembling file...',
             onLog: onLog,
           );
@@ -156,12 +156,12 @@ class TransferService {
             }
             await output.close();
 
-            Logger.logMessage(
+            logger.logMessage(
               message: '[INFO] File saved to ${file.path}',
               onLog: onLog,
             );
           } else {
-            Logger.logMessage(
+            logger.logMessage(
               message: '[ERROR] Metadata missing. Unable to save file.',
               onLog: onLog,
             );
@@ -188,7 +188,7 @@ class TransferService {
       );
     });
 
-    Logger.logMessage(
+    logger.logMessage(
       message: '[INFO] Advertising files: $availableFiles',
       onLog: onLog,
     );
@@ -207,7 +207,7 @@ class TransferService {
       Endpoint.unicast(InternetAddress(peerIP), port: Port(peerPort)),
     );
 
-    Logger.logMessage(
+    logger.logMessage(
       message: '[INFO] File request sent for $fileName to $peerIP:$peerPort',
       onLog: onLog,
     );
@@ -216,7 +216,7 @@ class TransferService {
   void listenForFileRequests(int port, List<String> availableFiles) async {
     final udpSocket = await UDP.bind(Endpoint.any(port: Port(port)));
 
-    Logger.logMessage(
+    logger.logMessage(
       message: '[INFO] Listening for file requests on port $port',
       onLog: onLog,
     );
@@ -230,7 +230,7 @@ class TransferService {
             final fileName = request['fileName'];
 
             if (availableFiles.contains(fileName)) {
-              Logger.logMessage(
+              logger.logMessage(
                 message: '[INFO] File request received for $fileName',
                 onLog: onLog,
               );
@@ -239,14 +239,14 @@ class TransferService {
               await uploadFile(
                   datagram.address.address, datagram.port, fileName);
             } else {
-              Logger.logMessage(
+              logger.logMessage(
                 message: '[ERROR] Requested file $fileName not found.',
                 onLog: onLog,
               );
             }
           }
         } catch (e) {
-          Logger.logMessage(
+          logger.logMessage(
             message: '[ERROR] Failed to process request: $e',
             onLog: onLog,
           );

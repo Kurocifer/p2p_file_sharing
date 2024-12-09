@@ -8,6 +8,7 @@ import 'package:p2p_file_sharing/utils/logger.dart';
 class PeerDiscoveryService {
   final int broadcastPort = 4445;
   final List<String> discoveredPeers = [];
+  final Logger logger = Logger();
   final Function(String)? onLog;
 
   PeerDiscoveryService({required this.onLog});
@@ -42,7 +43,7 @@ class PeerDiscoveryService {
     final socket = await RawDatagramSocket.bind(InternetAddress.anyIPv4, 0);
     socket.broadcastEnabled = true;
 
-    Logger.logMessage(
+    logger.logMessage(
       message: 'Broadcasting presence: $message',
       onLog: onLog,
     );
@@ -62,13 +63,13 @@ class PeerDiscoveryService {
   /// Start broadcasting presence
   Future<void> startBroadcasting() async {
     if (!isBroadcasting) {
-      Logger.logMessage(
+      logger.logMessage(
         message: '[INFO] Starting broadcast...',
         onLog: onLog,
       );
       await _startBroadcasting();
     } else {
-      Logger.logMessage(
+      logger.logMessage(
         message: '[INFO] Broadcast already active.',
         onLog: onLog,
       );
@@ -81,12 +82,12 @@ class PeerDiscoveryService {
       _broadcastTimer?.cancel();
       _broadcastTimer = null;
       isBroadcasting = false;
-      Logger.logMessage(
+      logger.logMessage(
         message: '[INFO] Broadcast stopped.',
         onLog: onLog,
       );
     } else {
-      Logger.logMessage(
+      logger.logMessage(
         message: '[INFO] Broadcast is not active.',
         onLog: onLog,
       );
@@ -98,7 +99,7 @@ class PeerDiscoveryService {
     final socket =
         await RawDatagramSocket.bind(InternetAddress.anyIPv4, broadcastPort);
 
-    Logger.logMessage(
+    logger.logMessage(
       message: 'Listening for peers on port $broadcastPort...',
       onLog: onLog,
     );
@@ -114,7 +115,7 @@ class PeerDiscoveryService {
 
           if (!discoveredPeers.contains(peerIP)) {
             discoveredPeers.add(peerIP);
-            Logger.logMessage(
+            logger.logMessage(
               message:
                   'Discovered peer: ${peerInfo['peerName']} at $peerIP',
               onLog: onLog,

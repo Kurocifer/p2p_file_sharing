@@ -13,19 +13,21 @@ class ServerService {
   final Queue<Socket> requestQueue = Queue();
   int currentConnections = 0;
   final Function(String)? onLog;
+  final Logger logger = Logger();
+
 
   ServerService({required this.onLog});
 
   // Start the server
   void startServer() async {
     final server = await ServerSocket.bind(InternetAddress.anyIPv4, 8080);
-    Logger.logMessage(message: "Server running on ${server.address.address}:${server.port}", onLog: onLog);
+    logger.logMessage(message: "Server running on ${server.address.address}:${server.port}", onLog: onLog);
 
     server.listen((Socket socket) {
       if (currentConnections >= maxSimultaneosConnections) {
         socket.write("Too many connections. Please wait.");
         requestQueue.add(socket);
-        Logger.logMessage(message: "Connection queued: ${socket.remoteAddress}", onLog: onLog);
+        logger.logMessage(message: "Connection queued: ${socket.remoteAddress}", onLog: onLog);
       } else {
         _handleConnection(socket);
       }
@@ -35,7 +37,7 @@ class ServerService {
   // Handle incoming connection
   void _handleConnection(Socket socket) {
     currentConnections++;
-    Logger.logMessage(message: "Client connected: ${socket.remoteAddress}", onLog: onLog);
+    logger.logMessage(message: "Client connected: ${socket.remoteAddress}", onLog: onLog);
 
     final userIP = socket.remoteAddress.address;
     _resetRateLimit(userIP);
@@ -48,20 +50,20 @@ class ServerService {
         if (requestCounts[userIP]! > maxRequestsPerClient) {
           socket.write("Rate limit exceeded.");
           socket.destroy();
-          Logger.logMessage(message: "Rate limit exceeded for $userIP", onLog: onLog);
+          logger.logMessage(message: "Rate limit exceeded for $userIP", onLog: onLog);
         } else {
           socket.write("Request received.");
-          Logger.logMessage(message: "Request received from $userIP", onLog: onLog);
+          logger.logMessage(message: "Request received from $userIP", onLog: onLog);
         }
       },
       onDone: () {
         currentConnections--;
         socket.close();
-        Logger.logMessage(message: "Client disconnected: ${socket.remoteAddress}", onLog: onLog);
+        logger.logMessage(message: "Client disconnected: ${socket.remoteAddress}", onLog: onLog);
         _processQueue();
       },
       onError: (error) {
-        Logger.logMessage(message: "Error with connection: $error", onLog: onLog);
+        logger.logMessage(message: "Error with connection: $error", onLog: onLog);
       },
     );
   }
@@ -82,7 +84,7 @@ class ServerService {
 
     rateLimitTimers[userIP] = Timer(rateLimitDuration, () {
       requestCounts[userIP] = 0;
-      Logger.logMessage(message: "Rate limit reset for $userIP", onLog: onLog);
+      logger.logMessage(message: "Rate limit reset for $userIP", onLog: onLog);
     });
   }
 }
