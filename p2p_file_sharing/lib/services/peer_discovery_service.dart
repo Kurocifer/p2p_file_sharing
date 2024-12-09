@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:p2p_file_sharing/utils/logger.dart';
 
 class PeerDiscoveryService {
   final int broadcastPort = 4445;
@@ -11,7 +12,10 @@ class PeerDiscoveryService {
 
   PeerDiscoveryService({required this.onLog});
 
-  // get device name to use as peer name
+  Timer? _broadcastTimer;
+  bool isBroadcasting = false;
+
+  // Get device name to use as peer name
   Future<String> _getDeviceName() async {
     if (Platform.isAndroid || Platform.isIOS) {
       // For mobile platforms (Android, iOS)
@@ -30,42 +34,74 @@ class PeerDiscoveryService {
     return "UnknownDevice"; // Default in case of failure
   }
 
-  // Log messages to both a file and the UI
-  void _logMessage(String message) {
-    // Log to the log file
-    final logFile = File('../log.txt');
-    logFile.writeAsStringSync('$message\n', mode: FileMode.append);
-
-    // Update the UI log
-    if (onLog != null) {
-      onLog!(message);
-    }
-  }
-
   // Announce this peer on the network
-  void announcePresence() async {
+  Future<void> _startBroadcasting() async {
     final peerName = await _getDeviceName();
     final localIP = await _getLocalIP();
     final message = jsonEncode({'peerName': peerName, 'ip': localIP});
     final socket = await RawDatagramSocket.bind(InternetAddress.anyIPv4, 0);
     socket.broadcastEnabled = true;
 
-    Timer.periodic(const Duration(seconds: 5), (timer) {
+    Logger.logMessage(
+      message: 'Broadcasting presence: $message',
+      onLog: onLog,
+    );
+
+    // Start broadcasting at regular intervals
+    _broadcastTimer = Timer.periodic(const Duration(seconds: 5), (timer) {
       socket.send(
         utf8.encode(message),
         InternetAddress('255.255.255.255'),
         broadcastPort,
       );
     });
-    
-    _logMessage('Broadcasting presence: $message');
+
+    isBroadcasting = true;
+  }
+
+  /// Start broadcasting presence
+  Future<void> startBroadcasting() async {
+    if (!isBroadcasting) {
+      Logger.logMessage(
+        message: '[INFO] Starting broadcast...',
+        onLog: onLog,
+      );
+      await _startBroadcasting();
+    } else {
+      Logger.logMessage(
+        message: '[INFO] Broadcast already active.',
+        onLog: onLog,
+      );
+    }
+  }
+
+  /// Stop broadcasting presence
+  void stopBroadcasting() {
+    if (isBroadcasting) {
+      _broadcastTimer?.cancel();
+      _broadcastTimer = null;
+      isBroadcasting = false;
+      Logger.logMessage(
+        message: '[INFO] Broadcast stopped.',
+        onLog: onLog,
+      );
+    } else {
+      Logger.logMessage(
+        message: '[INFO] Broadcast is not active.',
+        onLog: onLog,
+      );
+    }
   }
 
   // Listen for peer announcements
   void listenForPeers() async {
-    final socket = await RawDatagramSocket.bind(InternetAddress.anyIPv4, broadcastPort);
+    final socket =
+        await RawDatagramSocket.bind(InternetAddress.anyIPv4, broadcastPort);
 
-    _logMessage('Listen for peers on port $broadcastPort...');
+    Logger.logMessage(
+      message: 'Listening for peers on port $broadcastPort...',
+      onLog: onLog,
+    );
 
     socket.listen((RawSocketEvent event) {
       if (event == RawSocketEvent.read) {
@@ -78,14 +114,18 @@ class PeerDiscoveryService {
 
           if (!discoveredPeers.contains(peerIP)) {
             discoveredPeers.add(peerIP);
-            _logMessage("Discovered peer: ${peerInfo['peerName']} at $peerIP");
+            Logger.logMessage(
+              message:
+                  'Discovered peer: ${peerInfo['peerName']} at $peerIP',
+              onLog: onLog,
+            );
           }
         }
       }
     });
   }
-  
-  // Get the Local IP address
+
+  // Get the local IP address
   Future<String> _getLocalIP() async {
     final interfaces = await NetworkInterface.list();
 
@@ -99,9 +139,9 @@ class PeerDiscoveryService {
     return '0.0.0.0'; // Default in case of no IP found
   }
 
-  // start discovery process
+  // Start the discovery process (broadcast + listen)
   void startDiscovery() {
-    announcePresence();
+    startBroadcasting();
     listenForPeers();
   }
-} 
+}
