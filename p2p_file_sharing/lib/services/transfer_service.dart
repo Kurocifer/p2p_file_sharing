@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
-import 'package:file_picker/file_picker.dart';
 import 'package:p2p_file_sharing/utils/logger.dart';
 import 'package:udp/udp.dart';
 
@@ -22,7 +21,6 @@ class TransferService {
     if (!(await file.exists())) {
       logger.logMessage(
         message: "[ERROR] File $fileName does not exist.",
-        onLog: onLog,
       );
       return;
     }
@@ -32,7 +30,6 @@ class TransferService {
 
     logger.logMessage(
       message: '[INFO] Connected to UDP socket for sending...',
-      onLog: onLog,
     );
 
     // Send file metadata
@@ -50,7 +47,7 @@ class TransferService {
       ),
     );
 
-    logger.logMessage(message: '[INFO] Metadata sent: $metadata', onLog: onLog);
+    logger.logMessage(message: '[INFO] Metadata sent: $metadata');
 
     // Send file data in chunks
     final fileStream = file.openRead();
@@ -72,7 +69,6 @@ class TransferService {
       logger.logMessage(
         message:
             "[INFO] Sent chunk $sequenceNumber of size ${chunk.length} bytes.",
-        onLog: onLog,
       );
       sequenceNumber++;
     }
@@ -86,7 +82,7 @@ class TransferService {
         port: Port(dataPort),
       ),
     );
-    logger.logMessage(message: '[INFO] File transfer completed.', onLog: onLog);
+    logger.logMessage(message: '[INFO] File transfer completed.');
 
     udpSocket.close();
   }
@@ -104,7 +100,6 @@ class TransferService {
     logger.logMessage(
       message:
           '[INFO] Listening for incoming file on metadata port $metadataPort and data port $dataPort...',
-      onLog: onLog,
     );
 
     // Listen for metadata
@@ -119,7 +114,6 @@ class TransferService {
 
           logger.logMessage(
             message: '[INFO] Receiving file: $fileName ($fileSize bytes)',
-            onLog: onLog,
           );
         }
       }
@@ -138,12 +132,10 @@ class TransferService {
           logger.logMessage(
             message:
                 '[INFO] Received chunk $sequenceNumber of size ${chunkData.length} bytes.',
-            onLog: onLog,
           );
         } else if (packet.containsKey('done') && packet['done'] == true) {
           logger.logMessage(
             message: '[INFO] File transfer completed. Assembling file...',
-            onLog: onLog,
           );
 
           if (fileName != null && fileSize != null) {
@@ -158,12 +150,10 @@ class TransferService {
 
             logger.logMessage(
               message: '[INFO] File saved to ${file.path}',
-              onLog: onLog,
             );
           } else {
             logger.logMessage(
               message: '[ERROR] Metadata missing. Unable to save file.',
-              onLog: onLog,
             );
           }
           metadataSocket.close();
@@ -190,7 +180,6 @@ class TransferService {
 
     logger.logMessage(
       message: '[INFO] Advertising files: $availableFiles',
-      onLog: onLog,
     );
   }
 
@@ -209,7 +198,6 @@ class TransferService {
 
     logger.logMessage(
       message: '[INFO] File request sent for $fileName to $peerIP:$peerPort',
-      onLog: onLog,
     );
   }
 
@@ -218,7 +206,6 @@ class TransferService {
 
     logger.logMessage(
       message: '[INFO] Listening for file requests on port $port',
-      onLog: onLog,
     );
 
     udpSocket.asStream().listen((datagram) async {
@@ -232,7 +219,6 @@ class TransferService {
             if (availableFiles.contains(fileName)) {
               logger.logMessage(
                 message: '[INFO] File request received for $fileName',
-                onLog: onLog,
               );
 
               // Proceed to upload the requested file
@@ -241,14 +227,12 @@ class TransferService {
             } else {
               logger.logMessage(
                 message: '[ERROR] Requested file $fileName not found.',
-                onLog: onLog,
               );
             }
           }
         } catch (e) {
           logger.logMessage(
             message: '[ERROR] Failed to process request: $e',
-            onLog: onLog,
           );
         }
       }

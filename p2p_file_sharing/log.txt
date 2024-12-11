@@ -5,3 +5,985 @@ Interacted with Peer 4
 Interacted with Peer 3
 Selected File 0
 Selected File 1
+broadcast toggle
+broadcast toggle
+broadcast toggle
+[2024-12-09T19:49:48.484976] broadcast toggle
+[2024-12-09T19:50:24.500948] broadcast toggle
+[2024-12-09T19:50:27.559993] broadcast toggle
+[2024-12-09T21:31:26.138874] [INFO] Starting broadcast...
+[2024-12-09T21:31:26.250317] Peer discovery initialized.
+[2024-12-09T21:31:27.226845] [INFO] Listening for peers on port 4445...
+[2024-12-09T21:31:29.896953] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-09T21:31:35.134164] [INFO] Discovered peer: kiyotaka at 192.168.1.145
+[2024-12-09T21:31:49.771654] [INFO] Broadcast stopped.
+[2024-12-09T21:31:57.962587] [INFO] Starting broadcast...
+[2024-12-09T21:31:58.013300] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-09T21:32:57.632083] Interacted with peer: 192.168.1.145
+[2024-12-09T21:32:58.527014] Interacted with peer: 192.168.1.145
+[2024-12-09T21:32:58.859472] Interacted with peer: 192.168.1.145
+[2024-12-09T21:34:40.888837] [INFO] Starting broadcast...
+[2024-12-09T21:34:40.974072] Peer discovery initialized.
+[2024-12-09T21:34:41.864646] [INFO] Listening for peers on port 4445...
+[2024-12-09T21:34:44.719780] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-09T21:34:49.734125] [INFO] Discovered peer: kiyotaka at 192.168.1.145
+[2024-12-09T21:35:22.890289] [INFO] Broadcast stopped.
+[2024-12-09T21:35:27.370937] [INFO] Starting broadcast...
+[2024-12-09T21:35:27.379564] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-09T21:35:36.457331] Interacted with peer: 192.168.1.145
+[2024-12-09T21:40:23.800235] [INFO] Starting broadcast...
+[2024-12-09T21:40:24.069678] Peer discovery initialized.
+[2024-12-09T21:40:25.094396] [INFO] Listening for peers on port 4445...
+[2024-12-09T21:40:28.220472] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-09T21:40:33.245298] [INFO] Discovered peer: kiyotaka at 192.168.1.145
+[2024-12-09T21:40:41.495316] logging something
+[2024-12-09T21:40:41.521419] [INFO] Broadcast stopped.
+[2024-12-09T21:40:46.675063] logging something
+[2024-12-09T21:40:46.676215] [INFO] Starting broadcast...
+[2024-12-09T21:40:46.684467] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-09T22:00:17.415890] [INFO] Starting broadcast...
+[2024-12-09T22:00:17.503223] Peer discovery initialized.
+[2024-12-09T22:00:18.458900] [INFO] Listening for peers on port 4445...
+[2024-12-09T22:00:21.696425] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-09T22:00:26.719984] [INFO] Discovered peer: kiyotaka at 192.168.1.145
+[2024-12-09T22:00:31.709515] [INFO] Discovered peer: kiyotaka at 192.168.1.145
+[2024-12-09T22:00:36.710514] [INFO] Discovered peer: kiyotaka at 192.168.1.145
+[2024-12-09T22:00:41.714574] [INFO] Discovered peer: kiyotaka at 192.168.1.145
+[2024-12-09T22:00:46.709410] [INFO] Discovered peer: kiyotaka at 192.168.1.145
+[2024-12-09T22:00:51.708959] [INFO] Discovered peer: kiyotaka at 192.168.1.145
+[2024-12-09T22:00:52.499619] logging something
+[2024-12-09T22:00:52.510493] [INFO] Broadcast stopped.
+[2024-12-09T22:01:06.520075] Interacted with peer: kiyotaka: 192.168.1.145
+[2024-12-09T22:01:10.812565] logging something
+[2024-12-09T22:01:10.813514] [INFO] Starting broadcast...
+[2024-12-09T22:01:10.827303] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-09T22:01:13.928482] logging something
+[2024-12-09T22:01:13.931972] [INFO] Broadcast stopped.
+[2024-12-09T22:26:08.767001] [INFO] Starting broadcast...
+[2024-12-09T22:26:08.864872] Peer list updated: No peers found
+[2024-12-09T22:26:08.867579] Started peer discovery.
+[2024-12-09T22:26:08.868477] Peer discovery initialized.
+[2024-12-09T22:26:10.101625] [INFO] Listening for peers on port 4445...
+[2024-12-09T22:26:12.708961] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.173.87"}
+[2024-12-09T22:26:17.724909] [INFO] Discovered peer: kiyotaka at 192.168.173.87
+[2024-12-09T22:26:22.713347] [INFO] Discovered peer: kiyotaka at 192.168.173.87
+[2024-12-09T22:26:27.713664] [INFO] Discovered peer: kiyotaka at 192.168.173.87
+[2024-12-09T22:26:32.713686] [INFO] Discovered peer: kiyotaka at 192.168.173.87
+[2024-12-09T22:26:37.713340] [INFO] Discovered peer: kiyotaka at 192.168.173.87
+[2024-12-09T22:26:42.713518] [INFO] Discovered peer: kiyotaka at 192.168.173.87
+[2024-12-09T22:26:47.713744] [INFO] Discovered peer: kiyotaka at 192.168.173.87
+[2024-12-09T22:26:52.713508] [INFO] Discovered peer: kiyotaka at 192.168.173.87
+[2024-12-09T22:26:57.714196] [INFO] Discovered peer: kiyotaka at 192.168.173.87
+[2024-12-09T22:27:02.713614] [INFO] Discovered peer: kiyotaka at 192.168.173.87
+[2024-12-09T22:27:07.713558] [INFO] Discovered peer: kiyotaka at 192.168.173.87
+[2024-12-09T22:27:08.841715] [INFO] Broadcast stopped.
+[2024-12-09T22:27:08.842783] Stopped broadcasting presence.
+[2024-12-09T22:27:08.854332] Peer list updated: 11 peers discovered
+[2024-12-09T22:27:22.637973] [INFO] Starting broadcast...
+[2024-12-09T22:27:22.646301] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.173.87"}
+[2024-12-09T22:27:22.647857] Started broadcasting presence.
+[2024-12-09T22:27:22.649046] Peer list updated: 11 peers discovered
+[2024-12-09T22:27:27.650639] [INFO] Discovered peer: kiyotaka at 192.168.173.87
+[2024-12-09T22:27:32.649991] [INFO] Discovered peer: kiyotaka at 192.168.173.87
+[2024-12-09T22:27:37.660638] [INFO] Discovered peer: kiyotaka at 192.168.173.87
+[2024-12-09T22:27:42.649544] [INFO] Discovered peer: kiyotaka at 192.168.173.87
+[2024-12-09T22:42:58.418443] [INFO] Starting broadcast...
+[2024-12-09T22:42:58.518944] Peer list updated: No peers found
+[2024-12-09T22:42:58.523705] Started peer discovery.
+[2024-12-09T22:42:58.524420] Peer discovery initialized.
+[2024-12-09T22:42:59.664476] [INFO] Listening for peers on port 4445...
+[2024-12-09T22:43:03.922703] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.173.87"}
+[2024-12-09T22:43:08.939516] [INFO] Discovered new peer: kiyotaka at 192.168.173.87
+[2024-12-09T22:43:09.918224] [INFO] Broadcast stopped.
+[2024-12-09T22:43:09.919040] Stopped broadcasting presence.
+[2024-12-09T22:43:09.926889] Peer list updated: 1 peers discovered
+[2024-12-09T22:43:15.047197] Expanded File Explorer
+[2024-12-09T22:43:19.627451] Collapsed File Explorer
+[2024-12-09T22:52:06.365350] [INFO] Starting broadcast...
+[2024-12-09T22:52:06.450521] Peer list updated: No peers found
+[2024-12-09T22:52:06.451219] Started peer discovery.
+[2024-12-09T22:52:06.451799] Peer discovery initialized.
+[2024-12-09T22:52:09.622398] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-09T22:52:09.628349] [INFO] Listening for peers on port 4445...
+[2024-12-09T22:52:14.700325] [INFO] Ignored self-broadcast from 192.168.1.145
+[2024-12-09T22:52:19.382728] Expanded File Explorer
+[2024-12-09T22:52:19.651719] [INFO] Ignored self-broadcast from 192.168.1.145
+[2024-12-09T22:52:24.627004] [INFO] Ignored self-broadcast from 192.168.1.145
+[2024-12-09T22:52:28.940943] [INFO] Broadcast stopped.
+[2024-12-09T22:52:28.941761] Stopped broadcasting presence.
+[2024-12-09T22:52:28.944244] Peer list updated: No peers found
+[2024-12-09T22:52:41.335356] [INFO] Starting broadcast...
+[2024-12-09T22:52:41.375052] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-09T22:52:41.378876] Started broadcasting presence.
+[2024-12-09T22:52:41.379702] Peer list updated: No peers found
+[2024-12-09T22:52:46.501686] [INFO] Ignored self-broadcast from 192.168.1.145
+[2024-12-09T22:52:51.380919] [INFO] Ignored self-broadcast from 192.168.1.145
+[2024-12-09T22:57:37.429867] [INFO] Starting broadcast...
+[2024-12-09T22:57:37.539190] Peer list updated: No peers found
+[2024-12-09T22:57:37.540128] Started peer discovery.
+[2024-12-09T22:57:37.540848] Peer discovery initialized.
+[2024-12-09T22:57:38.877242] [INFO] Listening for peers on port 4445...
+[2024-12-09T22:57:44.026471] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-09T22:57:49.048999] [INFO] Discovered new peer: kiyotaka at 192.168.1.145
+[2024-12-09T22:57:51.220050] Expanded File Explorer
+[2024-12-09T22:57:54.033550] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-09T22:57:59.033438] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-09T22:58:04.045616] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-09T22:58:05.306167] Collapsed File Explorer
+[2024-12-09T22:58:07.975686] [INFO] Broadcast stopped.
+[2024-12-09T22:58:07.976744] Stopped broadcasting presence.
+[2024-12-09T22:58:07.983832] Peer list updated: 1 peers discovered
+[2024-12-09T22:58:17.963917] [INFO] Starting broadcast...
+[2024-12-09T22:58:17.970282] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-09T22:58:17.972443] Started broadcasting presence.
+[2024-12-09T22:58:17.973480] Peer list updated: 1 peers discovered
+[2024-12-09T22:58:19.908470] [INFO] Broadcast stopped.
+[2024-12-09T22:58:19.910261] Stopped broadcasting presence.
+[2024-12-09T22:58:19.911168] Peer list updated: 1 peers discovered
+[2024-12-09T23:03:24.131442] [INFO] Starting broadcast...
+[2024-12-09T23:03:24.770419] Peer list updated: No peers found
+[2024-12-09T23:03:24.771624] Started peer discovery.
+[2024-12-09T23:03:24.772491] Peer discovery initialized.
+[2024-12-09T23:03:27.781585] [INFO] Listening for peers on port 4445...
+[2024-12-09T23:03:31.431515] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-09T23:03:36.451021] [INFO] Discovered new peer: kiyotaka at 192.168.1.145
+[2024-12-09T23:03:41.447573] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-09T23:03:42.292507] Expanded File Explorer
+[2024-12-09T23:03:45.650362] Collapsed File Explorer
+[2024-12-09T23:03:46.439698] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-09T23:03:48.349567] Expanded File Explorer
+[2024-12-09T23:03:51.469535] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-09T23:03:56.436621] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-09T23:04:01.436632] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-09T23:04:03.483718] [INFO] Broadcast stopped.
+[2024-12-09T23:04:03.484629] Stopped broadcasting presence.
+[2024-12-09T23:04:03.504359] Peer list updated: 1 peers discovered
+[2024-12-09T23:04:26.042929] [INFO] Starting broadcast...
+[2024-12-09T23:04:26.053202] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-09T23:04:26.054788] Started broadcasting presence.
+[2024-12-09T23:04:26.056918] Peer list updated: 1 peers discovered
+[2024-12-09T23:04:29.360690] [INFO] Broadcast stopped.
+[2024-12-09T23:04:29.361848] Stopped broadcasting presence.
+[2024-12-09T23:04:29.362719] Peer list updated: 1 peers discovered
+[2024-12-09T23:06:17.744752] [INFO] Starting broadcast...
+[2024-12-09T23:06:17.880268] Peer list updated: No peers found
+[2024-12-09T23:06:17.881141] Started peer discovery.
+[2024-12-09T23:06:17.881750] Peer discovery initialized.
+[2024-12-09T23:06:18.767830] [INFO] Listening for peers on port 4445...
+[2024-12-09T23:06:21.562648] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-09T23:06:26.709848] [INFO] Discovered new peer: kiyotaka at 192.168.1.145
+[2024-12-09T23:06:31.596591] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-09T23:06:36.580094] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-09T23:06:40.608798] Expanded File Explorer
+[2024-12-09T23:06:41.571452] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-09T23:06:45.744215] [INFO] Broadcast stopped.
+[2024-12-09T23:06:45.744858] Stopped broadcasting presence.
+[2024-12-09T23:06:45.748140] Peer list updated: 1 peers discovered
+[2024-12-09T23:07:10.889771] Opened Notification Panel
+[2024-12-09T23:07:16.902828] Cleared all notifications.
+[2024-12-09T23:07:25.288556] Interacted with peer: kiyotaka@192.168.1.145
+[2024-12-09T23:07:25.290705] Peer list updated: 1 peers discovered
+[2024-12-09T23:18:54.824070] [INFO] Starting broadcast...
+[2024-12-09T23:18:54.918035] Peer list updated: No peers found
+[2024-12-09T23:18:54.918667] Started peer discovery.
+[2024-12-09T23:18:54.919075] Peer discovery initialized.
+[2024-12-09T23:18:59.850931] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.173.87"}
+[2024-12-09T23:18:59.858655] [INFO] Listening for peers on port 4445...
+[2024-12-09T23:19:08.695101] [INFO] Broadcast stopped.
+[2024-12-09T23:19:08.696019] Stopped broadcasting presence.
+[2024-12-09T23:19:08.705456] Peer list updated: No peers found
+[2024-12-09T23:19:15.249027] [INFO] Starting broadcast...
+[2024-12-09T23:19:15.293878] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.173.87"}
+[2024-12-09T23:19:15.295578] Started broadcasting presence.
+[2024-12-09T23:19:15.297412] Peer list updated: No peers found
+[2024-12-09T23:25:03.445717] [INFO] Starting broadcast...
+[2024-12-09T23:25:03.554408] Peer list updated: No peers found
+[2024-12-09T23:25:03.555280] Started peer discovery.
+[2024-12-09T23:25:03.556017] Peer discovery initialized.
+[2024-12-09T23:25:04.416720] [INFO] Listening for peers on port 4445...
+[2024-12-09T23:25:07.893167] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.173.87"}
+[2024-12-09T23:25:12.908997] [INFO] Discovered new peer: kiyotaka at 192.168.173.87
+[2024-12-09T23:25:16.250350] [INFO] Broadcast stopped.
+[2024-12-09T23:25:16.251428] Stopped broadcasting presence.
+[2024-12-09T23:25:16.273421] Peer list updated: 1 peers discovered
+[2024-12-09T23:25:32.665599] Opened Notification Panel
+[2024-12-09T23:25:36.688102] Cleared all notifications.
+[2024-12-09T23:36:24.566714] [INFO] Starting broadcast...
+[2024-12-09T23:36:24.661716] Peer list updated: No peers found
+[2024-12-09T23:36:24.662548] Started peer discovery.
+[2024-12-09T23:36:24.663181] Peer discovery initialized.
+[2024-12-09T23:36:27.664150] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-09T23:36:27.668973] [INFO] Listening for peers on port 4445...
+[2024-12-09T23:36:37.941820] Expanded File Explorer
+[2024-12-09T23:46:10.947084] [INFO] Starting broadcast...
+[2024-12-09T23:46:11.022823] Peer list updated: No peers found
+[2024-12-09T23:46:11.023583] Started peer discovery.
+[2024-12-09T23:46:11.024169] Peer discovery initialized.
+[2024-12-09T23:46:15.886039] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-09T23:46:15.890571] [INFO] Listening for peers on port 4445...
+[2024-12-09T23:46:18.579152] Expanded File Explorer
+[2024-12-10T00:24:39.454858] [INFO] Starting broadcast...
+[2024-12-10T00:24:39.543870] Peer list updated: No peers found
+[2024-12-10T00:24:39.545717] Started peer discovery.
+[2024-12-10T00:24:39.547273] Peer discovery initialized.
+[2024-12-10T00:24:45.452726] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.108.87"}
+[2024-12-10T00:24:45.459928] [INFO] Listening for peers on port 4445...
+[2024-12-10T00:25:43.106701] Expanded File Explorer
+[2024-12-10T00:27:41.843182] [INFO] Broadcast stopped.
+[2024-12-10T00:27:41.844351] Stopped broadcasting presence.
+[2024-12-10T00:27:41.845957] Peer list updated: No peers found
+[2024-12-10T00:27:44.792148] Collapsed File Explorer
+[2024-12-10T00:27:46.667980] Expanded File Explorer
+[2024-12-10T00:29:23.670187] [INFO] Starting broadcast...
+[2024-12-10T00:29:23.778409] Peer list updated: No peers found
+[2024-12-10T00:29:23.779131] Started peer discovery.
+[2024-12-10T00:29:23.782969] Peer discovery initialized.
+[2024-12-10T00:29:28.371348] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.108.87"}
+[2024-12-10T00:29:28.379304] [INFO] Listening for peers on port 4445...
+[2024-12-10T00:29:33.840808] Expanded File Explorer
+[2024-12-10T00:29:33.876311] [INFO] Discovered new peer: kiyotaka at 192.168.108.87
+[2024-12-10T00:29:48.115720] File opened: /home/kiyotaka/deezapp/shared/shool/new
+[2024-12-10T00:29:48.384524] File opened: /home/kiyotaka/deezapp/shared/shool/new
+[2024-12-10T00:29:52.645230] File opened: /home/kiyotaka/deezapp/shared/shool/new
+[2024-12-10T00:29:52.857191] File opened: /home/kiyotaka/deezapp/shared/shool/new
+[2024-12-10T00:42:05.106141] [INFO] Starting broadcast...
+[2024-12-10T00:42:05.322136] Peer list updated: No peers found
+[2024-12-10T00:42:05.324840] Started peer discovery.
+[2024-12-10T00:42:05.327255] Peer discovery initialized.
+[2024-12-10T00:42:09.309653] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-10T00:42:09.314588] [INFO] Listening for peers on port 4445...
+[2024-12-10T00:42:13.154708] Expanded File Explorer
+[2024-12-10T00:42:21.093342] File opened: /home/kiyotaka/deezapp/shared/shool/new
+[2024-12-10T00:59:11.554436] [INFO] Starting broadcast...
+[2024-12-10T00:59:11.657158] Peer list updated: No peers found
+[2024-12-10T00:59:11.658298] Started peer discovery.
+[2024-12-10T00:59:11.658953] Peer discovery initialized.
+[2024-12-10T00:59:15.718955] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-10T00:59:15.725736] [INFO] Listening for peers on port 4445...
+[2024-12-10T00:59:22.509548] Expanded File Explorer
+[2024-12-10T01:02:30.642005] [INFO] Starting broadcast...
+[2024-12-10T01:02:30.743484] Peer list updated: No peers found
+[2024-12-10T01:02:30.744279] Started peer discovery.
+[2024-12-10T01:02:30.744942] Peer discovery initialized.
+[2024-12-10T01:02:35.080738] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-10T01:02:35.087747] [INFO] Listening for peers on port 4445...
+[2024-12-10T01:02:41.309349] Expanded File Explorer
+[2024-12-10T01:02:49.531821] File opened: /home/kiyotaka/deezapp/shared/cmt
+[2024-12-10T01:02:52.700387] File opened: /home/kiyotaka/deezapp/shared/cmt
+[2024-12-10T01:02:53.200966] File opened: /home/kiyotaka/deezapp/shared/cmt
+[2024-12-10T01:02:56.862829] File opened: /home/kiyotaka/deezapp/shared/cmt
+[2024-12-10T01:02:58.597149] File opened: /home/kiyotaka/deezapp/shared/cmt
+[2024-12-10T01:02:59.936923] File opened: /home/kiyotaka/deezapp/shared/cmt
+[2024-12-10T01:03:00.250524] File opened: /home/kiyotaka/deezapp/shared/cmt
+[2024-12-10T01:03:00.270151] File opened: /home/kiyotaka/deezapp/shared/cmt
+[2024-12-10T01:03:05.270724] File opened: /home/kiyotaka/deezapp/shared/cmt
+[2024-12-10T01:03:05.555060] File opened: /home/kiyotaka/deezapp/shared/cmt
+[2024-12-10T01:03:05.570994] File opened: /home/kiyotaka/deezapp/shared/cmt
+[2024-12-10T01:03:08.307815] File opened: /home/kiyotaka/deezapp/shared/cmt
+[2024-12-10T01:03:08.566788] File opened: /home/kiyotaka/deezapp/shared/cmt
+[2024-12-10T01:03:09.579315] File opened: /home/kiyotaka/deezapp/shared/cmt
+[2024-12-10T01:03:09.889227] File opened: /home/kiyotaka/deezapp/shared/cmt
+[2024-12-10T01:03:10.186341] File opened: /home/kiyotaka/deezapp/shared/cmt
+[2024-12-10T01:11:15.384319] [INFO] Starting broadcast...
+[2024-12-10T01:11:15.495769] Peer list updated: No peers found
+[2024-12-10T01:11:15.496634] Started peer discovery.
+[2024-12-10T01:11:15.497297] Peer discovery initialized.
+[2024-12-10T01:11:20.067631] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-10T01:11:20.074916] [INFO] Listening for peers on port 4445...
+[2024-12-10T01:12:20.660709] Expanded File Explorer
+[2024-12-10T01:12:27.491687] File opened: /home/kiyotaka/deezapp/shared/shool/cmt
+[2024-12-10T01:12:41.993339] File opened: /home/kiyotaka/deezapp/shared/shool/c prog/my programs/gh/my programs.code-workspace
+[2024-12-10T01:12:43.980657] File opened: /home/kiyotaka/deezapp/shared/shool/c prog/my programs/gh/my programs.code-workspace
+[2024-12-10T01:12:44.285241] File opened: /home/kiyotaka/deezapp/shared/shool/c prog/my programs/gh/my programs.code-workspace
+[2024-12-10T01:12:52.773059] Collapsed File Explorer
+[2024-12-10T01:14:46.407050] [INFO] Starting broadcast...
+[2024-12-10T01:14:46.677403] Peer list updated: No peers found
+[2024-12-10T01:14:46.678223] Started peer discovery.
+[2024-12-10T01:14:46.678696] Peer discovery initialized.
+[2024-12-10T01:14:52.435270] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-10T01:14:52.442133] [INFO] Listening for peers on port 4445...
+[2024-12-10T01:15:17.426486] Expanded File Explorer
+[2024-12-10T01:15:22.464240] File opened: /home/kiyotaka/deezapp/shared/cmt
+[2024-12-10T01:15:27.526757] File opened: /home/kiyotaka/deezapp/shared/cmt
+[2024-12-10T01:15:28.030185] File opened: /home/kiyotaka/deezapp/shared/cmt
+[2024-12-10T01:15:28.454638] File opened: /home/kiyotaka/deezapp/shared/cmt
+[2024-12-10T01:15:29.563727] File opened: /home/kiyotaka/deezapp/shared/cmt
+[2024-12-10T01:15:29.835848] File opened: /home/kiyotaka/deezapp/shared/cmt
+[2024-12-10T01:15:29.851635] File opened: /home/kiyotaka/deezapp/shared/cmt
+[2024-12-10T01:15:34.135669] File opened: /home/kiyotaka/deezapp/shared/cmt
+[2024-12-10T01:21:33.258341] [INFO] Starting broadcast...
+[2024-12-10T01:21:33.448921] Peer list updated: No peers found
+[2024-12-10T01:21:33.449550] Started peer discovery.
+[2024-12-10T01:21:33.450024] Peer discovery initialized.
+[2024-12-10T01:21:36.413455] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-10T01:21:36.421756] [INFO] Listening for peers on port 4445...
+[2024-12-10T01:21:49.552900] Expanded File Explorer
+[2024-12-10T01:32:19.993875] [INFO] Starting broadcast...
+[2024-12-10T01:32:20.112163] Peer list updated: No peers found
+[2024-12-10T01:32:20.113028] Started peer discovery.
+[2024-12-10T01:32:20.113584] Peer discovery initialized.
+[2024-12-10T01:32:22.943943] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-10T01:32:22.949861] [INFO] Listening for peers on port 4445...
+[2024-12-10T01:32:34.855902] Expanded File Explorer
+[2024-12-10T01:41:15.018152] [INFO] Starting broadcast...
+[2024-12-10T01:41:15.107911] Peer list updated: No peers found
+[2024-12-10T01:41:15.109331] Started peer discovery.
+[2024-12-10T01:41:15.110078] Peer discovery initialized.
+[2024-12-10T01:41:17.925878] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-10T01:41:17.936905] [INFO] Listening for peers on port 4445...
+[2024-12-10T01:41:56.529101] Expanded File Explorer
+[2024-12-10T01:47:28.312606] [INFO] Starting broadcast...
+[2024-12-10T01:47:28.422289] Peer list updated: No peers found
+[2024-12-10T01:47:28.423075] Started peer discovery.
+[2024-12-10T01:47:28.423646] Peer discovery initialized.
+[2024-12-10T01:47:31.251339] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-10T01:47:31.257861] [INFO] Listening for peers on port 4445...
+[2024-12-10T01:47:54.809189] Expanded File Explorer
+[2024-12-10T01:57:54.731464] [INFO] Starting broadcast...
+[2024-12-10T01:57:54.885663] Peer list updated: No peers found
+[2024-12-10T01:57:54.886736] Started peer discovery.
+[2024-12-10T01:57:54.887369] Peer discovery initialized.
+[2024-12-10T01:57:59.261930] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-10T01:57:59.268573] [INFO] Listening for peers on port 4445...
+[2024-12-10T01:58:03.271066] Expanded File Explorer
+[2024-12-10T02:01:39.086153] Renamed to: /home/kiyotaka/deezapp/shared/shool/wak.c
+[2024-12-10T02:08:09.272022] [INFO] Starting broadcast...
+[2024-12-10T02:08:09.374434] Peer list updated: No peers found
+[2024-12-10T02:08:09.375492] Started peer discovery.
+[2024-12-10T02:08:09.376169] Peer discovery initialized.
+[2024-12-10T02:08:14.645881] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-10T02:08:14.664051] [INFO] Listening for peers on port 4445...
+[2024-12-10T02:08:40.382066] Expanded File Explorer
+[2024-12-10T06:54:36.768166] [INFO] Starting broadcast...
+[2024-12-10T06:54:36.916287] Peer list updated: No peers found
+[2024-12-10T06:54:36.918393] Started peer discovery.
+[2024-12-10T06:54:36.919035] Peer discovery initialized.
+[2024-12-10T06:54:44.150545] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-10T06:54:44.233609] [INFO] Listening for peers on port 4445...
+[2024-12-10T06:57:56.981802] [INFO] Starting broadcast...
+[2024-12-10T06:57:57.286604] Peer list updated: No peers found
+[2024-12-10T06:57:57.288719] Started peer discovery.
+[2024-12-10T06:57:57.289385] Peer discovery initialized.
+[2024-12-10T06:58:03.324479] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-10T06:58:03.330365] [INFO] Listening for peers on port 4445...
+[2024-12-10T06:58:07.010991] Expanded File Explorer
+[2024-12-10T07:15:01.565517] [INFO] Starting broadcast...
+[2024-12-10T07:15:01.712512] Peer list updated: No peers found
+[2024-12-10T07:15:01.716679] Started peer discovery.
+[2024-12-10T07:15:01.717661] Peer discovery initialized.
+[2024-12-10T07:15:05.770581] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-10T07:15:05.775993] [INFO] Listening for peers on port 4445...
+[2024-12-10T07:15:09.451767] Expanded File Explorer
+[2024-12-10T07:25:41.617814] [INFO] Starting broadcast...
+[2024-12-10T07:25:41.740181] Peer list updated: No peers found
+[2024-12-10T07:25:41.741427] Started peer discovery.
+[2024-12-10T07:25:41.742449] Peer discovery initialized.
+[2024-12-10T07:25:45.330848] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T07:25:45.337088] [INFO] Listening for peers on port 4445...
+[2024-12-10T07:25:49.042868] Expanded File Explorer
+[2024-12-10T07:33:57.759067] [INFO] Starting broadcast...
+[2024-12-10T07:33:57.863886] Peer list updated: No peers found
+[2024-12-10T07:33:57.864731] Started peer discovery.
+[2024-12-10T07:33:57.865363] Peer discovery initialized.
+[2024-12-10T07:34:01.758374] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T07:34:01.764198] [INFO] Listening for peers on port 4445...
+[2024-12-10T07:34:16.605581] Expanded File Explorer
+[2024-12-10T07:39:48.234743] [INFO] Starting broadcast...
+[2024-12-10T07:39:48.303971] Peer list updated: No peers found
+[2024-12-10T07:39:48.304721] Started peer discovery.
+[2024-12-10T07:39:48.305465] Peer discovery initialized.
+[2024-12-10T07:39:50.998241] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T07:39:51.004186] [INFO] Listening for peers on port 4445...
+[2024-12-10T07:40:22.024068] Expanded File Explorer
+[2024-12-10T07:45:31.407794] [INFO] Starting broadcast...
+[2024-12-10T07:45:31.494442] Peer list updated: No peers found
+[2024-12-10T07:45:31.495064] Started peer discovery.
+[2024-12-10T07:45:31.495662] Peer discovery initialized.
+[2024-12-10T07:45:34.901125] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T07:45:34.906654] [INFO] Listening for peers on port 4445...
+[2024-12-10T07:45:37.660814] Expanded File Explorer
+[2024-12-10T07:47:15.933589] [INFO] Starting broadcast...
+[2024-12-10T07:47:16.073055] Peer list updated: No peers found
+[2024-12-10T07:47:16.074665] Started peer discovery.
+[2024-12-10T07:47:16.076085] Peer discovery initialized.
+[2024-12-10T07:47:19.711019] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T07:47:19.716741] [INFO] Listening for peers on port 4445...
+[2024-12-10T07:47:28.816508] Expanded File Explorer
+[2024-12-10T07:51:44.758420] [INFO] Starting broadcast...
+[2024-12-10T07:51:44.883207] Peer list updated: No peers found
+[2024-12-10T07:51:44.883983] Started peer discovery.
+[2024-12-10T07:51:44.884696] Peer discovery initialized.
+[2024-12-10T07:51:48.881153] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T07:51:48.888724] [INFO] Listening for peers on port 4445...
+[2024-12-10T07:52:10.320772] Expanded File Explorer
+[2024-12-10T07:54:49.359142] [INFO] Starting broadcast...
+[2024-12-10T07:54:49.433949] Peer list updated: No peers found
+[2024-12-10T07:54:49.434772] Started peer discovery.
+[2024-12-10T07:54:49.435444] Peer discovery initialized.
+[2024-12-10T07:54:52.467109] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T07:54:52.474338] [INFO] Listening for peers on port 4445...
+[2024-12-10T07:54:57.325335] Expanded File Explorer
+[2024-12-10T07:56:45.197637] [INFO] Starting broadcast...
+[2024-12-10T07:56:45.533589] Peer list updated: No peers found
+[2024-12-10T07:56:45.535910] Started peer discovery.
+[2024-12-10T07:56:45.600879] Peer discovery initialized.
+[2024-12-10T07:56:49.193618] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T07:56:49.206195] [INFO] Listening for peers on port 4445...
+[2024-12-10T07:56:59.511227] Expanded File Explorer
+[2024-12-10T08:00:56.364598] [INFO] Starting broadcast...
+[2024-12-10T08:00:56.497072] Peer list updated: No peers found
+[2024-12-10T08:00:56.498368] Started peer discovery.
+[2024-12-10T08:00:56.499503] Peer discovery initialized.
+[2024-12-10T08:01:01.385463] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T08:01:01.390722] [INFO] Listening for peers on port 4445...
+[2024-12-10T08:01:07.970791] Expanded File Explorer
+[2024-12-10T08:01:15.924544] Collapsed File Explorer
+[2024-12-10T08:01:18.882466] Expanded File Explorer
+[2024-12-10T08:02:11.291467] [INFO] Starting broadcast...
+[2024-12-10T08:02:11.357906] Peer list updated: No peers found
+[2024-12-10T08:02:11.359464] Started peer discovery.
+[2024-12-10T08:02:11.360074] Peer discovery initialized.
+[2024-12-10T08:02:14.051690] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T08:02:14.056535] [INFO] Listening for peers on port 4445...
+[2024-12-10T08:02:46.758687] [INFO] Starting broadcast...
+[2024-12-10T08:02:46.837663] Peer list updated: No peers found
+[2024-12-10T08:02:46.838376] Started peer discovery.
+[2024-12-10T08:02:46.839007] Peer discovery initialized.
+[2024-12-10T08:02:50.233533] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T08:02:50.238584] [INFO] Listening for peers on port 4445...
+[2024-12-10T08:07:58.294988] [INFO] Starting broadcast...
+[2024-12-10T08:07:58.401281] Peer list updated: No peers found
+[2024-12-10T08:07:58.402051] Started peer discovery.
+[2024-12-10T08:07:58.402605] Peer discovery initialized.
+[2024-12-10T08:08:01.815041] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T08:08:01.822125] [INFO] Listening for peers on port 4445...
+[2024-12-10T08:08:13.408898] Collapsed Log Panel
+[2024-12-10T08:08:17.106808] Expanded Log Panel
+[2024-12-10T08:09:51.591671] Expanded File Explorer
+[2024-12-10T08:12:03.383486] [INFO] Starting broadcast...
+[2024-12-10T08:12:03.471966] Peer list updated: No peers found
+[2024-12-10T08:12:03.472718] Started peer discovery.
+[2024-12-10T08:12:03.473340] Peer discovery initialized.
+[2024-12-10T08:12:07.822835] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T08:12:07.831245] [INFO] Listening for peers on port 4445...
+[2024-12-10T08:12:12.763941] Expanded File Explorer
+[2024-12-10T08:12:17.050153] Collapsed File Explorer
+[2024-12-10T08:13:30.081651] [INFO] Starting broadcast...
+[2024-12-10T08:13:30.192403] Peer list updated: No peers found
+[2024-12-10T08:13:30.193316] Started peer discovery.
+[2024-12-10T08:13:30.194] Peer discovery initialized.
+[2024-12-10T08:13:33.913467] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T08:13:33.919016] [INFO] Listening for peers on port 4445...
+[2024-12-10T08:13:38.221136] Expanded File Explorer
+[2024-12-10T08:13:41.055222] Collapsed File Explorer
+[2024-12-10T08:17:51.171] [INFO] Starting broadcast...
+[2024-12-10T08:17:51.270357] Peer list updated: No peers found
+[2024-12-10T08:17:51.275699] Started peer discovery.
+[2024-12-10T08:17:51.278399] Peer discovery initialized.
+[2024-12-10T08:17:54.699163] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T08:17:54.705182] [INFO] Listening for peers on port 4445...
+[2024-12-10T08:18:01.545976] [INFO] Broadcast stopped.
+[2024-12-10T08:18:01.546618] Stopped broadcasting presence.
+[2024-12-10T08:18:01.553005] Peer list updated: No peers found
+[2024-12-10T08:22:01.593242] [INFO] Starting broadcast...
+[2024-12-10T08:22:01.753213] Peer list updated: No peers found
+[2024-12-10T08:22:01.754367] Started peer discovery.
+[2024-12-10T08:22:01.756784] Peer discovery initialized.
+[2024-12-10T08:22:05.700070] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T08:22:05.706173] [INFO] Listening for peers on port 4445...
+[2024-12-10T08:22:10.527856] Expanded File Explorer
+[2024-12-10T15:00:16.123680] [INFO] Starting broadcast...
+[2024-12-10T15:00:16.218661] Peer list updated: No peers found
+[2024-12-10T15:00:16.219422] Started peer discovery.
+[2024-12-10T15:00:16.219944] Peer discovery initialized.
+[2024-12-10T15:00:19.670269] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T15:00:19.676778] [INFO] Listening for peers on port 4445...
+[2024-12-10T15:00:31.959846] Expanded File Explorer
+[2024-12-10T15:06:39.888963] [INFO] Starting broadcast...
+[2024-12-10T15:06:39.999087] Peer list updated: No peers found
+[2024-12-10T15:06:40.000989] Started peer discovery.
+[2024-12-10T15:06:40.002263] Peer discovery initialized.
+[2024-12-10T15:06:43.497199] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T15:06:43.504449] [INFO] Listening for peers on port 4445...
+[2024-12-10T15:06:55.078166] Expanded File Explorer
+[2024-12-10T15:09:54.420995] [INFO] Starting broadcast...
+[2024-12-10T15:09:54.593385] Peer list updated: No peers found
+[2024-12-10T15:09:54.594095] Started peer discovery.
+[2024-12-10T15:09:54.594732] Peer discovery initialized.
+[2024-12-10T15:09:57.345927] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T15:09:57.352047] [INFO] Listening for peers on port 4445...
+[2024-12-10T15:10:01.126905] [INFO] Broadcast stopped.
+[2024-12-10T15:10:01.127644] Stopped broadcasting presence.
+[2024-12-10T15:10:01.135430] Peer list updated: No peers found
+[2024-12-10T15:10:04.121139] [INFO] Starting broadcast...
+[2024-12-10T15:10:04.130410] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T15:10:04.134780] Started broadcasting presence.
+[2024-12-10T15:10:04.135918] Peer list updated: No peers found
+[2024-12-10T15:10:06.559036] [INFO] Broadcast stopped.
+[2024-12-10T15:10:06.559995] Stopped broadcasting presence.
+[2024-12-10T15:10:06.561184] Peer list updated: No peers found
+[2024-12-10T15:10:10.627586] [INFO] Starting broadcast...
+[2024-12-10T15:10:10.684497] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T15:10:10.685860] Started broadcasting presence.
+[2024-12-10T15:10:10.688631] Peer list updated: No peers found
+[2024-12-10T16:02:32.554033] [INFO] Starting broadcast...
+[2024-12-10T16:02:32.689908] Peer list updated: No peers found
+[2024-12-10T16:02:32.690852] Started peer discovery.
+[2024-12-10T16:02:32.691547] Peer discovery initialized.
+[2024-12-10T16:02:35.504971] App started
+[2024-12-10T16:02:35.699942] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T16:02:35.705136] [INFO] Listening for peers on port 4445...
+[2024-12-10T16:02:58.935662] Expanded Log Panel
+[2024-12-10T16:03:23.569088] Expanded File Explorer
+[2024-12-10T16:03:32.272760] Collapsed File Explorer
+[2024-12-10T16:21:29.643126] [INFO] Starting broadcast...
+[2024-12-10T16:21:29.756354] Peer list updated: No peers found
+[2024-12-10T16:21:29.757066] Started peer discovery.
+[2024-12-10T16:21:29.757660] Peer discovery initialized.
+[2024-12-10T16:21:32.886659] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T16:21:32.894434] [INFO] Listening for peers on port 4445...
+[2024-12-10T16:22:17.312882] Expanded File Explorer
+[2024-12-10T16:22:22.742088] [INFO] Broadcast stopped.
+[2024-12-10T16:22:22.742887] Stopped broadcasting presence.
+[2024-12-10T16:22:22.748040] Peer list updated: No peers found
+[2024-12-10T16:22:30.185656] [INFO] Starting broadcast...
+[2024-12-10T16:22:30.218942] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T16:22:30.220249] Started broadcasting presence.
+[2024-12-10T16:22:30.227811] Peer list updated: No peers found
+[2024-12-10T16:22:35.601953] [INFO] Broadcast stopped.
+[2024-12-10T16:22:35.605404] Stopped broadcasting presence.
+[2024-12-10T16:22:35.606466] Peer list updated: No peers found
+[2024-12-10T16:22:37.672855] [INFO] Starting broadcast...
+[2024-12-10T16:22:37.681435] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T16:22:37.683060] Started broadcasting presence.
+[2024-12-10T16:22:37.684125] Peer list updated: No peers found
+[2024-12-10T16:23:12.907306] Collapsed File Explorer
+[2024-12-10T16:27:42.550806] [INFO] Starting broadcast...
+[2024-12-10T16:27:42.647952] Peer list updated: No peers found
+[2024-12-10T16:27:42.648828] Started peer discovery.
+[2024-12-10T16:27:42.649611] Peer discovery initialized.
+[2024-12-10T16:27:46.637363] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T16:27:46.643136] [INFO] Listening for peers on port 4445...
+[2024-12-10T16:31:59.765289] [INFO] Starting broadcast...
+[2024-12-10T16:31:59.846868] Peer list updated: No peers found
+[2024-12-10T16:31:59.847686] Started peer discovery.
+[2024-12-10T16:31:59.848225] Peer discovery initialized.
+[2024-12-10T16:32:03.355267] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T16:32:03.360487] [INFO] Listening for peers on port 4445...
+[2024-12-10T16:32:09.458639] Expanded File Explorer
+[2024-12-10T16:32:24.689463] Collapsed File Explorer
+[2024-12-10T16:32:29.376797] Expanded File Explorer
+[2024-12-10T16:32:37.914785] Collapsed File Explorer
+[2024-12-10T16:38:02.650611] [INFO] Starting broadcast...
+[2024-12-10T16:38:02.776644] Peer list updated: No peers found
+[2024-12-10T16:38:02.777519] Started peer discovery.
+[2024-12-10T16:38:02.778126] Peer discovery initialized.
+[2024-12-10T16:38:07.549148] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T16:38:07.555396] [INFO] Listening for peers on port 4445...
+[2024-12-10T16:38:59.089761] [INFO] Starting broadcast...
+[2024-12-10T16:38:59.163422] Peer list updated: No peers found
+[2024-12-10T16:38:59.164105] Started peer discovery.
+[2024-12-10T16:38:59.164860] Peer discovery initialized.
+[2024-12-10T16:39:02.894248] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T16:39:02.899227] [INFO] Listening for peers on port 4445...
+[2024-12-10T16:39:44.726706] [INFO] Starting broadcast...
+[2024-12-10T16:39:44.798722] Peer list updated: No peers found
+[2024-12-10T16:39:44.799363] Started peer discovery.
+[2024-12-10T16:39:44.799918] Peer discovery initialized.
+[2024-12-10T16:39:48.791897] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T16:39:48.799181] [INFO] Listening for peers on port 4445...
+[2024-12-10T16:42:38.117020] [INFO] Starting broadcast...
+[2024-12-10T16:42:38.216591] Peer list updated: No peers found
+[2024-12-10T16:42:38.217272] Started peer discovery.
+[2024-12-10T16:42:38.218124] Peer discovery initialized.
+[2024-12-10T16:42:41.487393] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T16:42:41.493567] [INFO] Listening for peers on port 4445...
+[2024-12-10T16:43:33.077891] [INFO] Starting broadcast...
+[2024-12-10T16:43:33.176411] Peer list updated: No peers found
+[2024-12-10T16:43:33.177097] Started peer discovery.
+[2024-12-10T16:43:33.177661] Peer discovery initialized.
+[2024-12-10T16:43:36.301667] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T16:43:36.307501] [INFO] Listening for peers on port 4445...
+[2024-12-10T16:43:42.761029] show me the
+[2024-12-10T16:49:35.109339] [INFO] Starting broadcast...
+[2024-12-10T16:49:35.197075] Peer list updated: No peers found
+[2024-12-10T16:49:35.197754] Started peer discovery.
+[2024-12-10T16:49:35.198289] Peer discovery initialized.
+[2024-12-10T16:49:39.235645] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T16:49:39.241722] [INFO] Listening for peers on port 4445...
+[2024-12-10T16:50:31.227417] [INFO] Starting broadcast...
+[2024-12-10T16:50:31.329657] Peer list updated: No peers found
+[2024-12-10T16:50:31.330693] Started peer discovery.
+[2024-12-10T16:50:31.331579] Peer discovery initialized.
+[2024-12-10T16:50:35.082155] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T16:50:35.086842] [INFO] Listening for peers on port 4445...
+[2024-12-10T16:50:38.317135] Expanded File Explorer
+[2024-12-10T16:50:41.335858] Collapsed File Explorer
+[2024-12-10T16:54:02.937520] [INFO] Starting broadcast...
+[2024-12-10T16:54:03.009257] Peer list updated: No peers found
+[2024-12-10T16:54:03.010045] Started peer discovery.
+[2024-12-10T16:54:03.010746] Peer discovery initialized.
+[2024-12-10T16:54:05.848614] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T16:54:05.853530] [INFO] Listening for peers on port 4445...
+[2024-12-10T16:55:26.008201] Expanded File Explorer
+[2024-12-10T16:55:30.860920] Collapsed File Explorer
+[2024-12-10T17:01:10.880490] [INFO] Starting broadcast...
+[2024-12-10T17:01:10.946857] Peer list updated: No peers found
+[2024-12-10T17:01:10.947760] Started peer discovery.
+[2024-12-10T17:01:10.948430] Peer discovery initialized.
+[2024-12-10T17:01:14.214993] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T17:01:14.220569] [INFO] Listening for peers on port 4445...
+[2024-12-10T17:01:18.574722] Expanded File Explorer
+[2024-12-10T17:01:33.774140] [INFO] Broadcast stopped.
+[2024-12-10T17:01:33.778693] Stopped broadcasting presence.
+[2024-12-10T17:01:33.781503] Peer list updated: No peers found
+[2024-12-10T17:01:39.030249] [INFO] Starting broadcast...
+[2024-12-10T17:01:39.041978] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T17:01:39.043471] Started broadcasting presence.
+[2024-12-10T17:01:39.056828] Peer list updated: No peers found
+[2024-12-10T17:01:45.500704] Expanded File Explorer
+[2024-12-10T17:02:44.448807] Collapsed File Explorer
+[2024-12-10T17:02:47.838692] Expanded File Explorer
+[2024-12-10T17:02:52.225262] Collapsed File Explorer
+[2024-12-10T17:02:55.919919] Expanded File Explorer
+[2024-12-10T17:03:40.556859] [INFO] Starting broadcast...
+[2024-12-10T17:03:40.698548] Peer list updated: No peers found
+[2024-12-10T17:03:40.699571] Started peer discovery.
+[2024-12-10T17:03:40.700270] Peer discovery initialized.
+[2024-12-10T17:03:44.243091] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T17:03:44.247994] [INFO] Listening for peers on port 4445...
+[2024-12-10T17:03:57.456992] Expanded File Explorer
+[2024-12-10T17:04:01.763274] Expanded File Explorer
+[2024-12-10T17:04:16.155] [INFO] Broadcast stopped.
+[2024-12-10T17:04:16.159234] Stopped broadcasting presence.
+[2024-12-10T17:04:16.170234] Peer list updated: No peers found
+[2024-12-10T17:04:38.051496] [INFO] Starting broadcast...
+[2024-12-10T17:04:38.123452] Peer list updated: No peers found
+[2024-12-10T17:04:38.124206] Started peer discovery.
+[2024-12-10T17:04:38.124870] Peer discovery initialized.
+[2024-12-10T17:04:41.244749] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T17:04:41.249951] [INFO] Listening for peers on port 4445...
+[2024-12-10T17:04:43.205924] Expanded File Explorer
+[2024-12-10T17:07:57.476919] [INFO] Starting broadcast...
+[2024-12-10T17:07:57.555481] Peer list updated: No peers found
+[2024-12-10T17:07:57.615964] Started peer discovery.
+[2024-12-10T17:07:57.616662] Peer discovery initialized.
+[2024-12-10T17:08:01.255227] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T17:08:01.261097] [INFO] Listening for peers on port 4445...
+[2024-12-10T17:08:03.800308] Expanded File Explorer
+[2024-12-10T17:08:06.924909] Collapsed File Explorer
+[2024-12-10T17:08:09.378202] Expanded File Explorer
+[2024-12-10T17:10:40.692405] [INFO] Starting broadcast...
+[2024-12-10T17:10:40.764703] Peer list updated: No peers found
+[2024-12-10T17:10:40.765812] Started peer discovery.
+[2024-12-10T17:10:40.766763] Peer discovery initialized.
+[2024-12-10T17:10:44.136347] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T17:10:44.142724] [INFO] Listening for peers on port 4445...
+[2024-12-10T17:14:14.342286] [INFO] Starting broadcast...
+[2024-12-10T17:14:14.409111] Peer list updated: No peers found
+[2024-12-10T17:14:14.409721] Started peer discovery.
+[2024-12-10T17:14:14.410309] Peer discovery initialized.
+[2024-12-10T17:14:17.960312] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T17:14:17.964876] [INFO] Listening for peers on port 4445...
+[2024-12-10T17:14:27.149897] Expanded File Explorer
+[2024-12-10T17:14:39.697415] Expanded File Explorer
+[2024-12-10T17:14:43.328294] Collapsed File Explorer
+[2024-12-10T17:14:45.675201] Expanded File Explorer
+[2024-12-10T17:21:59.776461] [INFO] Starting broadcast...
+[2024-12-10T17:21:59.853819] Peer list updated: No peers found
+[2024-12-10T17:21:59.854548] Started peer discovery.
+[2024-12-10T17:21:59.855199] Peer discovery initialized.
+[2024-12-10T17:22:02.319646] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T17:22:02.324289] [INFO] Listening for peers on port 4445...
+[2024-12-10T17:22:31.864552] Expanded File Explorer
+[2024-12-10T17:22:39.621939] Collapsed File Explorer
+[2024-12-10T17:22:41.351688] Expanded File Explorer
+[2024-12-10T17:22:43.692504] Collapsed File Explorer
+[2024-12-10T17:26:23.152803] Expanded File Explorer
+[2024-12-10T17:26:24.808773] Collapsed File Explorer
+[2024-12-10T17:27:08.303295] [INFO] Starting broadcast...
+[2024-12-10T17:27:08.373262] Peer list updated: No peers found
+[2024-12-10T17:27:08.373942] Started peer discovery.
+[2024-12-10T17:27:08.374636] Peer discovery initialized.
+[2024-12-10T17:27:12.521585] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T17:27:12.527467] [INFO] Listening for peers on port 4445...
+[2024-12-10T17:27:14.577467] Expanded File Explorer
+[2024-12-10T17:27:17.656286] Collapsed File Explorer
+[2024-12-10T17:30:26.558286] [INFO] Starting broadcast...
+[2024-12-10T17:30:26.637177] Peer list updated: No peers found
+[2024-12-10T17:30:26.637991] Started peer discovery.
+[2024-12-10T17:30:26.638691] Peer discovery initialized.
+[2024-12-10T17:30:29.788533] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T17:30:29.794139] [INFO] Listening for peers on port 4445...
+[2024-12-10T17:30:32.795008] Expanded File Explorer
+[2024-12-10T17:30:35.490511] Collapsed File Explorer
+[2024-12-10T17:30:37.491111] Expanded File Explorer
+[2024-12-10T17:30:39.938994] Collapsed File Explorer
+[2024-12-10T17:30:43.538241] Expanded File Explorer
+[2024-12-10T17:32:31.133968] [INFO] Starting broadcast...
+[2024-12-10T17:32:31.228169] Peer list updated: No peers found
+[2024-12-10T17:32:31.229084] Started peer discovery.
+[2024-12-10T17:32:31.229829] Peer discovery initialized.
+[2024-12-10T17:32:34.385800] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T17:32:34.391051] [INFO] Listening for peers on port 4445...
+[2024-12-10T17:32:36.899452] Expanded File Explorer
+[2024-12-10T17:32:39.686085] Collapsed File Explorer
+[2024-12-10T17:32:41.561413] Expanded File Explorer
+[2024-12-10T17:32:46.912293] Collapsed File Explorer
+[2024-12-10T17:32:48.363587] Expanded File Explorer
+[2024-12-10T17:32:50.175784] Collapsed File Explorer
+[2024-12-10T17:32:51.624730] Expanded File Explorer
+[2024-12-10T17:33:45.388363] [INFO] Starting broadcast...
+[2024-12-10T17:33:45.472924] Peer list updated: No peers found
+[2024-12-10T17:33:45.474579] Started peer discovery.
+[2024-12-10T17:33:45.475866] Peer discovery initialized.
+[2024-12-10T17:33:48.139758] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T17:33:48.145990] [INFO] Listening for peers on port 4445...
+[2024-12-10T17:35:11.064833] Expanded File Explorer
+[2024-12-10T17:35:17.034543] Toggled Log Panel
+[2024-12-10T17:35:19.204115] Toggled Log Panel
+[2024-12-10T17:35:22.788630] Toggled Log Panel
+[2024-12-10T17:37:23.987144] [INFO] Starting broadcast...
+[2024-12-10T17:37:24.066174] Peer list updated: No peers found
+[2024-12-10T17:37:24.066987] Started peer discovery.
+[2024-12-10T17:37:24.067618] Peer discovery initialized.
+[2024-12-10T17:37:26.787875] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T17:37:26.793026] [INFO] Listening for peers on port 4445...
+[2024-12-10T17:37:33.083355] Expanded File Explorer
+[2024-12-10T17:37:38.703657] Toggled Log Panel
+[2024-12-10T17:37:45.710757] Expanded File Explorer
+[2024-12-10T18:03:34.144076] [INFO] Starting broadcast...
+[2024-12-10T18:03:34.263132] Peer list updated: No peers found
+[2024-12-10T18:03:34.265810] Started peer discovery.
+[2024-12-10T18:03:34.267644] Peer discovery initialized.
+[2024-12-10T18:03:37.718793] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-10T18:03:37.724695] [INFO] Listening for peers on port 4445...
+[2024-12-10T18:03:44.511260] Collapsed File Explorer
+[2024-12-10T18:03:47.090647] Expanded File Explorer
+[2024-12-10T18:05:27.886188] [INFO] Starting broadcast...
+[2024-12-10T18:05:27.996514] Peer list updated: No peers found
+[2024-12-10T18:05:27.997454] Started peer discovery.
+[2024-12-10T18:05:27.998238] Peer discovery initialized.
+[2024-12-10T18:05:31.316374] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-10T18:05:31.323990] [INFO] Listening for peers on port 4445...
+[2024-12-10T18:05:36.003989] Expanded File Explorer
+[2024-12-10T18:07:29.699618] [INFO] Starting broadcast...
+[2024-12-10T18:07:29.799074] Peer list updated: No peers found
+[2024-12-10T18:07:29.800594] Started peer discovery.
+[2024-12-10T18:07:29.801700] Peer discovery initialized.
+[2024-12-10T18:07:33.028949] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-10T18:07:33.035210] [INFO] Listening for peers on port 4445...
+[2024-12-10T18:07:36.630987] Toggled Log Panel
+[2024-12-10T18:08:14.343936] Expanded File Explorer
+[2024-12-10T18:24:56.263471] [INFO] Starting broadcast...
+[2024-12-10T18:24:56.335560] Peer list updated: No peers found
+[2024-12-10T18:24:56.336179] Started peer discovery.
+[2024-12-10T18:24:56.336697] Peer discovery initialized.
+[2024-12-10T18:24:58.971770] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-10T18:24:58.976865] [INFO] Listening for peers on port 4445...
+[2024-12-10T18:25:08.203471] Toggled Log Panel
+[2024-12-10T18:25:11.293270] Expanded File Explorer
+[2024-12-10T18:35:39.581567] [INFO] Starting broadcast...
+[2024-12-10T18:35:39.666440] Peer list updated: No peers found
+[2024-12-10T18:35:39.667322] Started peer discovery.
+[2024-12-10T18:35:39.668018] Peer discovery initialized.
+[2024-12-10T18:35:43.286271] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-10T18:35:43.292186] [INFO] Listening for peers on port 4445...
+[2024-12-10T18:46:03.292019] Toggled Log Panel
+[2024-12-10T19:08:34.760888] [INFO] Starting broadcast...
+[2024-12-10T19:08:34.817595] Peer list updated: No peers found
+[2024-12-10T19:08:34.818079] Started peer discovery.
+[2024-12-10T19:08:34.818355] Peer discovery initialized.
+[2024-12-10T19:08:36.396850] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-10T19:08:36.399869] [INFO] Listening for peers on port 4445...
+[2024-12-10T19:08:40.428688] Toggled Log Panel
+[2024-12-10T19:08:42.819756] Expanded File Explorer
+[2024-12-10T19:10:20.128412] [INFO] Starting broadcast...
+[2024-12-10T19:10:20.171242] Peer list updated: No peers found
+[2024-12-10T19:10:20.171560] Started peer discovery.
+[2024-12-10T19:10:20.171858] Peer discovery initialized.
+[2024-12-10T19:10:22.273509] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-10T19:10:22.277205] [INFO] Listening for peers on port 4445...
+[2024-12-10T19:10:26.277138] Expanded File Explorer
+[2024-12-10T19:11:29.797942] [INFO] Starting broadcast...
+[2024-12-10T19:11:29.853500] Peer list updated: No peers found
+[2024-12-10T19:11:29.853955] Started peer discovery.
+[2024-12-10T19:11:29.854236] Peer discovery initialized.
+[2024-12-10T19:11:31.547695] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-10T19:11:31.550597] [INFO] Listening for peers on port 4445...
+[2024-12-10T19:11:56.387659] Expanded File Explorer
+[2024-12-10T19:22:00.419522] [INFO] Starting broadcast...
+[2024-12-10T19:22:00.455711] Peer list updated: No peers found
+[2024-12-10T19:22:00.456069] Started peer discovery.
+[2024-12-10T19:22:00.456388] Peer discovery initialized.
+[2024-12-10T19:22:02.254697] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-10T19:22:02.258255] [INFO] Listening for peers on port 4445...
+[2024-12-10T19:22:07.667908] Expanded File Explorer
+[2024-12-10T19:25:13.092483] [INFO] Starting broadcast...
+[2024-12-10T19:25:13.127030] Peer list updated: No peers found
+[2024-12-10T19:25:13.127449] Started peer discovery.
+[2024-12-10T19:25:13.127804] Peer discovery initialized.
+[2024-12-10T19:25:14.407217] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-10T19:25:14.409953] [INFO] Listening for peers on port 4445...
+[2024-12-10T19:25:20.590315] Expanded File Explorer
+[2024-12-10T19:25:20.998378] Collapsed File Explorer
+[2024-12-10T19:25:25.113681] Expanded File Explorer
+[2024-12-10T19:26:26.680444] [INFO] Broadcast stopped.
+[2024-12-10T19:26:26.681606] Stopped broadcasting presence.
+[2024-12-10T19:26:26.686647] Peer list updated: No peers found
+[2024-12-10T19:28:31.811089] [INFO] Starting broadcast...
+[2024-12-10T19:28:31.842860] Peer list updated: No peers found
+[2024-12-10T19:28:31.843202] Started peer discovery.
+[2024-12-10T19:28:31.843477] Peer discovery initialized.
+[2024-12-10T19:28:33.391103] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-10T19:28:33.394053] [INFO] Listening for peers on port 4445...
+[2024-12-10T19:28:39.853316] Expanded File Explorer
+[2024-12-10T19:28:43.279547] Collapsed File Explorer
+[2024-12-10T19:29:26.876934] Expanded File Explorer
+[2024-12-10T19:29:33.613179] Toggled Log Panel
+[2024-12-10T19:30:10.275443] Collapsed File Explorer
+[2024-12-10T19:30:13.255670] Expanded File Explorer
+[2024-12-10T19:33:23.624649] [INFO] Starting broadcast...
+[2024-12-10T19:33:23.652606] Peer list updated: No peers found
+[2024-12-10T19:33:23.652901] Started peer discovery.
+[2024-12-10T19:33:23.653104] Peer discovery initialized.
+[2024-12-10T19:33:23.672357] Toggled Log Panel
+[2024-12-10T19:33:25.126499] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-10T19:33:25.128630] [INFO] Listening for peers on port 4445...
+[2024-12-10T19:33:29.600160] Toggled Log Panel
+[2024-12-10T19:33:30.741675] Toggled Log Panel
+[2024-12-10T19:33:31.658074] Toggled Log Panel
+[2024-12-10T19:33:34.754660] Expanded File Explorer
+[2024-12-10T19:33:34.764443] Toggled Log Panel
+[2024-12-10T19:33:38.012895] Collapsed File Explorer
+[2024-12-10T19:33:38.017850] Toggled Log Panel
+[2024-12-10T19:33:39.701592] Expanded File Explorer
+[2024-12-10T19:33:39.717923] Toggled Log Panel
+[2024-12-10T19:33:43.685223] Toggled Log Panel
+[2024-12-10T19:47:52.972368] [INFO] Starting broadcast...
+[2024-12-10T19:47:53.004134] Peer list updated: No peers found
+[2024-12-10T19:47:53.004420] Started peer discovery.
+[2024-12-10T19:47:53.004696] Peer discovery initialized.
+[2024-12-10T19:47:54.422953] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T19:47:54.425126] [INFO] Listening for peers on port 4445...
+[2024-12-10T19:47:59.247926] Toggled Log Panel
+[2024-12-10T19:48:00.271740] Toggled Log Panel
+[2024-12-10T19:48:01.188712] Toggled Log Panel
+[2024-12-10T19:48:03.158122] Collapsed File Explorer
+[2024-12-10T19:48:04.761456] Expanded File Explorer
+[2024-12-10T19:51:17.417171] [INFO] Starting broadcast...
+[2024-12-10T19:51:17.447835] Peer list updated: No peers found
+[2024-12-10T19:51:17.448200] Started peer discovery.
+[2024-12-10T19:51:17.448481] Peer discovery initialized.
+[2024-12-10T19:51:18.856722] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T19:51:18.859770] [INFO] Listening for peers on port 4445...
+[2024-12-10T19:51:23.675575] Toggled Log Panel
+[2024-12-10T19:51:23.873961] Toggled Log Panel
+[2024-12-10T19:51:27.822315] Collapsed File Explorer
+[2024-12-10T19:51:30.362931] Expanded File Explorer
+[2024-12-10T19:51:37.012229] Toggled Log Panel
+[2024-12-10T19:59:42.555391] [INFO] Starting broadcast...
+[2024-12-10T19:59:42.591967] Peer list updated: No peers found
+[2024-12-10T19:59:42.592580] Started peer discovery.
+[2024-12-10T19:59:42.592861] Peer discovery initialized.
+[2024-12-10T19:59:44.267336] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T19:59:44.271197] [INFO] Listening for peers on port 4445...
+[2024-12-10T19:59:51.638063] Expanded File Explorer
+[2024-12-10T19:59:56.087018] Collapsed File Explorer
+[2024-12-10T19:59:58.632001] Collapsed File Explorer
+[2024-12-10T20:00:00.986463] Expanded File Explorer
+[2024-12-10T20:00:40.145654] [INFO] Starting broadcast...
+[2024-12-10T20:00:40.171131] Peer list updated: No peers found
+[2024-12-10T20:00:40.171400] Started peer discovery.
+[2024-12-10T20:00:40.171597] Peer discovery initialized.
+[2024-12-10T20:00:41.632691] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.123.87"}
+[2024-12-10T20:00:41.635077] [INFO] Listening for peers on port 4445...
+[2024-12-10T20:01:04.045802] Expanded File Explorer
+[2024-12-10T20:17:44.609264] [INFO] Starting broadcast...
+[2024-12-10T20:17:44.660078] Peer list updated: No peers found
+[2024-12-10T20:17:44.660469] Started peer discovery.
+[2024-12-10T20:17:44.660703] Peer discovery initialized.
+[2024-12-10T20:17:46.100742] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-10T20:17:46.104121] [INFO] Listening for peers on port 4445...
+[2024-12-10T20:17:50.445889] Expanded File Explorer
+[2024-12-10T20:18:20.329751] Collapsed File Explorer
+[2024-12-10T20:18:21.717954] Expanded File Explorer
+[2024-12-10T20:24:03.561029] [INFO] Starting broadcast...
+[2024-12-10T20:24:03.657675] Peer list updated: No peers found
+[2024-12-10T20:24:03.657988] Started peer discovery.
+[2024-12-10T20:24:03.658227] Peer discovery initialized.
+[2024-12-10T20:24:04.162800] [INFO] Listening for peers on port 4445...
+[2024-12-10T20:24:05.608832] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-10T20:24:10.617589] [INFO] Discovered new peer: kiyotaka at 192.168.1.145
+[2024-12-10T20:24:12.562932] Expanded File Explorer
+[2024-12-10T20:24:14.621383] Collapsed File Explorer
+[2024-12-10T20:24:15.612481] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-10T20:24:20.612305] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-10T20:33:09.612098] started discovery
+[2024-12-10T20:33:09.632585] [INFO] Starting broadcast...
+[2024-12-10T20:33:09.634329] I'm broadcasting
+[2024-12-10T20:33:09.639153] I'm listening
+[2024-12-10T20:33:09.646577] Peer list updated: No peers found
+[2024-12-10T20:33:09.647336] Started peer discovery.
+[2024-12-10T20:33:09.647640] Peer discovery initialized.
+[2024-12-10T20:33:10.026736] [INFO] Listening for peers on port 4445...
+[2024-12-10T20:33:11.040676] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-10T20:33:16.078198] [INFO] Discovered new peer: kiyotaka at 192.168.1.145
+[2024-12-10T20:33:21.043458] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-10T20:33:21.516129] Expanded File Explorer
+[2024-12-10T20:33:23.333529] Collapsed File Explorer
+[2024-12-10T20:33:24.892907] [INFO] Broadcast stopped.
+[2024-12-10T20:33:24.896478] Stopped broadcasting presence.
+[2024-12-10T20:33:24.897183] Peer list updated: 1 peers discovered
+[2024-12-10T20:33:26.577276] [INFO] Starting broadcast...
+[2024-12-10T20:33:26.577939] I'm broadcasting
+[2024-12-10T20:33:26.583297] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-10T20:33:26.583655] Started broadcasting presence.
+[2024-12-10T20:33:26.583934] Peer list updated: 1 peers discovered
+[2024-12-10T20:33:31.586102] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-10T20:33:36.584599] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-10T20:33:41.586036] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-10T20:33:46.585773] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-10T20:33:51.587865] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-10T20:33:56.586039] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-10T20:34:01.584953] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-10T20:34:06.585926] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-10T20:34:11.584660] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-10T20:34:54.101852] started discovery
+[2024-12-10T20:34:54.121711] [INFO] Starting broadcast...
+[2024-12-10T20:34:54.123368] I'm broadcasting
+[2024-12-10T20:34:54.128298] I'm listening
+[2024-12-10T20:34:54.135022] Peer list updated: No peers found
+[2024-12-10T20:34:54.135458] Started peer discovery.
+[2024-12-10T20:34:54.135692] Peer discovery initialized.
+[2024-12-10T20:34:54.518905] [INFO] Listening for peers on port 4445...
+[2024-12-10T20:34:55.435083] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-10T20:35:00.444143] [INFO] Discovered new peer: kiyotaka at 192.168.1.145
+[2024-12-10T20:35:00.698453] [INFO] Broadcast stopped.
+[2024-12-10T20:35:00.698807] Stopped broadcasting presence.
+[2024-12-10T20:35:00.699379] Peer list updated: 1 peers discovered
+[2024-12-10T20:35:02.665314] [INFO] Starting broadcast...
+[2024-12-10T20:35:02.665791] I'm broadcasting
+[2024-12-10T20:35:02.670696] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-10T20:35:02.671068] Started broadcasting presence.
+[2024-12-10T20:35:02.671385] Peer list updated: 1 peers discovered
+[2024-12-10T20:35:07.674049] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-10T20:35:12.673789] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-10T20:35:13.996713] Interacted with peer: kiyotaka@192.168.1.145
+[2024-12-10T20:35:14.453067] Peer list updated: 1 peers discovered
+[2024-12-10T20:35:17.672429] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-10T20:35:22.674148] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-10T20:35:26.122176] Expanded File Explorer
+[2024-12-10T20:35:27.675945] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-10T20:35:32.673597] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-10T20:35:37.673960] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-10T20:35:42.674025] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-10T20:35:47.674144] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-10T20:35:52.673901] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-10T20:35:57.674210] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-10T20:36:02.674583] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-10T20:36:07.673690] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-10T20:36:12.674131] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-10T20:36:17.673917] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-10T20:36:22.674215] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-10T20:36:27.673346] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145

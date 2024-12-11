@@ -4,7 +4,8 @@ import 'package:p2p_file_sharing/widgets/file_explorer.dart';
 import 'package:p2p_file_sharing/widgets/log_panel.dart';
 import 'package:p2p_file_sharing/widgets/notifications_panel.dart';
 import 'package:p2p_file_sharing/widgets/peer_list.dart';
-
+import 'package:p2p_file_sharing/widgets/theme_button.dart';
+import 'package:p2p_file_sharing/services/peer_discovery_service.dart';
 
 class Home extends StatefulWidget {
   final void Function(bool useLightMode) changeTheme;
@@ -20,30 +21,91 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final Logger logger = Logger();
-  int notificationCount = 0; // Track notification count
-  bool _isFileExplorerCollapsed = true; // Track file explorer state
-  bool _isNotificationPanelVisible = false; // Notification panel visibility
-    final List<String> logs = [];
+  final PeerDiscoveryService _peerDiscoveryService = PeerDiscoveryService(
+    onLog: (message) => print(message),
+  );
 
+  int notificationCount = 0;
+  bool _isFileExplorerCollapsed = true;
+  bool _isLogsPanelCollapsed = false;
+  bool _isNotificationPanelVisible = false;
+  final List<String> peers = [];
+  bool _isAnnouncingPresence = true;
 
-  void _notify() {
-    setState(() {});
+  @override
+  void initState() {
+    super.initState();
+    _startDiscovery();
+    logger.logMessage(message: "Peer discovery initialized.");
+  }
+
+  void _startDiscovery() {
+    _peerDiscoveryService.startDiscovery();
+    _updatePeers();
+    logger.logMessage(message: "Started peer discovery.");
+  }
+
+  void _updatePeers() {
+    setState(() {
+      peers.clear();
+      peers.addAll(_peerDiscoveryService.discoveredPeers);
+    });
+    logger.logMessage(
+      message:
+          "Peer list updated: ${peers.isEmpty ? 'No peers found' : '${peers.length} peers discovered'}",
+    );
+  }
+
+  void _togglePresenceBroadcast() async {
+    if (_isAnnouncingPresence) {
+      _peerDiscoveryService.stopBroadcasting();
+      logger.logMessage(message: "Stopped broadcasting presence.");
+    } else {
+      await _peerDiscoveryService.startBroadcasting();
+      logger.logMessage(message: "Started broadcasting presence.");
+    }
+    setState(() {
+      _isAnnouncingPresence = !_isAnnouncingPresence;
+    });
+    _updatePeers();
   }
 
   void _toggleFileExplorer() {
     setState(() {
       _isFileExplorerCollapsed = !_isFileExplorerCollapsed;
     });
+    logger.logMessage(
+        message: _isFileExplorerCollapsed
+            ? "Collapsed File Explorer"
+            : "Expanded File Explorer");
   }
 
-  // Toggle visibility of notification panel
+  void _togglelogsPanel() {
+    setState(() {
+      _isLogsPanelCollapsed = !_isLogsPanelCollapsed;
+    });
+    logger.logMessage(
+        message: _isLogsPanelCollapsed
+            ? "Collapsed File Explorer"
+            : "Expanded File Explorer");
+  }
+
   void _toggleNotificationPanel() {
     setState(() {
       _isNotificationPanelVisible = !_isNotificationPanelVisible;
-      if (_isNotificationPanelVisible) {
-        notificationCount++; // Increment notification count when shown
-      }
     });
+    logger.logMessage(
+      message: _isNotificationPanelVisible
+          ? "Opened Notification Panel"
+          : "Closed Notification Panel",
+    );
+  }
+
+  @override
+  void dispose() {
+    _peerDiscoveryService.stopBroadcasting();
+    logger.dispose(); // Close logger resources
+    super.dispose();
   }
 
   @override
@@ -53,41 +115,70 @@ class _HomeState extends State<Home> {
       appBar: _buildAppBar(),
       body: Row(
         children: [
-          // File Explorer Side Panel
+          // File Explorer
           AnimatedContainer(
             duration: const Duration(milliseconds: 300),
             width: _isFileExplorerCollapsed ? 0 : 250,
-            child: Material(
-              elevation: 4.0, // Add elevation for shadow effect
-              child: FileExplorer(logger: logger),
+            child: FileExplorer(
+              isCollapsed: _isFileExplorerCollapsed,
             ),
           ),
 
-          // Main Content Area
+          // Main Area
           Expanded(
             child: Column(
               children: [
-                // Peer List
+                // Peer List Section
                 Expanded(
                   flex: 2,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border(bottom: BorderSide(color: Colors.grey.shade300)),
-                    ),
-                    child: PeerList(
-                      logger: logger,
-                      notify: _notify,
-                    ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ElevatedButton(
+                          onPressed: _togglePresenceBroadcast,
+                          child: Text(
+                            _isAnnouncingPresence
+                                ? 'Stop Broadcasting'
+                                : 'Start Broadcasting',
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: peers.isEmpty
+                            ? Center(
+                                child: Text(
+                                  "No peers found. Try refreshing or check your network.",
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.grey.shade600,
+                                  ),
+                                ),
+                              )
+                            : PeerList(
+                                peers: peers,
+                                logger: logger,
+                                notify: _updatePeers,
+                              ),
+                      ),
+                    ],
                   ),
                 ),
-
                 // Log Panel
                 Expanded(
-                  flex: 3,
-                  child: Material(
-                    elevation: 4.0, // Add elevation for shadow effect
+                  flex: 2,
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 300),
+                    height: 3.0,
+                    width: _isLogsPanelCollapsed
+                        ? 0
+                        : MediaQuery.of(context)
+                            .size
+                            .width, // Use available width
                     child: LogPanel(
                       logger: logger,
+                      isCollapsed: _isLogsPanelCollapsed,
                     ),
                   ),
                 ),
@@ -96,16 +187,7 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-
-      // Floating Action Button to toggle file explorer visibility
-      floatingActionButton: FloatingActionButton(
-        onPressed: _toggleFileExplorer,
-        child: Icon(
-          _isFileExplorerCollapsed ? Icons.arrow_forward : Icons.arrow_back,
-        ),
-      ),
-
-      // Bottom Sheet for Notification Panel
+      // Notification Panel
       bottomSheet: _isNotificationPanelVisible
           ? NotificationPanel(
               notificationCount: notificationCount,
@@ -121,32 +203,32 @@ class _HomeState extends State<Home> {
       elevation: 4.0,
       leading: IconButton(
         icon: const Icon(Icons.folder_outlined),
-        onPressed: _toggleFileExplorer, // Toggle file explorer when clicked
+        onPressed: _toggleFileExplorer,
       ),
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          // Notification icon button to toggle notification panel visibility
-          IconButton(
-            icon: const Icon(Icons.notifications),
-            onPressed: _toggleNotificationPanel,
+      actions: [
+        ElevatedButton(
+          onPressed: _togglelogsPanel,
+          style: ElevatedButton.styleFrom(
+            elevation: 0,
+            backgroundColor: Colors.transparent, // Match `AppBar` style
+            foregroundColor: Theme.of(context).colorScheme.onSurface,
           ),
-        ],
-      ),
+          child: Text(_isLogsPanelCollapsed ? 'Show Logs' : 'Hide Logs'),
+        ),
+        IconButton(
+          icon: const Icon(Icons.notifications),
+          onPressed: _toggleNotificationPanel,
+        ),
+        ThemeButton(changeThemeMode: widget.changeTheme),
+      ],
     );
   }
 
-  // Function to clear notifications
   void _clearNotifications() {
     setState(() {
       notificationCount = 0;
-      _isNotificationPanelVisible = false; // Hide panel after clearing notifications
+      _isNotificationPanelVisible = false;
     });
-  }
-
-  void _addLog(String log) {
-    setState(() {
-      logs.add(log);
-    });
+    logger.logMessage(message: "Cleared all notifications.");
   }
 }

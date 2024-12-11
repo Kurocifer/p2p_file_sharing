@@ -1,28 +1,35 @@
-import 'dart:async';
 import 'dart:io';
 
+import 'package:rxdart/rxdart.dart';
+
 class Logger {
-  final StreamController<List<String>> _logController = StreamController<List<String>>.broadcast();
+  final BehaviorSubject<List<String>> _logController =
+      BehaviorSubject<List<String>>.seeded([]);
   final List<String> _logs = [];
+  final List<String> _errors = [];
 
   Stream<List<String>> get logStream => _logController.stream;
 
-  // Log messages to both a file and the UI
   void logMessage({
     required String message,
-    Function(String)? onLog,
+    bool isError = false,
   }) {
-    // Log to the log file
+    final timestamp = DateTime.now().toIso8601String();
+    final logEntry = '[$timestamp] $message';
+
+    // Append to file
     final logFile = File('log.txt');
-    logFile.writeAsStringSync('$message\n', mode: FileMode.append);
+    logFile.writeAsStringSync('$logEntry\n', mode: FileMode.append);
 
-    // Update the UI log stream
-    _logs.add(message);
-    _logController.add(List.from(_logs));  // Send logs to the stream
+    // Add to respective lists
+    _logs.add(logEntry);
+    if (isError) _errors.add(logEntry);
 
-    // Call the optional onLog callback for UI or other actions
-    if (onLog != null) {
-      onLog(message);
-    }
+    // Broadcast logs to the stream
+    _logController.add(List.from(_logs));
+  }
+
+  void dispose() {
+    _logController.close();
   }
 }
