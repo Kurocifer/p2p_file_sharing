@@ -281,7 +281,12 @@ class PeerDiscoveryService {
 */
 class PeerDiscoveryService {
   final int broadcastPort = 4445;
-  final Set<String> discoveredPeers = {}; // Use a Set for unique peers
+  final Set<String> _discoveredPeers = {}; // Private set
+  final StreamController<List<String>> _peersStreamController =
+      StreamController.broadcast();
+
+  Stream<List<String>> get peersStream => _peersStreamController.stream;
+
   final Logger logger = Logger();
   final Function(String)? onLog;
 
@@ -379,6 +384,10 @@ class PeerDiscoveryService {
     }
   }
 
+  void _notifyPeerUpdate() {
+    _peersStreamController.add(_discoveredPeers.toList());
+  }
+
   void listenForPeers() async {
     logger.logMessage(message: "I'm listening");
     try {
@@ -404,24 +413,14 @@ class PeerDiscoveryService {
                 final peerIP = peerInfo['ip'];
                 final peerName = peerInfo['peerName'];
 
-                // Use a unique identifier for peers
                 final peerIdentifier = '$peerName@$peerIP';
 
-                if (discoveredPeers.add(peerIdentifier)) {
-                  // New peer added
+                if (_discoveredPeers.add(peerIdentifier)) {
                   logger.logMessage(
                     message: '[INFO] Discovered new peer: $peerName at $peerIP',
                   );
-                } else {
-                  // Peer already exists
-                  logger.logMessage(
-                    message: '[INFO] Duplicate peer ignored: $peerName at $peerIP',
-                  );
+                  _notifyPeerUpdate(); // Notify listeners
                 }
-              } else {
-                logger.logMessage(
-                  message: '[WARNING] Received invalid peer data: $data',
-                );
               }
             } catch (e) {
               logger.logMessage(
@@ -453,6 +452,10 @@ class PeerDiscoveryService {
       );
     }
     return '0.0.0.0';
+  }
+
+  void dispose() {
+    _peersStreamController.close();
   }
 
   void startDiscovery() {

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:p2p_file_sharing/utils/logger.dart';
 import 'package:p2p_file_sharing/widgets/file_explorer.dart';
@@ -25,6 +27,8 @@ class _HomeState extends State<Home> {
     onLog: (message) => print(message),
   );
 
+  late final StreamSubscription<List<String>> _peerSubscription;
+
   int notificationCount = 0;
   bool _isFileExplorerCollapsed = true;
   bool _isLogsPanelCollapsed = false;
@@ -37,23 +41,19 @@ class _HomeState extends State<Home> {
     super.initState();
     _startDiscovery();
     logger.logMessage(message: "Peer discovery initialized.");
+
+    // Subscribe to the peer updates from the stream
+    _peerSubscription = _peerDiscoveryService.peersStream.listen((newPeers) {
+      setState(() {
+        peers.clear();
+        peers.addAll(newPeers);
+      });
+    });
   }
 
   void _startDiscovery() {
     _peerDiscoveryService.startDiscovery();
-    _updatePeers();
     logger.logMessage(message: "Started peer discovery.");
-  }
-
-  void _updatePeers() {
-    setState(() {
-      peers.clear();
-      peers.addAll(_peerDiscoveryService.discoveredPeers);
-    });
-    logger.logMessage(
-      message:
-          "Peer list updated: ${peers.isEmpty ? 'No peers found' : '${peers.length} peers discovered'}",
-    );
   }
 
   void _togglePresenceBroadcast() async {
@@ -67,7 +67,6 @@ class _HomeState extends State<Home> {
     setState(() {
       _isAnnouncingPresence = !_isAnnouncingPresence;
     });
-    _updatePeers();
   }
 
   void _toggleFileExplorer() {
@@ -80,14 +79,14 @@ class _HomeState extends State<Home> {
             : "Expanded File Explorer");
   }
 
-  void _togglelogsPanel() {
+  void _toggleLogsPanel() {
     setState(() {
       _isLogsPanelCollapsed = !_isLogsPanelCollapsed;
     });
     logger.logMessage(
         message: _isLogsPanelCollapsed
-            ? "Collapsed File Explorer"
-            : "Expanded File Explorer");
+            ? "Collapsed Logs Panel"
+            : "Expanded Logs Panel");
   }
 
   void _toggleNotificationPanel() {
@@ -103,6 +102,7 @@ class _HomeState extends State<Home> {
 
   @override
   void dispose() {
+    _peerSubscription.cancel();
     _peerDiscoveryService.stopBroadcasting();
     logger.dispose(); // Close logger resources
     super.dispose();
@@ -159,7 +159,7 @@ class _HomeState extends State<Home> {
                             : PeerList(
                                 peers: peers,
                                 logger: logger,
-                                notify: _updatePeers,
+                                notify: () {}, // No need for manual notify
                               ),
                       ),
                     ],
@@ -207,7 +207,7 @@ class _HomeState extends State<Home> {
       ),
       actions: [
         ElevatedButton(
-          onPressed: _togglelogsPanel,
+          onPressed: _toggleLogsPanel,
           style: ElevatedButton.styleFrom(
             elevation: 0,
             backgroundColor: Colors.transparent, // Match `AppBar` style

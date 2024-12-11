@@ -987,3 +987,396 @@ broadcast toggle
 [2024-12-10T20:36:17.673917] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
 [2024-12-10T20:36:22.674215] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
 [2024-12-10T20:36:27.673346] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:45:21.092388] started discovery
+[2024-12-11T05:45:21.144252] [INFO] Starting broadcast...
+[2024-12-11T05:45:21.148268] I'm broadcasting
+[2024-12-11T05:45:21.167974] I'm listening
+[2024-12-11T05:45:21.188604] Peer list updated: No peers found
+[2024-12-11T05:45:21.189291] Started peer discovery.
+[2024-12-11T05:45:21.190122] Peer discovery initialized.
+[2024-12-11T05:45:22.514963] [INFO] Listening for peers on port 4445...
+[2024-12-11T05:45:26.948300] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-11T05:45:31.963172] [INFO] Discovered new peer: kiyotaka at 192.168.1.145
+[2024-12-11T05:45:36.954566] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:45:41.954446] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:45:43.685003] Expanded File Explorer
+[2024-12-11T05:45:46.954099] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:45:51.954712] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:45:56.513535] [INFO] Broadcast stopped.
+[2024-12-11T05:45:56.514812] Stopped broadcasting presence.
+[2024-12-11T05:45:56.523156] Peer list updated: 1 peers discovered
+[2024-12-11T05:46:01.750921] [INFO] Starting broadcast...
+[2024-12-11T05:46:01.752609] I'm broadcasting
+[2024-12-11T05:46:01.772597] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-11T05:46:01.773908] Started broadcasting presence.
+[2024-12-11T05:46:01.775146] Peer list updated: 1 peers discovered
+[2024-12-11T05:46:06.776262] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:46:11.777601] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:46:16.778539] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:46:21.776258] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:46:25.647602] Toggled Log Panel
+[2024-12-11T05:46:26.776659] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:46:31.777585] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:46:34.573259] Toggled Log Panel
+[2024-12-11T05:46:36.776782] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:46:41.776295] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:46:45.459177] Collapsed File Explorer
+[2024-12-11T05:46:46.776602] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:46:49.902860] Expanded File Explorer
+[2024-12-11T05:46:51.778966] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:46:56.776498] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:47:01.776607] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:47:06.776586] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:47:11.781175] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:47:16.775683] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:47:21.779292] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:47:26.779106] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:47:31.776399] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:47:36.776283] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:47:41.776365] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:47:46.776977] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:47:51.776636] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:47:56.776636] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:48:01.776224] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:48:06.775824] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:48:11.777599] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:48:14.311284] Opened Notification Panel
+[2024-12-11T05:48:16.779481] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:48:21.776834] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:48:24.183390] Cleared all notifications.
+[2024-12-11T05:48:26.776591] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:48:31.776375] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:48:36.776497] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:48:41.776373] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:48:45.856481] Interacted with peer: kiyotaka@192.168.1.145
+[2024-12-11T05:48:45.858766] Peer list updated: 1 peers discovered
+[2024-12-11T05:48:46.786016] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:48:51.781683] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:48:56.777027] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:49:01.786060] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:49:06.776610] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:49:11.776255] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:49:16.776385] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:49:21.776486] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:49:26.776562] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:49:31.776640] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:49:36.775998] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:49:41.775552] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:49:46.776531] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:49:51.775828] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:49:56.775801] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:50:01.776455] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:50:06.776410] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:50:11.779816] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:50:16.776173] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:50:21.776739] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:50:26.776556] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:50:31.778111] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:50:36.780698] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:50:41.776508] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:50:46.776191] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:50:51.779393] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:50:56.781478] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:51:01.776061] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:51:06.776649] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:51:11.784037] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:51:16.778517] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:51:21.777696] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:51:26.783503] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:51:31.779916] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:51:36.776405] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:51:41.778783] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:51:46.776431] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:51:51.776097] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:51:56.776104] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:52:01.778543] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:52:06.778598] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:52:11.776136] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:52:16.778898] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:52:21.776470] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:52:26.776147] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:52:31.776254] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:52:36.777939] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:52:41.776422] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:52:46.786458] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:52:51.776296] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:52:56.776481] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:53:01.776074] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:53:06.776429] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:53:11.776367] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:53:16.776872] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:53:21.776389] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:53:26.776422] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:53:31.776393] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:53:36.776562] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:53:41.780864] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:53:46.776633] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:53:51.778338] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:53:56.775537] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:54:01.778001] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:54:06.776414] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:54:11.777710] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:54:16.776369] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:54:21.776667] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:54:26.776367] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:54:31.779015] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:54:36.776137] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:54:41.776986] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:54:46.776254] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:54:51.775613] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:54:56.776465] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:55:01.776605] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:55:06.776890] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:55:11.777858] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:55:16.776676] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:55:21.776369] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:55:26.775791] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:55:31.776393] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:55:36.776115] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:55:41.775867] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:55:46.776289] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:55:51.779467] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:55:56.780971] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:56:01.775666] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:56:06.776020] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:56:11.775778] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:56:16.775816] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:56:21.776221] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:56:26.776250] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:56:31.776213] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:56:36.776463] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:56:41.776409] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:56:46.776390] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:56:51.776610] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:56:56.776276] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:57:01.777396] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:57:06.776220] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:57:11.777876] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:57:16.775937] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:57:21.776390] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:57:26.776423] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:57:31.776639] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:57:36.776442] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:57:41.776234] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:57:46.787257] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:57:51.775939] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:57:56.777121] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:58:01.776133] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:58:06.776205] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:58:11.776296] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:58:16.780068] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:58:21.776922] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:58:26.775687] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:58:31.775899] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:58:36.776135] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:58:41.776865] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:58:46.775492] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:58:51.776074] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:58:56.776419] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:59:01.782379] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:59:06.777018] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:59:11.779239] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:59:16.776206] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:59:21.775947] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:59:26.776598] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:59:31.776464] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:59:36.776134] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:59:41.776218] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:59:46.776115] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:59:51.776380] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T05:59:56.776445] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:00:01.776372] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:00:06.776242] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:00:11.776437] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:00:16.776262] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:00:21.776364] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:00:26.776395] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:00:31.776090] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:00:36.776424] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:00:41.776082] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:00:46.776279] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:00:51.776369] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:00:56.775549] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:01:01.775952] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:01:06.776455] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:01:11.776192] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:01:16.776405] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:01:21.776023] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:01:26.778273] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:01:31.776386] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:01:36.776180] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:01:41.776430] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:01:46.776253] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:01:51.777141] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:01:56.778407] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:02:01.776157] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:02:06.776472] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:02:11.776436] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:02:16.776658] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:02:21.776560] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:02:26.776442] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:02:31.776461] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:02:36.776875] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:02:41.777720] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:02:46.776256] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:02:51.776247] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:02:56.776489] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:03:01.775993] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:03:06.776022] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:03:11.776719] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:03:16.776564] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:03:21.776428] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:03:26.776507] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:03:31.776148] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:03:36.776447] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:03:41.776733] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:03:46.775918] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:03:51.775705] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:03:56.776484] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:04:01.776178] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:04:06.777163] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:04:11.777667] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:04:16.775876] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:04:21.776421] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:04:26.776523] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:04:31.776245] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:04:36.778463] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:04:41.776169] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:04:46.776080] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:04:51.776384] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:04:56.776680] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:05:01.776623] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:05:06.775854] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:05:11.775629] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:05:16.775450] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:05:21.775657] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:05:26.776178] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:05:31.778031] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:05:36.776109] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:05:41.776095] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:05:46.776480] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:05:51.776488] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:05:56.776485] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:06:01.775959] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:06:06.776176] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:06:11.776242] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:06:16.776436] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:06:21.776442] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:06:26.777046] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:06:31.776109] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:06:36.776544] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:06:41.776071] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:06:46.776457] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:06:51.776498] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:06:56.776712] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:07:01.776354] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:07:06.775990] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:07:11.775553] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:07:16.776165] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:07:21.776057] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:07:26.776435] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:07:31.776627] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:07:36.779577] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:07:41.776615] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:07:46.776240] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:07:51.776774] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:07:56.776460] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:08:01.775981] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:08:06.776099] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:08:11.776237] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:08:16.776281] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:08:21.776579] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:08:26.776413] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:08:31.776493] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:08:36.776473] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:08:41.776698] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:08:46.776448] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:08:51.776550] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:08:56.776203] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:09:01.775717] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:09:06.775531] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:09:11.775699] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:09:16.775833] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:09:21.776195] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:09:26.776568] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:09:31.775729] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:09:36.779174] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:09:41.776265] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:09:46.775718] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:09:51.784095] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:09:56.775787] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:10:01.776484] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:10:06.776780] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:10:11.776806] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:10:16.776205] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:10:21.775944] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:10:26.776174] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:10:31.776377] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:10:36.781841] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:10:41.781911] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:10:46.776493] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:10:51.776430] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:10:56.776013] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:11:01.775972] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:11:06.776519] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:11:11.776098] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:11:16.776176] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:11:21.776385] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:11:26.776609] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:11:31.776387] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:11:36.776360] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:11:41.776504] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:11:46.776558] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:11:51.776686] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:11:56.776186] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:12:01.777446] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:12:06.776098] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:12:11.778148] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:12:16.776047] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:12:21.775618] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:12:26.776662] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:12:31.775363] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:12:36.776116] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:12:41.775430] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:12:46.776075] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:12:51.777002] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:12:56.776120] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:13:01.775816] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:13:06.775659] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:13:11.776425] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:13:16.776436] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:13:21.776255] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:13:26.776494] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:13:31.776147] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:13:36.776270] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:13:41.776202] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:13:46.776172] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:13:51.776024] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:13:56.788404] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:14:01.780564] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:14:06.782519] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:14:11.776954] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:14:16.775655] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:14:21.776411] [INFO] Duplicate peer ignored: kiyotaka at 192.168.1.145
+[2024-12-11T06:14:29.593163] started discovery
+[2024-12-11T06:14:29.703119] [INFO] Starting broadcast...
+[2024-12-11T06:14:29.710262] I'm broadcasting
+[2024-12-11T06:14:29.724507] I'm listening
+[2024-12-11T06:14:29.761479] Started peer discovery.
+[2024-12-11T06:14:29.762729] Peer discovery initialized.
+[2024-12-11T06:14:31.854428] [INFO] Listening for peers on port 4445...
+[2024-12-11T06:14:34.918400] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-11T06:14:39.947716] [INFO] Discovered new peer: kiyotaka at 192.168.1.145
+[2024-12-11T06:16:14.004846] started discovery
+[2024-12-11T06:16:14.077421] [INFO] Starting broadcast...
+[2024-12-11T06:16:14.081468] I'm broadcasting
+[2024-12-11T06:16:14.094485] I'm listening
+[2024-12-11T06:16:14.110546] Started peer discovery.
+[2024-12-11T06:16:14.111572] Peer discovery initialized.
+[2024-12-11T06:16:15.453530] [INFO] Listening for peers on port 4445...
+[2024-12-11T06:16:18.345788] [INFO] Broadcasting presence: {"peerName":"kiyotaka","ip":"192.168.1.145"}
+[2024-12-11T06:16:23.367360] [INFO] Discovered new peer: kiyotaka at 192.168.1.145
+[2024-12-11T06:16:36.064438] Expanded File Explorer
+[2024-12-11T06:16:48.016190] Collapsed File Explorer
+[2024-12-11T06:16:56.594645] Collapsed Logs Panel
+[2024-12-11T06:17:01.259726] Expanded Logs Panel
