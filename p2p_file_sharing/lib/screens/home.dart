@@ -1,6 +1,6 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
+import 'package:p2p_file_sharing/services/transfer_service.dart';
 import 'package:p2p_file_sharing/utils/logger.dart';
 import 'package:p2p_file_sharing/widgets/file_explorer.dart';
 import 'package:p2p_file_sharing/widgets/log_panel.dart';
@@ -28,6 +28,7 @@ class _HomeState extends State<Home> {
   );
 
   late final StreamSubscription<List<String>> _peerSubscription;
+  late Future<TransferService> _transferService; // Future for TransferService
 
   int notificationCount = 0;
   bool _isFileExplorerCollapsed = true;
@@ -49,6 +50,8 @@ class _HomeState extends State<Home> {
         peers.addAll(newPeers);
       });
     });
+
+    _transferService = TransferService.create(); // Initialize TransferService
   }
 
   void _startDiscovery() {
@@ -146,21 +149,36 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       Expanded(
-                        child: peers.isEmpty
-                            ? Center(
-                                child: Text(
-                                  "No peers found. Try refreshing or check your network.",
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.grey.shade600,
-                                  ),
-                                ),
-                              )
-                            : PeerList(
-                                peers: peers,
-                                logger: logger,
-                                notify: () {}, // No need for manual notify
-                              ),
+                        child: FutureBuilder<TransferService>(
+                          future: _transferService, // Future of TransferService
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState == ConnectionState.waiting) {
+                              return Center(child: CircularProgressIndicator());
+                            } else if (snapshot.hasError) {
+                              return Center(child: Text('Error: ${snapshot.error}'));
+                            } else if (snapshot.hasData) {
+                              // TransferService is available
+                              return peers.isEmpty
+                                  ? Center(
+                                      child: Text(
+                                        "No peers found. Try refreshing or check your network.",
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.grey.shade600,
+                                        ),
+                                      ),
+                                    )
+                                  : PeerList(
+                                      peers: peers,
+                                      logger: logger,
+                                      transferService: snapshot.data!, // Pass TransferService
+                                      notify: () {}, // No need for manual notify
+                                    );
+                            } else {
+                              return Center(child: Text('No data available.'));
+                            }
+                          },
+                        ),
                       ),
                     ],
                   ),

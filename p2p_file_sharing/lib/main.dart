@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:p2p_file_sharing/screens/home.dart';
+import 'package:p2p_file_sharing/widgets/peer_file_explorer_screen.dart';
 
 void main() {
   runApp(const FileTransferapp());
@@ -38,6 +39,7 @@ class _FileTransferappState extends State<FileTransferapp> {
         brightness: Brightness.dark,
       ),
       home: Home(changeTheme: changeThemeMode),
+      //home: PeerFileExplorer(),
     );
   }
 }

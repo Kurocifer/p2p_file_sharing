@@ -1,5 +1,5 @@
 import 'dart:io';
-
+import 'package:path/path.dart' as path;
 import 'package:rxdart/rxdart.dart';
 
 class Logger {
@@ -7,6 +7,27 @@ class Logger {
       BehaviorSubject<List<String>>.seeded([]);
   final List<String> _logs = [];
   final List<String> _errors = [];
+
+  // Dynamically determine log file path based on the platform
+  String get logFilePath {
+    if (Platform.isWindows) {
+      return r'C:\Users\Public\Documents\deezapp\logs\log.txt';
+    } else if (Platform.isLinux || Platform.isMacOS) {
+      final home = Platform.environment['HOME'] ?? '/tmp'; // Fallback to /tmp if HOME is not set
+      return path.join(home, 'deezapp', 'logs', 'log.txt');
+    } else {
+      throw UnsupportedError('Platform not supported for logging');
+    }
+  }
+
+  // Ensure the log directory exists
+  void _ensureLogDirectory() {
+    final logFile = File(logFilePath);
+    final logDir = logFile.parent;
+    if (!logDir.existsSync()) {
+      logDir.createSync(recursive: true);
+    }
+  }
 
   Stream<List<String>> get logStream => _logController.stream;
 
@@ -17,11 +38,14 @@ class Logger {
     final timestamp = DateTime.now().toIso8601String();
     final logEntry = '[$timestamp] $message';
 
-    // Append to file
-    final logFile = File('log.txt');
+    // Ensure log directory exists
+    _ensureLogDirectory();
+
+    // Append log entry to file
+    final logFile = File(logFilePath);
     logFile.writeAsStringSync('$logEntry\n', mode: FileMode.append);
 
-    // Add to respective lists
+    // Add log entry to respective lists
     _logs.add(logEntry);
     if (isError) _errors.add(logEntry);
 

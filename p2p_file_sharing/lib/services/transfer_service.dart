@@ -1,3 +1,154 @@
+import 'dart:convert';
+import 'dart:io';
+import 'dart:typed_data';
+
+import 'package:p2p_file_sharing/utils/logger.dart';
+import 'package:udp/udp.dart';
+
+class TransferService {
+  static const int directoryPort = 7070; // Port for directory requests
+  final Logger logger = Logger();
+
+  TransferService._();
+
+  static Future<TransferService> create() async {
+    final service = TransferService._();
+    String path = await service.getOrCreateDirectoryPath();
+    service.listenForDirectoryRequests(directoryPort, path);
+    return service;
+  }
+
+  Future<void> sendDirectoryStructure(
+    String peerIP,
+    int peerPort,
+    String directoryPath,
+  ) async {
+    final udpSocket = await UDP.bind(Endpoint.any());
+    final directoryStructure = await getDirectoryStructure(directoryPath);
+
+    final response = jsonEncode({
+      'type': 'directory',
+      'structure': directoryStructure,
+    });
+
+    await udpSocket.send(
+      Uint8List.fromList(utf8.encode(response)),
+      Endpoint.unicast(
+        InternetAddress(peerIP),
+        port: Port(peerPort),
+      ),
+    );
+
+    logger.logMessage(
+      message: '[INFO] Sent directory structure to $peerIP:$peerPort.',
+    );
+    udpSocket.close();
+  }
+
+  Future<Map<String, dynamic>> getDirectoryStructure(String path) async {
+    final Directory dir = Directory(path);
+    final directoryMap = <String, dynamic>{};
+
+    if (await dir.exists()) {
+      final entities = await dir.list().toList();
+      for (var entity in entities) {
+        final name = entity.path.split(Platform.pathSeparator).last;
+
+        if (entity is Directory) {
+          directoryMap[name] = await getDirectoryStructure(entity.path);
+        } else if (entity is File) {
+          directoryMap[name] = null; // Mark as file
+        }
+      }
+    } else {
+      logger.logMessage(message: '[ERROR] Directory not found: $path');
+    }
+    return directoryMap;
+  }
+
+  Future<void> requestDirectoryStructure(
+    String peerIP,
+    int peerPort,
+    Function(Map<String, dynamic>) onStructureReceived,
+  ) async {
+    final udpSocket = await UDP.bind(Endpoint.any());
+
+    final request = jsonEncode({
+      'type': 'directoryRequest',
+    });
+
+    await udpSocket.send(
+      Uint8List.fromList(utf8.encode(request)),
+      Endpoint.unicast(InternetAddress(peerIP), port: Port(peerPort)),
+    );
+
+    logger.logMessage(
+      message: '[INFO] Sent directory request to $peerIP:$peerPort.',
+    );
+
+    udpSocket.asStream().listen((datagram) {
+      if (datagram != null) {
+        final response = jsonDecode(utf8.decode(datagram.data));
+
+        if (response['type'] == 'directory') {
+          final structure = response['structure'] as Map<String, dynamic>;
+          onStructureReceived(structure);
+        }
+      }
+    });
+  }
+
+  void listenForDirectoryRequests(int port, String directoryPath) async {
+    final udpSocket = await UDP.bind(Endpoint.any(port: Port(port)));
+
+    logger.logMessage(
+      message: '[INFO] Listening for directory requests on port $port.',
+    );
+
+    udpSocket.asStream().listen((datagram) async {
+      if (datagram != null) {
+        final request = jsonDecode(utf8.decode(datagram.data));
+
+        if (request['type'] == 'directoryRequest') {
+          await sendDirectoryStructure(
+            datagram.address.address,
+            datagram.port,
+            directoryPath,
+          );
+        }
+      }
+    });
+  }
+
+  Future<String> getOrCreateDirectoryPath() async {
+    String directoryPath;
+
+    // Determine the operating system and set the appropriate path
+    if (Platform.isWindows) {
+      directoryPath = 'C:\\Users\\Public\\Documents\\deezapp\\shared\\';
+    } else if (Platform.isLinux || Platform.isMacOS) {
+      directoryPath = '${Platform.environment['HOME']}/deezapp/shared/';
+    } else {
+      throw UnsupportedError('Unsupported operating system');
+    }
+
+    // Create the directory if it doesn't exist
+    final Directory directory = Directory(directoryPath);
+    if (!await directory.exists()) {
+      await directory.create(recursive: true);
+      print('Created directory: $directoryPath');
+    } else {
+      print('Directory already exists: $directoryPath');
+    }
+
+    return directoryPath;
+  }
+}
+
+
+
+
+/*
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
@@ -10,10 +161,12 @@ class TransferService {
   static const int chunkSize = 8192; // 8kb chunks
   static const int metadataPort = 8080; // Port for sending metadata
   static const int dataPort = 8889; // Port for sending actual file data
-  final Function(String)? onLog;
   final Logger logger = Logger();
+   late List<String> currentPath;
+  late Map<String, dynamic> currentDirectory;
+  late String currentDirectoryPath;
+  String errorMessage = '';
 
-  TransferService(this.onLog);
 
   /// Upload a file to a peer
   Future<void> uploadFile(String peerIP, int peerPort, String fileName) async {
@@ -239,3 +392,4 @@ class TransferService {
     });
   }
 }
+*/
