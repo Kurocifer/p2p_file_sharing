@@ -123,85 +123,105 @@ class TransferService {
   }
 
   /// Download a file from a peer and save it in the appropriate directory
-Future<void> downloadFile() async {
-  // Determine save directory based on platform
+Future<String> downloadFile() async {
+  // Determine save directory based on the platform
   String saveDirectory;
   if (Platform.isWindows) {
-    saveDirectory = 'C:\\Users\\Public\\Documents\\deezapp\\shared\\';
+    saveDirectory = r'C:\Users\Public\Documents\deezapp\downloads';
   } else if (Platform.isLinux || Platform.isMacOS) {
-    saveDirectory = '${Platform.environment['HOME']}/deezapp/downloads/';
+    saveDirectory = '${Platform.environment['HOME']}/deezapp/downloads';
   } else {
-    throw UnsupportedError('Unsupported operating system');
+    logger.logMessage(message: '[ERROR] Unsupported operating system');
+    return jsonEncode({'status': 'error', 'message': 'Unsupported operating system'});
   }
 
-  // Ensure the save directory exists
-  final Directory directory = Directory(saveDirectory);
-  if (!await directory.exists()) {
-    await directory.create(recursive: true);
-  }
-
-  // Metadata and data sockets
-  final metadataSocket =
-      await UDP.bind(Endpoint.any(port: const Port(metadataPort)));
-  final dataSocket = await UDP.bind(Endpoint.any(port: const Port(dataPort)));
-
-  final fileChunks = <int, List<int>>{};
-  String? fileName;
-  int? fileSize;
-
-  logger.logMessage(
-    message: '[INFO] Listening for incoming file on metadata and data ports...',
-  );
-
-  // Listen for metadata
-  metadataSocket.asStream().listen((datagram) {
-    if (datagram != null) {
-      final metadata = jsonDecode(utf8.decode(datagram.data));
-      fileName = metadata['fileName'];
-      fileSize = metadata['fileSize'];
-
-      logger.logMessage(
-        message: '[INFO] Receiving file: $fileName ($fileSize bytes)',
-      );
+  try {
+    // Ensure the save directory exists
+    final Directory directory = Directory(saveDirectory);
+    if (!await directory.exists()) {
+      await directory.create(recursive: true);
     }
-  });
 
-  // Listen for file data
-  dataSocket.asStream().listen((datagram) async {
-    if (datagram != null) {
-      final packet = jsonDecode(utf8.decode(datagram.data));
+    // Metadata and data sockets
+    final metadataSocket = await UDP.bind(Endpoint.any(port: const Port(metadataPort)));
+    final dataSocket = await UDP.bind(Endpoint.any(port: const Port(dataPort)));
 
-      if (packet.containsKey('seq') && packet.containsKey('data')) {
-        final sequenceNumber = packet['seq'];
-        final chunkData = base64Decode(packet['data']);
+    final fileChunks = <int, List<int>>{};
+    String? fileName;
+    int? fileSize;
 
-        fileChunks[sequenceNumber] = chunkData;
-        logger.logMessage(
-          message: '[INFO] Received chunk $sequenceNumber of size ${chunkData.length} bytes.',
-        );
-      } else if (packet.containsKey('done') && packet['done'] == true) {
-        logger.logMessage(message: '[INFO] File transfer completed. Assembling file...');
+    logger.logMessage(
+      message: '[INFO] Listening for incoming file on metadata and data ports...',
+    );
 
-        if (fileName != null) {
-          final file = File('$saveDirectory/$fileName');
-          final sortedChunks = fileChunks.keys.toList()..sort();
+    // Listen for metadata
+    metadataSocket.asStream().listen((datagram) {
+      if (datagram != null) {
+        try {
+          final metadata = jsonDecode(utf8.decode(datagram.data));
+          fileName = metadata['fileName'];
+          fileSize = metadata['fileSize'];
 
-          final output = file.openWrite();
-          for (final seq in sortedChunks) {
-            output.add(fileChunks[seq]!);
-          }
-          await output.close();
-
-          logger.logMessage(message: '[INFO] File saved to ${file.path}');
-        } else {
-          logger.logMessage(message: '[ERROR] Metadata missing. Unable to save file.');
+          logger.logMessage(
+            message: '[INFO] Receiving file: $fileName ($fileSize bytes)',
+          );
+        } catch (e) {
+          logger.logMessage(message: '[ERROR] Failed to parse metadata: $e');
         }
-        metadataSocket.close();
-        dataSocket.close();
+      }
+    });
+
+    // Listen for file data
+    await for (final datagram in dataSocket.asStream()) {
+      if (datagram != null) {
+        try {
+          final packet = jsonDecode(utf8.decode(datagram.data));
+
+          if (packet.containsKey('seq') && packet.containsKey('data')) {
+            final sequenceNumber = packet['seq'];
+            final chunkData = base64Decode(packet['data']);
+
+            fileChunks[sequenceNumber] = chunkData;
+            logger.logMessage(
+              message: '[INFO] Received chunk $sequenceNumber of size ${chunkData.length} bytes.',
+            );
+          } else if (packet.containsKey('done') && packet['done'] == true) {
+            logger.logMessage(message: '[INFO] File transfer completed. Assembling file...');
+
+            if (fileName != null) {
+              final file = File('$saveDirectory/$fileName');
+              final sortedChunks = fileChunks.keys.toList()..sort();
+
+              final output = file.openWrite();
+              for (final seq in sortedChunks) {
+                output.add(fileChunks[seq]!);
+              }
+              await output.close();
+
+              logger.logMessage(message: '[INFO] File saved to ${file.path}');
+              metadataSocket.close();
+              dataSocket.close();
+              return jsonEncode({'status': 'success', 'message': 'File downloaded', 'filePath': file.path});
+            } else {
+              logger.logMessage(message: '[ERROR] Metadata missing. Unable to save file.');
+              metadataSocket.close();
+              dataSocket.close();
+              return jsonEncode({'status': 'error', 'message': 'Metadata missing, file not saved'});
+            }
+          }
+        } catch (e) {
+          logger.logMessage(message: '[ERROR] Error while processing data packet: $e');
+          return jsonEncode({'status': 'error', 'message': 'Failed to download file', 'details': e.toString()});
+        }
       }
     }
-  });
+  } catch (e) {
+    logger.logMessage(message: '[ERROR] Error occurred during file download: $e');
+    return jsonEncode({'status': 'error', 'message': 'Failed to download file', 'details': e.toString()});
+  }
+  return jsonEncode({'status': 'error', 'message': 'Unexpected error occurred'});
 }
+
 
 
   /// Advertise available files
@@ -264,7 +284,7 @@ Future<void> downloadFile() async {
           final fileName = request['fileName'];
 
           // Fetch the list of available files dynamically
-          final availableFiles = _getAvailableFiles(sharedFolderPath);
+          final availableFiles = getAvailableFiles(sharedFolderPath);
           availableFiles.add(fileName);
 
           if (availableFiles.contains(fileName)) {
@@ -286,7 +306,7 @@ Future<void> downloadFile() async {
 }
 
 /// Helper function to get the list of files from a directory
-List<String> _getAvailableFiles(String directoryPath) {
+List<String> getAvailableFiles(String directoryPath) {
   try {
     final directory = Directory(directoryPath);
 

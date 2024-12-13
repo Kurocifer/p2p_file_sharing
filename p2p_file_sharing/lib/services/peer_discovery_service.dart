@@ -318,16 +318,33 @@ class PeerDiscoveryService {
     return "UnknownDevice";
   }
 
+  String getOperatingSystem() {
+    if (Platform.isLinux) {
+      return 'Linux';
+    }
+
+    if (Platform.isWindows) {
+      return 'Windows';
+    }
+
+    if (Platform.isMacOS) {
+      return 'MacOs';
+    }
+    return 'Unknown OS';
+  }
+
   Future<void> _startBroadcasting() async {
     logger.logMessage(message: "I'm broadcasting");
     try {
-      final peerName = await _getDeviceName();
+      final deviceName = await _getDeviceName();
+      final OSName = getOperatingSystem();
       final localIP = await _getLocalIP();
       if (localIP == '0.0.0.0') {
         logger.logMessage(
           message: '[WARNING] No valid local IP found. Broadcasting may fail.',
         );
       }
+      final peerName = '$OSName:$deviceName';
 
       final message = jsonEncode({'peerName': peerName, 'ip': localIP});
       _broadcastSocket = await RawDatagramSocket.bind(InternetAddress.anyIPv4, 0);
