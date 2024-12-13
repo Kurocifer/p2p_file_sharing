@@ -62,6 +62,7 @@ class PeerList extends StatelessWidget {
                           builder: (_) => PeerFileExplorer(
                             peer: peer,
                             directoryStructure: structure,
+                            paths: '',
                           ),
                         ),
                       );
