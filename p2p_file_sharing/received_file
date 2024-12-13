@@ -1,0 +1,183 @@
+#!/bin/bash
+
+# Check if the script is run as root
+if [ "$EUID" -ne 0 ]; then
+    echo "Please run this script as root or using sudo."
+    exit 1
+fi
+
+# ========== Utility Functions ==========
+# Log actions to a file
+LOG_FILE="/var/log/system_tasks.log"
+log_action() {
+    echo "$(date +"%Y-%m-%d %H:%M:%S") - $1" >> "$LOG_FILE"
+}
+
+# Display a progress message
+progress_message() {
+    echo -ne "$1...\r"
+    sleep 1
+    echo -ne "$1...Done!\n"
+}
+
+add_user_to_groups() {
+    local username="$1"
+
+    read -p "Do you want to add this user to groups? (Y/N): " choice
+    if [[ "$choice" == "y" || "$choice" == "Y" ]]; then
+        while true; do
+            read -p "Group name: " group_name
+
+            if group_exist "$group_name"; then
+                add_user_to_group "$group_name" "$username"
+            else
+                read -p "'$group_name' does not exist. Create it? (Y/N): " create_group_prompt
+                if [[ "$create_group_prompt" == "y" || "$create_group_prompt" == "Y" ]]; then
+                    create_group "$group_name"
+                    add_user_to_group "$group_name" "$username"
+                fi
+            fi
+
+            read -p "Add user to another group? (Y/N): " choice
+            if [[ "$choice" != "Y" && "$choice" != "y" ]]; then
+                break
+            fi
+        done
+        printf "Note: User will need to log out and back in for group changes to take effect.\n\n"
+    fi
+}
+
+
+# ========== Initialization ==========
+# Initialize required groups
+initialize_groups() {
+    echo "Initializing groups..."
+    for GROUP in user admin; do
+        if ! grep -q "^$GROUP:" /etc/group; then
+            groupadd "$GROUP"
+            echo "Group '$GROUP' created."
+            log_action "Created group: $GROUP"
+        else
+            echo "Group '$GROUP' already exists."
+        fi
+    done
+    echo "Group initialization complete."
+}
+
+# ========== User Management ==========
+# Create a new user and configure settings
+create_user() {
+    read -rp "Enter username: " USERNAME
+    read -rp "Assign group (user/admin): " GROUP
+    read -rp "Enter SSH public key (optional): " SSH_KEY
+    read -sp "Enter password for $USERNAME: " PASSWORD
+    echo  # Move to the next line after password input
+
+    # Validate inputs
+    if [[ "$GROUP" != "user" && "$GROUP" != "admin" ]]; then
+        echo "Invalid group. Please choose 'user' or 'admin'."
+        return
+    fi
+    if id "$USERNAME" &>/dev/null; then
+        echo "User $USERNAME already exists."
+        return
+    fi
+
+    # Create user
+    progress_message "Creating user $USERNAME"
+    useradd -m -s /bin/bash "$USERNAME"
+    echo "$USERNAME:$PASSWORD" | chpasswd
+    chmod 750 /home/"$USERNAME"
+
+    # Assign group
+    usermod -aG "$GROUP" "$USERNAME"
+	add_user_to_groups "$USERNAME"
+    log_action "Created user: $USERNAME in group: $GROUP"
+
+    # Set up SSH key (if provided)
+    if [[ -n "$SSH_KEY" ]]; then
+        SSH_DIR="/home/$USERNAME/.ssh"
+        mkdir -p "$SSH_DIR"
+        echo "$SSH_KEY" > "$SSH_DIR/authorized_keys"
+        chmod 700 "$SSH_DIR"
+        chmod 600 "$SSH_DIR/authorized_keys"
+        chown -R "$USERNAME:$USERNAME" "$SSH_DIR"
+        log_action "Set up SSH key for user: $USERNAME"
+    fi
+
+    # Display user information
+    echo "--------------------------------------"
+    echo "User Information:"
+    echo "Username: $USERNAME"
+    echo "Home Directory: /home/$USERNAME"
+    echo "Shell: /bin/bash"
+    echo "Groups: $(id -nG "$USERNAME")"
+    [[ -n "$SSH_KEY" ]] && echo "SSH Key: Configured"
+    echo "--------------------------------------"
+
+    echo "User $USERNAME successfully created!"
+}
+
+
+
+# ========== System Health Monitoring ==========
+monitor_system_health() {
+    echo "======================================"
+    echo "         System Health Report         "
+    echo "======================================"
+    echo "CPU Usage:"
+    top -b -n1 | grep "Cpu(s)" | awk '{print $2 + $4 "%"}'
+    echo "--------------------------------------"
+    echo "Memory Usage:"
+    free -h
+    echo "--------------------------------------"
+    echo "Disk Usage:"
+    df -h | grep '^/dev'
+    echo "======================================"
+    log_action "Generated system health report."
+}
+
+# ========== Maintenance ==========
+perform_maintenance() {
+    echo "Running system maintenance tasks..."
+    apt-get update && apt-get upgrade -y
+    apt-get autoremove -y
+    apt-get autoclean
+    fsck -Af -M
+    log_action "System maintenance completed."
+    echo "Maintenance tasks completed successfully!"
+}
+
+# ========== Main Menu ==========
+main_menu() {
+    echo "======================================"
+    echo "   Automated System Tasks Script      "
+    echo "======================================"
+    echo "1. User Onboarding"
+    echo "2. Monitor System Health"
+    echo "3. Perform Maintenance Tasks"
+    echo "4. Exit"
+    echo "======================================"
+    read -rp "Choose an option: " CHOICE
+}
+
+# Initialize groups at the start
+initialize_groups
+
+# Main loop for menu
+while true; do
+    main_menu
+    case $CHOICE in
+        1) create_user ;;
+        2) monitor_system_health ;;
+        3) perform_maintenance ;;
+        4) 
+            echo "Exiting..."
+            log_action "Script exited."
+            exit 0
+            ;;
+        *) 
+            echo "Invalid option. Please try again."
+            ;;
+    esac
+done

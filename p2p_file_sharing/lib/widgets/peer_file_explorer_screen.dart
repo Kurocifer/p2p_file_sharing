@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:typed_data';
 
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:p2p_file_sharing/services/transfer_service.dart';
 import 'package:provider/provider.dart';
@@ -26,6 +28,7 @@ class _PeerFileExplorerState extends State<PeerFileExplorer> {
   late TransferService transferService;
   late String currentFilePath;
   late String osType;
+  String? sendFilePath;
 
   @override
   void initState() {
@@ -104,6 +107,47 @@ class _PeerFileExplorerState extends State<PeerFileExplorer> {
   }
 }
 
+  Future<void> _handleSend(String peerIp, int port) async {
+    // Pick a file using File Picker
+    FilePickerResult? result = await FilePicker.platform.pickFiles();
+
+    if (result != null) {
+      sendFilePath = result.files.single.path;
+      if (sendFilePath != null) {
+        await transferService.uploadFile(peerIp, port, sendFilePath!);
+        /*
+        try {
+          // Open the selected file
+          final file = File(sendFilePath!);
+
+          // Establish a connection to the peer
+          Socket socket = await Socket.connect(peerIp, port);
+          print("Connected to $peerIp:$port");
+
+          // Send the file
+          socket.add(await file.readAsBytes());
+          await socket.flush();
+          socket.close();
+          print("File sent successfully!");
+
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("File sent successfully!")),
+          );
+        } catch (e) {
+          print("Error: $e");
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text("Failed to send file: $e")),
+          );
+        }
+        */
+      }
+    } else {
+      print("No file selected!");
+    }
+  }
+
+
+
 void handleDownloadandCheck() async {
   final String downloadFilePath = Platform.isWindows
       ? r'C:\Users\Public\Documents\deezapp\downloads'
@@ -120,6 +164,7 @@ void handleDownloadandCheck() async {
 
   }
 }
+
 
 void _showMessage(String message) {
   ScaffoldMessenger.of(context).showSnackBar(
@@ -154,7 +199,7 @@ void _showMessage(String message) {
           ),
           const SizedBox(width: 16),
           ElevatedButton(
-            onPressed: () => print('send'),
+            onPressed: () => _handleSend(extractIpAddress(widget.peer), 9091),
             style: ElevatedButton.styleFrom(
               elevation: 20.0,
               padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
