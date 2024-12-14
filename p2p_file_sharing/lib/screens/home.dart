@@ -36,6 +36,7 @@ class _HomeState extends State<Home> {
   bool _isNotificationPanelVisible = false;
   final List<String> peers = [];
   bool _isAnnouncingPresence = true;
+  String directoryExplored = '';
 
   @override
   void initState() {
@@ -72,7 +73,7 @@ class _HomeState extends State<Home> {
     });
   }
 
-  void _toggleFileExplorer() {
+  void _toggleFileExplorer(String directoryToExplore) {
     setState(() {
       _isFileExplorerCollapsed = !_isFileExplorerCollapsed;
     });
@@ -124,6 +125,7 @@ class _HomeState extends State<Home> {
             width: _isFileExplorerCollapsed ? 0 : 250,
             child: FileExplorer(
               isCollapsed: _isFileExplorerCollapsed,
+              rootDirectory: directoryExplored,
             ),
           ),
 
@@ -216,31 +218,34 @@ class _HomeState extends State<Home> {
   }
 
   AppBar _buildAppBar() {
-    return AppBar(
-      backgroundColor: Theme.of(context).colorScheme.surface,
-      elevation: 4.0,
-      leading: IconButton(
-        icon: const Icon(Icons.folder_outlined),
-        onPressed: _toggleFileExplorer,
+  return AppBar(
+    backgroundColor: Theme.of(context).colorScheme.surface,
+    elevation: 4.0,
+    leading: IconButton(
+          iconSize: 30.0,
+          icon: const Icon(Icons.folder_outlined),
+          onPressed: () =>_toggleFileExplorer('shared'),
+          tooltip: 'View your shared files',
+        ),
+    actions: [
+      ElevatedButton(
+        onPressed: _toggleLogsPanel,
+        style: ElevatedButton.styleFrom(
+          elevation: 0,
+          backgroundColor: Colors.transparent, // Match `AppBar` style
+          foregroundColor: Theme.of(context).colorScheme.onSurface,
+        ),
+        child: Text(_isLogsPanelCollapsed ? 'Show Logs' : 'Hide Logs'),
       ),
-      actions: [
-        ElevatedButton(
-          onPressed: _toggleLogsPanel,
-          style: ElevatedButton.styleFrom(
-            elevation: 0,
-            backgroundColor: Colors.transparent, // Match `AppBar` style
-            foregroundColor: Theme.of(context).colorScheme.onSurface,
-          ),
-          child: Text(_isLogsPanelCollapsed ? 'Show Logs' : 'Hide Logs'),
-        ),
-        IconButton(
-          icon: const Icon(Icons.notifications),
-          onPressed: _toggleNotificationPanel,
-        ),
-        ThemeButton(changeThemeMode: widget.changeTheme),
-      ],
-    );
-  }
+      IconButton(
+        icon: const Icon(Icons.notifications),
+        onPressed: _toggleNotificationPanel,
+      ),
+      ThemeButton(changeThemeMode: widget.changeTheme),
+    ],
+  );
+}
+
 
   void _clearNotifications() {
     setState(() {

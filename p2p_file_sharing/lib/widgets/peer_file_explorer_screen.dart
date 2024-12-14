@@ -1,11 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
-import 'dart:typed_data';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:p2p_file_sharing/services/transfer_service.dart';
-import 'package:provider/provider.dart';
 
 class PeerFileExplorer extends StatefulWidget {
   final Map<String, dynamic> directoryStructure;

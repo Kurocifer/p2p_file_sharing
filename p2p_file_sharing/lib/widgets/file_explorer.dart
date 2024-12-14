@@ -65,10 +65,12 @@ class FileExplorer extends StatelessWidget {
 
 class FileExplorer extends StatefulWidget {
   final bool isCollapsed;
+  late String rootDirectory;
 
-  const FileExplorer({
+  FileExplorer({
     super.key,
     required this.isCollapsed,
+    required this.rootDirectory,
   });
 
   @override
@@ -83,16 +85,16 @@ class _FileExplorerState extends State<FileExplorer> {
   @override
   void initState() {
     super.initState();
-    _rootDirectory = _getInitialDirectory();
+    _rootDirectory = _getInitialDirectory(widget.rootDirectory);
     _loadDirectory(_rootDirectory);
   }
 
-  String _getInitialDirectory() {
+  String _getInitialDirectory(String rootDirectory) {
     if (Platform.isWindows) {
-      return r'C:\Users\Public\Documents\deezapp';
+      return path.join(r'C:\Users\Public\Documents\deezapp', rootDirectory);
     } else {
       final homeDirectory = Platform.environment['HOME'] ?? '/';
-      return path.join(homeDirectory, 'deezapp', 'shared');
+      return path.join(homeDirectory, 'deezapp', rootDirectory);
     }
   }
 
@@ -230,9 +232,7 @@ class _FileExplorerState extends State<FileExplorer> {
                                   ),
                                 Icon(
                                   isDirectory
-                                      ? (isExpanded
-                                          ? Icons.folder_open
-                                          : Icons.folder)
+                                      ? Icons.folder
                                       : Icons.insert_drive_file,
                                   color: isDirectory
                                       ? Colors.amber
