@@ -1,76 +1,18 @@
+import 'dart:convert';
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_treeview/flutter_treeview.dart';
+import 'package:p2p_file_sharing/screens/home.dart';
 import 'package:path/path.dart' as path;
 import 'package:file_picker/file_picker.dart';
-
-/*
-class FileExplorer extends StatelessWidget {
-  final Logger logger;
-  final bool isCollapsed;
-
-  const FileExplorer({
-    super.key,
-    required this.logger,
-    required this.isCollapsed,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    // If collapsed, show an empty container or placeholder
-    if (isCollapsed) {
-      return Container(width: 0); // Collapsed state, hidden.
-    }
-
-    // Expanded state
-    return Container(
-      color: Theme.of(context).colorScheme.surfaceContainerHighest,
-      child: Column(
-        children: [
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Text(
-              "File Explorer",
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: 10, // Replace with actual file count
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text("File $index"),
-                  onTap: () {
-                    // Use the logger to log the interaction
-                    logger.logMessage(
-                      message: "Selected File $index",
-                      onLog: (message) {
-                        // Optional callback function to handle other UI actions
-                        print(message); // You can perform other actions here
-                      },
-                    );
-                  },
-                );
-              },
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-*/
 
 
 class FileExplorer extends StatefulWidget {
   final bool isCollapsed;
-  late String rootDirectory;
 
-  FileExplorer({
+  const FileExplorer({
     super.key,
     required this.isCollapsed,
-    required this.rootDirectory,
   });
 
   @override
@@ -85,18 +27,19 @@ class _FileExplorerState extends State<FileExplorer> {
   @override
   void initState() {
     super.initState();
-    _rootDirectory = _getInitialDirectory(widget.rootDirectory);
+    _rootDirectory = _getInitialDirectory();
     _loadDirectory(_rootDirectory);
   }
 
-  String _getInitialDirectory(String rootDirectory) {
+  String _getInitialDirectory() {
     if (Platform.isWindows) {
-      return path.join(r'C:\Users\Public\Documents\deezapp', rootDirectory);
+      return path.join(r'C:\Users\Public\Documents\deezapp');
     } else {
       final homeDirectory = Platform.environment['HOME'] ?? '/';
-      return path.join(homeDirectory, 'deezapp', rootDirectory);
+      return path.join(homeDirectory, 'deezapp');
     }
   }
+
 
   void _loadDirectory(String directoryPath) {
     final rootNode = _createNodeFromDirectory(directoryPath);
@@ -106,37 +49,57 @@ class _FileExplorerState extends State<FileExplorer> {
   }
 
   Node _createNodeFromDirectory(String directoryPath) {
-    final directory = Directory(directoryPath);
+  final directory = Directory(directoryPath);
 
-    if (!directory.existsSync()) {
-      directory.createSync(recursive: true);
-    }
-
-    final children = directory
-        .listSync()
-        .map((entity) {
-          if (entity is Directory) {
-            return _createNodeFromDirectory(entity.path);
-          } else if (entity is File) {
-            return Node(
-              key: entity.path,
-              label: path.basename(entity.path),
-              data: {'type': 'file'},
-            );
-          }
-          return null;
-        })
-        .whereType<Node>()
-        .toList();
-
-    return Node(
-      key: directoryPath,
-      label: path.basename(directoryPath),
-      children: children,
-      data: {'type': 'directory'},
-      expanded: false,
-    );
+  if (!directory.existsSync()) {
+    directory.createSync(recursive: true);
   }
+
+  final children = directory
+      .listSync()
+      .map((entity) {
+        // Skip hidden directories or files (those starting with a dot)
+        if (path.basename(entity.path).startsWith('.')) {
+          return null; // Don't include hidden files/folders
+        }
+
+        if (entity is Directory) {
+          return _createNodeFromDirectory(entity.path);
+        } else if (entity is File) {
+          return Node(
+            key: entity.path,
+            label: path.basename(entity.path),
+            data: {'type': 'file'},
+          );
+        }
+        return null;
+      })
+      .whereType<Node>()
+      .toList();
+
+  return Node(
+    key: directoryPath,
+    label: path.basename(directoryPath),
+    children: children,
+    data: {'type': 'directory'},
+    expanded: false,
+  );
+}
+
+
+  void _savePrivatePaths() {
+    print('save private files path...');
+    try {
+      final file = File(privatePathsFile);
+      // Ensure the directory exists
+      file.parent.createSync(recursive: true);
+      file.writeAsStringSync(json.encode(privatePaths.toList()));
+      print("saved at $privatePathsFile");
+    } catch (e) {
+      print('Error saving private paths: $e');
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -195,6 +158,7 @@ class _FileExplorerState extends State<FileExplorer> {
                       nodeBuilder: (context, node) {
                         final isDirectory = node.data?['type'] == 'directory';
                         final isExpanded = node.expanded;
+                        final isPrivate = privatePaths.contains(node.key);
 
                         return GestureDetector(
                           onSecondaryTapDown: (details) => _showContextMenu(
@@ -231,12 +195,12 @@ class _FileExplorerState extends State<FileExplorer> {
                                     color: Colors.grey,
                                   ),
                                 Icon(
-                                  isDirectory
-                                      ? Icons.folder
-                                      : Icons.insert_drive_file,
-                                  color: isDirectory
-                                      ? Colors.amber
-                                      : Colors.blueGrey,
+                                  isPrivate
+                                      ? Icons.lock
+                                      : (isDirectory
+                                          ? Icons.folder
+                                          : Icons.insert_drive_file),
+                                  color: isDirectory ? Colors.amber : Colors.blueGrey,
                                   size: 20,
                                 ),
                                 const SizedBox(width: 8),
@@ -279,6 +243,10 @@ class _FileExplorerState extends State<FileExplorer> {
           value: 'delete',
           child: Text('Delete'),
         ),
+        const PopupMenuItem(
+          value: 'togglePrivacy',
+          child: Text('Toggle Privacy'),
+        ),
       ],
     );
 
@@ -288,8 +256,60 @@ class _FileExplorerState extends State<FileExplorer> {
       _renameNode(context, node);
     } else if (result == 'delete') {
       _deleteNode(node);
+    } else if (result == 'togglePrivacy') {
+      _togglePrivacy(node);
     }
   }
+
+  void _togglePrivacy(Node node) {
+    final path = node.key;
+
+    void _markContentsAsPrivate(String directoryPath, bool isPrivate) {
+      final directory = Directory(directoryPath);
+      if (directory.existsSync()) {
+        for (var entity in directory.listSync(recursive: true)) {
+          if (entity is File || entity is Directory) {
+            if (isPrivate) {
+              privatePaths.add(entity.path);
+            } else {
+              privatePaths.remove(entity.path);
+            }
+          }
+        }
+      }
+    }
+
+    setState(() {
+      if (path.contains('/shared') || path.contains('\\shared')) {
+        if (privatePaths.contains(path)) {
+          privatePaths.remove(path);
+          if (node.data?['type'] == 'directory') {
+            _markContentsAsPrivate(path, false);
+          }
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('${node.label} is now public.')),
+          );
+        } else {
+          privatePaths.add(path);
+          if (node.data?['type'] == 'directory') {
+            _markContentsAsPrivate(path, true);
+          }
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('${node.label} is now private.')),
+          );
+        }
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text(
+                'Privacy toggling is only allowed for items inside the shared folder.'),
+          ),
+        );
+      }
+    });
+    _savePrivatePaths();
+  }
+
 
   void _createFolder(BuildContext context, Node node) {
     final TextEditingController controller = TextEditingController();
@@ -359,26 +379,39 @@ class _FileExplorerState extends State<FileExplorer> {
   }
 
   void _renameNode(BuildContext context, Node node) {
-    final TextEditingController controller =
-        TextEditingController(text: node.label);
+  final TextEditingController controller =
+      TextEditingController(text: node.label);
 
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: const Text("Rename"),
-          content: TextField(
-            controller: controller,
-            decoration: const InputDecoration(hintText: "Enter new name"),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                final newName = controller.text;
-                if (newName.isNotEmpty) {
-                  final parentPath = path.dirname(node.key);
-                  final newPath = path.join(parentPath, newName);
-                  File(node.key).renameSync(newPath);
+  showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: const Text("Rename"),
+        content: TextField(
+          controller: controller,
+          decoration: const InputDecoration(hintText: "Enter new name"),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              final newName = controller.text.trim();
+              if (newName.isNotEmpty) {
+                final parentPath = path.dirname(node.key);
+                final newPath = path.join(parentPath, newName);
+
+                try {
+                  if (node.data?['type'] == 'file') {
+                    File(node.key).renameSync(newPath);
+                  } else if (node.data?['type'] == 'directory') {
+                    Directory(node.key).renameSync(newPath);
+                  }
+
+                  // Update the privacy paths
+                  if (privatePaths.contains(node.key)) {
+                    privatePaths.remove(node.key);
+                    privatePaths.add(newPath);
+                    _savePrivatePaths();
+                  }
 
                   setState(() {
                     final updatedNode =
@@ -387,20 +420,25 @@ class _FileExplorerState extends State<FileExplorer> {
                       children: _controller.updateNode(node.key, updatedNode),
                     );
                   });
+                } catch (e) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('Error renaming: $e')),
+                  );
                 }
-                Navigator.pop(context);
-              },
-              child: const Text("Rename"),
-            ),
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text("Cancel"),
-            ),
-          ],
-        );
-      },
-    );
-  }
+              }
+              Navigator.pop(context);
+            },
+            child: const Text("Rename"),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text("Cancel"),
+          ),
+        ],
+      );
+    },
+  );
+}
 
   void _deleteNode(Node node) {
     showDialog(
@@ -413,6 +451,12 @@ class _FileExplorerState extends State<FileExplorer> {
             TextButton(
               onPressed: () {
                 File(node.key).deleteSync();
+
+                // Update the privacy paths
+                  if (privatePaths.contains(node.key)) {
+                    privatePaths.remove(node.key);
+                    _savePrivatePaths();
+                  }
 
                 setState(() {
                   _controller = _controller.copyWith(
@@ -435,61 +479,67 @@ class _FileExplorerState extends State<FileExplorer> {
   }
 
   void _selectFileToUpload() async {
-    final result = await FilePicker.platform.pickFiles();
+  final result = await FilePicker.platform.pickFiles();
 
-    if (result != null && result.files.isNotEmpty) {
-      final selectedFile = result.files.single;
+  if (result != null && result.files.isNotEmpty) {
+    final selectedFile = result.files.single;
 
-      if (_selectedNodeKey == null) {
+    if (_selectedNodeKey == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+            content: Text('Please select a directory to upload the file.')),
+      );
+      return;
+    }
+
+    try {
+      final selectedNode = _controller.getNode(_selectedNodeKey!);
+      if (selectedNode == null || selectedNode.data?['type'] != 'directory') {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-              content: Text('Please select a directory to upload the file.')),
+              content:
+                  Text('Please select a valid directory to upload the file.')),
         );
         return;
       }
 
-      try {
-        final selectedNode = _controller.getNode(_selectedNodeKey!);
-        if (selectedNode == null || selectedNode.data?['type'] != 'directory') {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-                content: Text(
-                    'Please select a valid directory to upload the file.')),
-          );
-          return;
-        }
+      final destinationPath = path.join(_selectedNodeKey!, selectedFile.name);
 
-        final destinationPath = path.join(_selectedNodeKey!, selectedFile.name);
+      File(selectedFile.path!).copySync(destinationPath);
 
-        File(selectedFile.path!).copySync(destinationPath);
-
-        setState(() {
-          final updatedNode = selectedNode.copyWith(
-            children: [
-              ...selectedNode.children,
-              Node(
-                key: destinationPath,
-                label: selectedFile.name,
-                data: {'type': 'file'},
-              ),
-            ],
-          );
-
-          _controller = _controller.copyWith(
-            children: _controller.updateNode(_selectedNodeKey!, updatedNode),
-          );
-        });
-
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-              content:
-                  Text('File "${selectedFile.name}" uploaded successfully.')),
-        );
-      } catch (e) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error uploading file: $e')),
-        );
+      // Inherit the privacy state of the parent directory
+      if (privatePaths.contains(_selectedNodeKey!)) {
+        privatePaths.add(destinationPath);
+        _savePrivatePaths();
       }
+
+      setState(() {
+        final updatedNode = selectedNode.copyWith(
+          children: [
+            ...selectedNode.children,
+            Node(
+              key: destinationPath,
+              label: selectedFile.name,
+              data: {'type': 'file'},
+            ),
+          ],
+        );
+
+        _controller = _controller.copyWith(
+          children: _controller.updateNode(_selectedNodeKey!, updatedNode),
+        );
+      });
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+            content:
+                Text('File "${selectedFile.name}" uploaded successfully.')),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error uploading file: $e')),
+      );
     }
   }
+}
 }

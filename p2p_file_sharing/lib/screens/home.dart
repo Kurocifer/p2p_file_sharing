@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:p2p_file_sharing/services/transfer_service.dart';
 import 'package:p2p_file_sharing/utils/logger.dart';
@@ -8,6 +10,12 @@ import 'package:p2p_file_sharing/widgets/notifications_panel.dart';
 import 'package:p2p_file_sharing/widgets/peer_list.dart';
 import 'package:p2p_file_sharing/widgets/theme_button.dart';
 import 'package:p2p_file_sharing/services/peer_discovery_service.dart';
+import 'package:path/path.dart' as path;
+
+// Set to store paths of private files/folders
+final Set<String> privatePaths = {};
+// File path for storing private paths
+  late String privatePathsFile;
 
 class Home extends StatefulWidget {
   final void Function(bool useLightMode) changeTheme;
@@ -36,13 +44,15 @@ class _HomeState extends State<Home> {
   bool _isNotificationPanelVisible = false;
   final List<String> peers = [];
   bool _isAnnouncingPresence = true;
-  String directoryExplored = '';
 
   @override
   void initState() {
     super.initState();
     _startDiscovery();
     logger.logMessage(message: "Peer discovery initialized.");
+    
+    privatePathsFile = _getPrivatePathsFilePath();
+    _loadPrivatePaths();
 
     // Subscribe to the peer updates from the stream
     _peerSubscription = _peerDiscoveryService.peersStream.listen((newPeers) {
@@ -53,6 +63,28 @@ class _HomeState extends State<Home> {
     });
 
     _transferService = TransferService.create(); // Initialize TransferService
+  }
+
+   String _getPrivatePathsFilePath() {
+    if (Platform.isWindows) {
+      return r'C:\Users\Public\Documents\deezapp\.deezapp\private_paths.json';
+    } else {
+      final homeDirectory = Platform.environment['HOME'] ?? '/';
+      return path.join(homeDirectory, 'deezapp', '.deezapp', 'private_paths.json');
+    }
+  }
+
+  void _loadPrivatePaths() {
+    try {
+      final file = File(privatePathsFile);
+      if (file.existsSync()) {
+        final contents = file.readAsStringSync();
+        final List<dynamic> paths = json.decode(contents);
+        privatePaths.addAll(paths.cast<String>());
+      }
+    } catch (e) {
+      print('Error loading private paths: $e');
+    }
   }
 
   void _startDiscovery() {
@@ -125,7 +157,6 @@ class _HomeState extends State<Home> {
             width: _isFileExplorerCollapsed ? 0 : 250,
             child: FileExplorer(
               isCollapsed: _isFileExplorerCollapsed,
-              rootDirectory: directoryExplored,
             ),
           ),
 

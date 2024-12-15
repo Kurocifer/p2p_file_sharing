@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:p2p_file_sharing/screens/home.dart';
 import 'package:p2p_file_sharing/utils/logger.dart';
 import 'package:udp/udp.dart';
 
@@ -343,6 +344,7 @@ class TransferService {
         return directory
             .listSync()
             .whereType<File>()
+            .where((file) => !privatePaths.contains(file.path))
             .map((file) => file.path.split(Platform.pathSeparator).last)
             .toList();
       } else {
@@ -391,11 +393,13 @@ class TransferService {
       for (var entity in entities) {
         final name = entity.path.split(Platform.pathSeparator).last;
 
+        if (!privatePaths.contains(entity.path)) {
         if (entity is Directory) {
           directoryMap[name] = await getDirectoryStructure(entity.path);
         } else if (entity is File) {
           directoryMap[name] = null; // Mark as file
         }
+      }
       }
     } else {
       logger.logMessage(message: '[ERROR] Directory not found: $path');
