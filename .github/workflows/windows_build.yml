@@ -3,10 +3,10 @@ name: Build Flutter Windows App
 on:
   push:
     branches:
-      - master  # Update to match your default branch
+      - mock-name  # Update to match your default branch
   pull_request:
     branches:
-      - master  # Run on pull requests to the main branch
+      - mocka-name  # Run on pull requests to the main branch. Not using real branch names because I'm not yet ready for it :)
 
 jobs:
   build:
