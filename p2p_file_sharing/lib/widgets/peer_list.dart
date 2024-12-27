@@ -24,8 +24,7 @@ class PeerList extends StatelessWidget {
     // Split the string at '@' and return the second part (IP address)
     return input.split('@')[1];
   } else {
-    // If the format is not correct, return the input as is or handle as needed
-    return input; // or throw an error, depending on your requirements
+    return input;
   }
 }
 
