@@ -3,17 +3,20 @@ import 'package:path/path.dart' as path;
 import 'package:rxdart/rxdart.dart';
 
 class Logger {
-  final BehaviorSubject<List<String>> _logController =
+  // Controller for the log stream
+  final BehaviorSubject<List<String>> _logController = 
       BehaviorSubject<List<String>>.seeded([]);
+
+  // Internal list to store logs
   final List<String> _logs = [];
-  final List<String> _errors = [];
 
   // Dynamically determine log file path based on the platform
   String get logFilePath {
     if (Platform.isWindows) {
       return r'C:\Users\Public\Documents\deezapp\logs\log.txt';
     } else if (Platform.isLinux || Platform.isMacOS) {
-      final home = Platform.environment['HOME'] ?? '/tmp'; // Fallback to /tmp if HOME is not set
+      // Get HOME environment variable or fallback to /tmp
+      final home = Platform.environment['HOME'] ?? '/tmp';
       return path.join(home, 'deezapp', 'logs', 'log.txt');
     } else {
       throw UnsupportedError('Platform not supported for logging');
@@ -24,35 +27,39 @@ class Logger {
   void _ensureLogDirectory() {
     final logFile = File(logFilePath);
     final logDir = logFile.parent;
+
+    // Create the directory if it does not exist
     if (!logDir.existsSync()) {
       logDir.createSync(recursive: true);
     }
   }
 
+  // Stream of log messages
   Stream<List<String>> get logStream => _logController.stream;
 
-  void logMessage({
-    required String message,
-    bool isError = false,
-  }) {
+  // Method to log a message
+  void logMessage({required String message}) {
     final timestamp = DateTime.now().toIso8601String();
     final logEntry = '[$timestamp] $message';
 
-    // Ensure log directory exists
+    // Ensure log directory exists before writing
     _ensureLogDirectory();
 
-    // Append log entry to file
+    // Append log entry to the log file
     final logFile = File(logFilePath);
     logFile.writeAsStringSync('$logEntry\n', mode: FileMode.append);
 
-    // Add log entry to respective lists
+    // Add log entry to internal logs
     _logs.add(logEntry);
-    if (isError) _errors.add(logEntry);
+    
+    // Print the logs to the console (for debugging purposes)
+    print(_logs);
 
-    // Broadcast logs to the stream
+    // Broadcast the updated logs to the stream
     _logController.add(List.from(_logs));
   }
 
+  // Dispose the logger and close the stream
   void dispose() {
     _logController.close();
   }

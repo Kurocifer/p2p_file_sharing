@@ -31,9 +31,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final Logger logger = Logger();
-  final PeerDiscoveryService _peerDiscoveryService = PeerDiscoveryService(
-    onLog: (message) => print(message),
-  );
+  final PeerDiscoveryService _peerDiscoveryService = PeerDiscoveryService();
 
   late final StreamSubscription<List<String>> _peerSubscription;
   late Future<TransferService> _transferService; // Future for TransferService
