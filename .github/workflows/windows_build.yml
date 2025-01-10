@@ -17,9 +17,9 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      # Step 2: Navigate to project directory
-      - name: Change to Project Directory
-        run: cd p2p_file_sharing
+      # Step 2: Install Dependencies for Windows
+      - name: Install Dependencies for Windows
+        run: choco install visualstudio2019buildtools -y
 
       # Step 3: Set up Flutter
       - name: Install Flutter
@@ -27,17 +27,15 @@ jobs:
         with:
           flutter-version: stable
 
-      # Step 4: Install dependencies
-      - name: Install Dependencies
-        run: |
-          cd project-directory
-          flutter pub get
+      # Step 4: Navigate to Project Directory and Install Flutter Dependencies
+      - name: Install Flutter Dependencies
+        working-directory: p2p_file_sharing
+        run: flutter pub get
 
       # Step 5: Build the Windows app
       - name: Build Windows App
-        run: |
-          cd project-directory
-          flutter build windows
+        working-directory: p2p_file_sharing
+        run: flutter build windows
 
       # Step 6: Upload the build artifacts
       - name: Upload Build Artifacts
