@@ -19,7 +19,7 @@ jobs:
 
       # Step 2: Navigate to project directory
       - name: Change to Project Directory
-        run: cd project-directory
+        run: cd p2p_file_sharing
 
       # Step 3: Set up Flutter
       - name: Install Flutter
