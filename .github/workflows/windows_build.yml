@@ -1,40 +1,47 @@
-name: Build Flutter Windows App
+name: Build Windows App
 
 on:
   push:
     branches:
-      - mock-name  # Update to match your default branch
+      - master
   pull_request:
     branches:
-      - mocka-name  # Run on pull requests to the main branch. Not using real branch names because I'm not yet ready for it :)
+      - master
 
 jobs:
-  build:
-    runs-on: windows-latest  # Use a Windows runner
+  build-windows:
+    runs-on: windows-latest
 
     steps:
-      - name: Checkout code
+      # Step 1: Checkout your repository code
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Set up JDK
-        uses: actions/setup-java@v3
-        with:
-          java-version: '21'  # Ensure compatibility with your Flutter project
+      # Step 2: Navigate to project directory
+      - name: Change to Project Directory
+        run: cd project-directory
 
+      # Step 3: Set up Flutter
       - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: stable
+
+      # Step 4: Install dependencies
+      - name: Install Dependencies
         run: |
-          git clone https://github.com/flutter/flutter.git -b stable --depth 1
-          echo "${{ github.workspace }}/flutter/bin" >> $GITHUB_PATH
-          flutter doctor -v  # Verify Flutter installation
+          cd project-directory
+          flutter pub get
 
-      - name: Run Flutter Pub Get
-        run: flutter pub get
-
+      # Step 5: Build the Windows app
       - name: Build Windows App
-        run: flutter build windows --release
+        run: |
+          cd project-directory
+          flutter build windows
 
-      - name: Archive build artifacts
+      # Step 6: Upload the build artifacts
+      - name: Upload Build Artifacts
         uses: actions/upload-artifact@v3
         with:
           name: windows-build
-          path: build/windows/runner/Release/
+          path: p2p_file_sharing/build/windows/runner/Release
