@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:p2p_file_sharing/services/transfer_service.dart';
+import 'package:path/path.dart' as path;
+
 
 class PeerFileExplorer extends StatefulWidget {
   final Map<String, dynamic> directoryStructure;
@@ -103,12 +105,14 @@ class _PeerFileExplorerState extends State<PeerFileExplorer> {
     if (result != null && result.files.isNotEmpty) {
       sendFilePath = result.files.single.path;
       if (sendFilePath != null) {
+        String filename = path.basename(sendFilePath!);
+        _showMessage("Seding $filename to ${widget.peer}");
         await transferService.uploadFile(peerIp, port, sendFilePath!);
-        _showMessage("File sent successfully!");
+        _showMessage("File $filename sent successfully!");
       }
     } else {
-      print("No file selected!");
-    }
+      _showMessage("No file selected. Select a file to send");
+        }
   }
 
   void _showMessage(String message) {

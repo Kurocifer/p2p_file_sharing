@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:p2p_file_sharing/services/transfer_service.dart';
 import 'package:p2p_file_sharing/utils/logger.dart';
+import 'package:p2p_file_sharing/utils/notificatioItem.dart';
 import 'package:p2p_file_sharing/widgets/file_explorer.dart';
 import 'package:p2p_file_sharing/widgets/log_panel.dart';
 import 'package:p2p_file_sharing/widgets/notifications_panel.dart';
@@ -11,11 +12,16 @@ import 'package:p2p_file_sharing/widgets/peer_list.dart';
 import 'package:p2p_file_sharing/widgets/theme_button.dart';
 import 'package:p2p_file_sharing/services/peer_discovery_service.dart';
 import 'package:path/path.dart' as path;
+import 'package:badges/badges.dart' as badges;
+
 
 // Set to store paths of private files/folders
 final Set<String> privatePaths = {};
 // Path to the file that  stores private paths
-  late String privatePathsFile;
+late String privatePathsFile;
+
+List<NotificationItem> notifications = [];
+
 
 class Home extends StatefulWidget {
   final void Function(bool useLightMode) changeTheme;
@@ -36,9 +42,9 @@ class _HomeState extends State<Home> {
   late final StreamSubscription<List<String>> _peerSubscription;
   late Future<TransferService> _transferService; // Future for TransferService
 
-  int notificationCount = 0;
-  bool _isFileExplorerCollapsed = true;
-  bool _isLogsPanelCollapsed = false;
+  int notificationCount = notifications.length;
+  bool _isFileExplorerCollapsed = false;
+  bool _isLogsPanelCollapsed = true;
   bool _isNotificationPanelVisible = false;
   final List<String> peers = [];
   bool _isAnnouncingPresence = true;
@@ -48,7 +54,7 @@ class _HomeState extends State<Home> {
     super.initState();
     _startDiscovery();
     logger.logMessage(message: "Peer discovery initialized.");
-    
+
     privatePathsFile = _getPrivatePathsFilePath();
     _loadPrivatePaths();
 
@@ -63,12 +69,13 @@ class _HomeState extends State<Home> {
     _transferService = TransferService.create(); // Initialize TransferService
   }
 
-   String _getPrivatePathsFilePath() {
+  String _getPrivatePathsFilePath() {
     if (Platform.isWindows) {
       return r'C:\Users\Public\Documents\deezapp\.deezapp\private_paths.json';
     } else {
       final homeDirectory = Platform.environment['HOME'] ?? '/';
-      return path.join(homeDirectory, 'deezapp', '.deezapp', 'private_paths.json');
+      return path.join(
+          homeDirectory, 'deezapp', '.deezapp', 'private_paths.json');
     }
   }
 
@@ -183,10 +190,12 @@ class _HomeState extends State<Home> {
                         child: FutureBuilder<TransferService>(
                           future: _transferService, // Future of TransferService
                           builder: (context, snapshot) {
-                            if (snapshot.connectionState == ConnectionState.waiting) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
                               return Center(child: CircularProgressIndicator());
                             } else if (snapshot.hasError) {
-                              return Center(child: Text('Error: ${snapshot.error}'));
+                              return Center(
+                                  child: Text('Error: ${snapshot.error}'));
                             } else if (snapshot.hasData) {
                               // TransferService is available
                               return peers.isEmpty
@@ -202,8 +211,10 @@ class _HomeState extends State<Home> {
                                   : PeerList(
                                       peers: peers,
                                       logger: logger,
-                                      transferService: snapshot.data!, // Pass TransferService
-                                      notify: () {}, // No need for manual notify
+                                      transferService: snapshot
+                                          .data!, // Pass TransferService
+                                      notify:
+                                          () {}, // No need for manual notify
                                     );
                             } else {
                               return Center(child: Text('No data available.'));
@@ -238,24 +249,55 @@ class _HomeState extends State<Home> {
       ),
       // Notification Panel
       bottomSheet: _isNotificationPanelVisible
-          ? NotificationPanel(
-              notificationCount: notificationCount,
-              onClearNotifications: _clearNotifications,
+          ? Container(
+              color: Theme.of(context)
+                  .scaffoldBackgroundColor, // Matches background
+
+              child: NotificationPanel(
+                notificationCount: notificationCount,
+                onEditNotificationCounts: (action) => _editNotificationCounts(action),
+                onClosePanel: () {
+                  // Handle closing logic
+                  setState(() {
+                    _isNotificationPanelVisible = false;
+                  });
+                },
+              ),
             )
           : null,
     );
   }
 
-  AppBar _buildAppBar() {
+void _editNotificationCounts(String action) {
+ setState(() {
+    switch (action) {
+    case "clear":
+      notificationCount = 0;
+      break;
+    case "deleteOne":
+      notificationCount -= 1;
+      break;
+    case "addOne":
+      notificationCount += 1;
+      break;
+    default:
+      break;
+  }
+ });
+}
+
+
+AppBar _buildAppBar() {
   return AppBar(
     backgroundColor: Theme.of(context).colorScheme.surface,
     elevation: 4.0,
     leading: IconButton(
-          iconSize: 30.0,
-          icon: const Icon(Icons.folder_outlined),
-          onPressed: () =>_toggleFileExplorer('shared'),
-          tooltip: 'View your shared files',
-        ),
+      iconSize: 30.0,
+      icon: const Icon(Icons.folder_outlined),
+      onPressed: () => _toggleFileExplorer('shared'),
+      tooltip: 'View your shared files',
+      color: Colors.blue,
+    ),
     actions: [
       ElevatedButton(
         onPressed: _toggleLogsPanel,
@@ -266,9 +308,30 @@ class _HomeState extends State<Home> {
         ),
         child: Text(_isLogsPanelCollapsed ? 'Show Logs' : 'Hide Logs'),
       ),
-      IconButton(
-        icon: const Icon(Icons.notifications),
-        onPressed: _toggleNotificationPanel,
+      Stack(
+        children: [
+          IconButton(
+            iconSize: 28.0,
+            icon: const Icon(Icons.notifications),
+            onPressed: _toggleNotificationPanel,
+          ),
+          if (notificationCount > 0)
+            Positioned(
+              right: 8,
+              top: 5,
+              child: badges.Badge(
+                badgeContent: Text(
+                  '$notificationCount',
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 9.0,
+                  ),
+                ),
+                badgeColor: Colors.red,
+                position: badges.BadgePosition.topEnd(),
+              ),
+            ),
+        ],
       ),
       ThemeButton(changeThemeMode: widget.changeTheme),
     ],

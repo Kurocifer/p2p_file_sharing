@@ -4,7 +4,9 @@ import 'dart:typed_data';
 
 import 'package:p2p_file_sharing/screens/home.dart';
 import 'package:p2p_file_sharing/utils/logger.dart';
+import 'package:p2p_file_sharing/utils/notificatioItem.dart';
 import 'package:udp/udp.dart';
+import 'package:path/path.dart' as path;
 
 import 'dart:async';
 
@@ -56,11 +58,14 @@ class TransferService {
   }
 
   /// Upload a file to a peer
-  Future<void> uploadFile(String peerIP, int peer, String fileName) async {
+  Future<String> uploadFile(String peerIP, int peer, String fileName) async {
     final file = File(fileName);
     if (!(await file.exists())) {
       logger.logMessage(message: "[ERROR] File $fileName does not exist.");
-      return;
+      return jsonEncode({
+        'status': 'error',
+        'message': "[ERROR] File '${path.basename(fileName)}' does not exist."
+      });
     }
 
     final fileSize = await file.length();
@@ -122,6 +127,10 @@ class TransferService {
 
     logger.logMessage(message: '[INFO] File transfer completed.');
     udpSocket.close();
+    return jsonEncode({
+      'status': 'error',
+      'message': "Transfer of file '${path.basename(fileName)}' completed."
+    });
   }
 
   /// Download a file from a peer and save it in the appropriate directory
@@ -207,9 +216,14 @@ class TransferService {
                 }
                 await output.close();
 
+                logger.logMessage(message: "saving things from download");
+
                 logger.logMessage(message: '[INFO] File saved to ${file.path}');
+
                 metadataSocket.close();
                 dataSocket.close();
+                notifications
+                    .add(NotificationItem("You have recieved a file."));
                 return jsonEncode({
                   'status': 'success',
                   'message': 'File downloaded',
@@ -314,7 +328,8 @@ class TransferService {
             final availableFiles = getAvailableFiles(sharedFolderPath);
             availableFiles.add(fileName);
 
-            if (availableFiles.contains(fileName) && !privatePaths.contains(fileName)) {
+            if (availableFiles.contains(fileName) &&
+                !privatePaths.contains(fileName)) {
               logger.logMessage(
                 message: '[INFO] File request received for $fileName',
               );
@@ -324,7 +339,8 @@ class TransferService {
                   '$sharedFolderPath/$fileName');
             } else {
               logger.logMessage(
-                  message: '[ERROR] Requested file $fileName not found, or has been made private by owner.');
+                  message:
+                      '[ERROR] Requested file $fileName not found, or has been made private by owner.');
             }
           }
         } catch (e) {
@@ -394,12 +410,12 @@ class TransferService {
         final name = entity.path.split(Platform.pathSeparator).last;
 
         if (!privatePaths.contains(entity.path)) {
-        if (entity is Directory) {
-          directoryMap[name] = await getDirectoryStructure(entity.path);
-        } else if (entity is File) {
-          directoryMap[name] = null; // Mark as file
+          if (entity is Directory) {
+            directoryMap[name] = await getDirectoryStructure(entity.path);
+          } else if (entity is File) {
+            directoryMap[name] = null; // Mark as file
+          }
         }
-      }
       }
     } else {
       logger.logMessage(message: '[ERROR] Directory not found: $path');

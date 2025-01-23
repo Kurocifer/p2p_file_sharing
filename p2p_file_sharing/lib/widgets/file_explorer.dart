@@ -6,7 +6,6 @@ import 'package:p2p_file_sharing/screens/home.dart';
 import 'package:path/path.dart' as path;
 import 'package:file_picker/file_picker.dart';
 
-
 class FileExplorer extends StatefulWidget {
   final bool isCollapsed;
 
@@ -55,7 +54,8 @@ class _FileExplorerState extends State<FileExplorer> {
       directory.createSync(recursive: true);
     }
 
-    final children = directory.listSync().map(_mapEntityToNode).whereType<Node>().toList();
+    final children =
+        directory.listSync().map(_mapEntityToNode).whereType<Node>().toList();
 
     return Node(
       key: directoryPath,
@@ -114,22 +114,27 @@ class _FileExplorerState extends State<FileExplorer> {
   }
 
   // Build the header with action buttons
-  Widget _buildHeader() {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        children: [
-          Flexible(
-            child: ElevatedButton.icon(
-              onPressed: _selectFileToUpload, // Handle file upload
-              icon: const Icon(Icons.upload_file),
-              label: const Text("Upload File"),
+// Build the header with action buttons
+Widget _buildHeader() {
+  return Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: Row(
+      children: [
+        Flexible(
+          child: ElevatedButton.icon(
+            onPressed: _selectFileToUpload, // Handle file upload
+            icon: const Icon(Icons.upload_file),
+            label: const Text("Upload File"),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.blue, // Set the button color to blue
+              foregroundColor: Colors.white, // Set the text color to white
             ),
           ),
-        ],
-      ),
-    );
-  }
+        ),
+      ],
+    ),
+  );
+}
 
   // Build the tree view displaying directories and files
   Widget _buildTreeView(BuildContext context) {
@@ -149,8 +154,10 @@ class _FileExplorerState extends State<FileExplorer> {
         padding: const EdgeInsets.all(8.0),
         child: TreeView(
           controller: _controller,
-          theme: _buildTreeViewTheme(context), // Build the theme for the tree view
-          nodeBuilder: (context, node) => _buildNode(context, node), // Build individual nodes
+          theme:
+              _buildTreeViewTheme(context), // Build the theme for the tree view
+          nodeBuilder: (context, node) =>
+              _buildNode(context, node), // Build individual nodes
         ),
       ),
     );
@@ -179,21 +186,28 @@ class _FileExplorerState extends State<FileExplorer> {
     final isPrivate = privatePaths.contains(node.key);
 
     return GestureDetector(
-      onSecondaryTapDown: (details) => _showContextMenu(context, details.globalPosition, node),
-      onTap: () => _onNodeTapped(node, isDirectory, isExpanded), // Handle node tap
+      onSecondaryTapDown: (details) =>
+          _showContextMenu(context, details.globalPosition, node),
+      onTap: () =>
+          _onNodeTapped(node, isDirectory, isExpanded), // Handle node tap
       child: Container(
-        color: _selectedNodeKey == node.key ? Colors.blue.withOpacity(0.2) : null,
+        color:
+            _selectedNodeKey == node.key ? Colors.blue.withOpacity(0.2) : null,
         padding: const EdgeInsets.symmetric(vertical: 4.0),
         child: Row(
           children: [
             if (isDirectory)
               Icon(
-                isExpanded ? Icons.keyboard_arrow_down_outlined : Icons.keyboard_arrow_right_outlined,
+                isExpanded
+                    ? Icons.keyboard_arrow_down_outlined
+                    : Icons.keyboard_arrow_right_outlined,
                 size: 20,
                 color: Colors.grey,
               ),
             Icon(
-              isPrivate ? Icons.lock : (isDirectory ? Icons.folder : Icons.insert_drive_file),
+              isPrivate
+                  ? Icons.lock
+                  : (isDirectory ? Icons.folder : Icons.insert_drive_file),
               color: isDirectory ? Colors.amber : Colors.blueGrey,
               size: 20,
             ),
@@ -201,7 +215,8 @@ class _FileExplorerState extends State<FileExplorer> {
             Flexible(
               child: Text(
                 node.label,
-                overflow: TextOverflow.ellipsis, // Prevents overflow by truncating
+                overflow:
+                    TextOverflow.ellipsis, // Prevents overflow by truncating
               ),
             ),
           ],
@@ -224,10 +239,12 @@ class _FileExplorerState extends State<FileExplorer> {
   }
 
   // Show context menu for a node
-  void _showContextMenu(BuildContext context, Offset position, Node node) async {
+  void _showContextMenu(
+      BuildContext context, Offset position, Node node) async {
     final result = await showMenu(
       context: context,
-      position: RelativeRect.fromLTRB(position.dx, position.dy, position.dx, position.dy),
+      position: RelativeRect.fromLTRB(
+          position.dx, position.dy, position.dx, position.dy),
       items: _buildContextMenuItems(), // Build context menu items
     );
 
@@ -302,7 +319,8 @@ class _FileExplorerState extends State<FileExplorer> {
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text('Privacy toggling is only allowed for items inside the shared folder.'),
+            content: Text(
+                'Privacy toggling is only allowed for items inside the shared folder.'),
           ),
         );
       }
@@ -325,7 +343,8 @@ class _FileExplorerState extends State<FileExplorer> {
           ),
           actions: [
             TextButton(
-              onPressed: () => _createFolderConfirmed(controller, node, context),
+              onPressed: () =>
+                  _createFolderConfirmed(controller, node, context),
               child: const Text("Create"),
             ),
             TextButton(
@@ -339,7 +358,8 @@ class _FileExplorerState extends State<FileExplorer> {
   }
 
   // Confirm folder creation
-  void _createFolderConfirmed(TextEditingController controller, Node node, BuildContext context) {
+  void _createFolderConfirmed(
+      TextEditingController controller, Node node, BuildContext context) {
     final folderName = controller.text.trim();
     if (folderName.isNotEmpty) {
       final parentPath = node.key;
@@ -349,9 +369,16 @@ class _FileExplorerState extends State<FileExplorer> {
         Directory(newFolderPath).createSync(); // Create the directory
         setState(() {
           final updatedNode = node.copyWith(
-            children: [...node.children, Node(key: newFolderPath, label: folderName, data: {'type': 'directory'})],
+            children: [
+              ...node.children,
+              Node(
+                  key: newFolderPath,
+                  label: folderName,
+                  data: {'type': 'directory'})
+            ],
           );
-          _controller = _controller.copyWith(children: _controller.updateNode(node.key, updatedNode));
+          _controller = _controller.copyWith(
+              children: _controller.updateNode(node.key, updatedNode));
         });
 
         ScaffoldMessenger.of(context).showSnackBar(
@@ -368,7 +395,8 @@ class _FileExplorerState extends State<FileExplorer> {
 
   // Rename an existing node
   void _renameNode(BuildContext context, Node node) {
-    final TextEditingController controller = TextEditingController(text: node.label);
+    final TextEditingController controller =
+        TextEditingController(text: node.label);
 
     showDialog(
       context: context,
@@ -395,7 +423,8 @@ class _FileExplorerState extends State<FileExplorer> {
   }
 
   // Confirm renaming of a node
-  void _renameNodeConfirmed(TextEditingController controller, Node node, BuildContext context) {
+  void _renameNodeConfirmed(
+      TextEditingController controller, Node node, BuildContext context) {
     final newName = controller.text.trim();
     if (newName.isNotEmpty) {
       final parentPath = path.dirname(node.key);
@@ -417,7 +446,8 @@ class _FileExplorerState extends State<FileExplorer> {
 
         setState(() {
           final updatedNode = node.copyWith(key: newPath, label: newName);
-          _controller = _controller.copyWith(children: _controller.updateNode(node.key, updatedNode));
+          _controller = _controller.copyWith(
+              children: _controller.updateNode(node.key, updatedNode));
         });
       } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -446,7 +476,8 @@ class _FileExplorerState extends State<FileExplorer> {
                 }
 
                 setState(() {
-                  _controller = _controller.copyWith(children: _controller.deleteNode(node.key));
+                  _controller = _controller.copyWith(
+                      children: _controller.deleteNode(node.key));
                 });
 
                 Navigator.pop(context);
@@ -473,7 +504,8 @@ class _FileExplorerState extends State<FileExplorer> {
       // Ensure a directory is selected for uploading
       if (_selectedNodeKey == null) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Please select a directory to upload the file.')),
+          const SnackBar(
+              content: Text('Please select a directory to upload the file.')),
         );
         return;
       }
@@ -483,13 +515,16 @@ class _FileExplorerState extends State<FileExplorer> {
         // Validate the selected node is a directory
         if (selectedNode == null || selectedNode.data?['type'] != 'directory') {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Please select a valid directory to upload the file.')),
+            const SnackBar(
+                content: Text(
+                    'Please select a valid directory to upload the file.')),
           );
           return;
         }
 
         final destinationPath = path.join(_selectedNodeKey!, selectedFile.name);
-        File(selectedFile.path!).copySync(destinationPath); // Copy the file to the destination
+        File(selectedFile.path!)
+            .copySync(destinationPath); // Copy the file to the destination
 
         // Inherit the privacy state of the parent directory
         if (privatePaths.contains(_selectedNodeKey!)) {
@@ -501,15 +536,21 @@ class _FileExplorerState extends State<FileExplorer> {
           final updatedNode = selectedNode.copyWith(
             children: [
               ...selectedNode.children,
-              Node(key: destinationPath, label: selectedFile.name, data: {'type': 'file'}),
+              Node(
+                  key: destinationPath,
+                  label: selectedFile.name,
+                  data: {'type': 'file'}),
             ],
           );
 
-          _controller = _controller.copyWith(children: _controller.updateNode(_selectedNodeKey!, updatedNode));
+          _controller = _controller.copyWith(
+              children: _controller.updateNode(_selectedNodeKey!, updatedNode));
         });
 
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('File "${selectedFile.name}" uploaded successfully.')),
+          SnackBar(
+              content:
+                  Text('File "${selectedFile.name}" uploaded successfully.')),
         );
       } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
