@@ -14,7 +14,7 @@ import 'package:path/path.dart' as path;
 
 // Set to store paths of private files/folders
 final Set<String> privatePaths = {};
-// File path for storing private paths
+// Path to the file that  stores private paths
   late String privatePathsFile;
 
 class Home extends StatefulWidget {

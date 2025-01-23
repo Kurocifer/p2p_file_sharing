@@ -314,7 +314,7 @@ class TransferService {
             final availableFiles = getAvailableFiles(sharedFolderPath);
             availableFiles.add(fileName);
 
-            if (availableFiles.contains(fileName)) {
+            if (availableFiles.contains(fileName) && !privatePaths.contains(fileName)) {
               logger.logMessage(
                 message: '[INFO] File request received for $fileName',
               );
@@ -324,7 +324,7 @@ class TransferService {
                   '$sharedFolderPath/$fileName');
             } else {
               logger.logMessage(
-                  message: '[ERROR] Requested file $fileName not found.');
+                  message: '[ERROR] Requested file $fileName not found, or has been made private by owner.');
             }
           }
         } catch (e) {
