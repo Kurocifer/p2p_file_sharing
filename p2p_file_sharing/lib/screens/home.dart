@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:p2p_file_sharing/services/transfer_service.dart';
 import 'package:p2p_file_sharing/utils/logger.dart';
+import 'package:p2p_file_sharing/utils/notificatioItem.dart';
 import 'package:p2p_file_sharing/widgets/file_explorer.dart';
 import 'package:p2p_file_sharing/widgets/log_panel.dart';
 import 'package:p2p_file_sharing/widgets/notifications_panel.dart';
@@ -44,6 +45,7 @@ class _HomeState extends State<Home> {
   final List<String> peers = [];
   bool _isAnnouncingPresence = true;
     Timer? _notificationTimer;
+    final NotificationService notifService = NotificationService();
 
  @override
   void initState() {
@@ -70,6 +72,7 @@ class _HomeState extends State<Home> {
         notificationCount = notifications.length;
       });
     });
+    _loadNotifs();
   }
 
   String _getPrivatePathsFilePath() {
@@ -95,6 +98,10 @@ class _HomeState extends State<Home> {
     }
   }
 
+  void _loadNotifs() async {
+    notifications = await notifService.readNotifications();
+  }
+
   void _startDiscovery() {
     _peerDiscoveryService.startDiscovery();
     logger.logMessage(message: "Started peer discovery.");
@@ -111,6 +118,10 @@ class _HomeState extends State<Home> {
     setState(() {
       _isAnnouncingPresence = !_isAnnouncingPresence;
     });
+  }
+
+  void _writeNotifs() async {
+    await notifService.writeNotifications(notifications);
   }
 
   void _toggleFileExplorer(String directoryToExplore) {
@@ -150,6 +161,7 @@ class _HomeState extends State<Home> {
     _peerDiscoveryService.stopBroadcasting();
     _notificationTimer?.cancel(); // Cancel the timer
     logger.dispose(); // Close logger resources
+    _writeNotifs();
     super.dispose();
   }
 
@@ -315,6 +327,7 @@ class _HomeState extends State<Home> {
         Stack(
           children: [
             IconButton(
+              color: Colors.yellow,
               iconSize: 28.0,
               icon: const Icon(Icons.notifications),
               onPressed: _toggleNotificationPanel,

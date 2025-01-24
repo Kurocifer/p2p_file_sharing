@@ -20,6 +20,8 @@ class NotificationPanel extends StatefulWidget {
 }
 
 class _NotificationPanelState extends State<NotificationPanel> {
+
+  NotificationService notificationService = NotificationService();
   @override
   void initState() {
     super.initState();
@@ -38,6 +40,11 @@ class _NotificationPanelState extends State<NotificationPanel> {
       notifications.removeAt(index);
     });
     widget.onEditNotificationCounts("deleteOne");
+    _writeNotifs();
+  }
+
+   void _writeNotifs() async {
+    await notificationService.writeNotifications(notifications);
   }
 
   void _clearNotifications() {

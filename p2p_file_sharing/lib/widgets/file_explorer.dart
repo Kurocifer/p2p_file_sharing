@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
@@ -19,13 +20,40 @@ class _FileExplorerState extends State<FileExplorer> {
   late TreeViewController _controller;
   late String _rootDirectory;
   String? _selectedNodeKey;
+    late Timer _timer; // Timer for checking downloads
+   final String downloadDirectory = '${Platform.environment['HOME']}/deezapp/downloads'; // Download directory path
 
-  @override
+ @override
   void initState() {
     super.initState();
-    _rootDirectory = _getInitialDirectory(); // Initialize the root directory
-    _loadDirectory(_rootDirectory); // Load the directory structure
+    _rootDirectory = _getInitialDirectory();
+    _loadDirectory(_rootDirectory);
+    _startDownloadDirectoryWatcher(); // Start watching the download directory
   }
+
+  @override
+  void dispose() {
+    _timer.cancel(); // Cancel the timer when the widget is disposed
+    super.dispose();
+  }
+
+  // Start a timer to check the download directory every 2 seconds
+  void _startDownloadDirectoryWatcher() {
+    _timer = Timer.periodic(Duration(seconds: 15), (timer) {
+      _loadDownloadDirectory(); // Load the download directory
+    });
+  }
+
+  // Load the download directory and update the tree view
+  void _loadDownloadDirectory() {
+    final downloadNode = _createNodeFromDirectory(downloadDirectory);
+    setState(() {
+      _controller = _controller.copyWith(
+        children: _controller.updateNode(downloadNode.key, downloadNode),
+      );
+    });
+  }
+
 
   // Get the initial directory based on the operating system
   String _getInitialDirectory() {

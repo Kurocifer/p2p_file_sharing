@@ -481,6 +481,8 @@ class TransferService {
   }
 
   Future<String> startFileReceiver() async {
+    NotificationService notifService = NotificationService();
+
     String saveDirectory;
     if (Platform.isWindows) {
       saveDirectory = r'C:\Users\Public\Documents\deezapp\downloads';
@@ -528,7 +530,6 @@ class TransferService {
               message:
                   '[INFO] Receiving file: $fileName ($fileSize bytes) from $senderIp',
             );
-
           } catch (e) {
             logger.logMessage(message: '[ERROR] Failed to parse metadata: $e');
           }
@@ -569,7 +570,8 @@ class TransferService {
                 metadataSocket.close();
                 dataSocket.close();
                 notifications.add(NotificationItem(
-                    "You have received a file named $fileName from $senderIp"));
+                    "You have received a file named '$fileName' from peer $senderIp"));
+                await notifService.writeNotifications(notifications);
                 return jsonEncode({
                   'status': 'success',
                   'message': 'File downloaded',
