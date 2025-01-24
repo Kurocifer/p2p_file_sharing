@@ -10,6 +10,9 @@ import 'package:path/path.dart' as path;
 
 import 'dart:async';
 
+List<NotificationItem> notifications = [];
+int notificationCount = notifications.length;
+
 class TransferService {
   static const int chunkSize = 8192; // 8kb chunks
   static const int metadataPort = 8080; // Port for sending metadata
@@ -17,11 +20,21 @@ class TransferService {
   static const int directoryPort = 7070; // Port for directory request
   static const int fileRequestPort = 9000;
   final Logger logger = Logger();
+  final StreamController<List<NotificationItem>> _notificationStreamController =
+      StreamController.broadcast();
+  final StreamController<int> _notifCountStreamController =
+      StreamController.broadcast();
 
   late List<String> currentPath;
   late Map<String, dynamic> currentDirectory;
   late String currentDirectoryPath;
   String errorMessage = '';
+
+  Stream<List<NotificationItem>> get notificationStream =>
+      _notificationStreamController.stream;
+  Stream<int> get notifCountStram => _notifCountStreamController.stream;
+
+  TransferService();
 
   TransferService._();
 
@@ -216,14 +229,12 @@ class TransferService {
                 }
                 await output.close();
 
-                logger.logMessage(message: "saving things from download");
-
-                logger.logMessage(message: '[INFO] File saved to ${file.path}');
+                logger.logMessage(
+                    message: '[INFO] File savedddd to ${file.path}');
 
                 metadataSocket.close();
                 dataSocket.close();
-                notifications
-                    .add(NotificationItem("You have recieved a file."));
+                //_notifyNotificationsUpdate();
                 return jsonEncode({
                   'status': 'success',
                   'message': 'File downloaded',
@@ -497,6 +508,7 @@ class TransferService {
       final fileChunks = <int, List<int>>{};
       String? fileName;
       int? fileSize;
+      String? senderIp;
 
       logger.logMessage(
         message:
@@ -510,10 +522,13 @@ class TransferService {
             final metadata = jsonDecode(utf8.decode(datagram.data));
             fileName = metadata['fileName'];
             fileSize = metadata['fileSize'];
+            senderIp = datagram.address.address;
 
             logger.logMessage(
-              message: '[INFO] Receiving file: $fileName ($fileSize bytes)',
+              message:
+                  '[INFO] Receiving file: $fileName ($fileSize bytes) from $senderIp',
             );
+
           } catch (e) {
             logger.logMessage(message: '[ERROR] Failed to parse metadata: $e');
           }
@@ -553,6 +568,8 @@ class TransferService {
                 logger.logMessage(message: '[INFO] File saved to ${file.path}');
                 metadataSocket.close();
                 dataSocket.close();
+                notifications.add(NotificationItem(
+                    "You have received a file named $fileName from $senderIp"));
                 return jsonEncode({
                   'status': 'success',
                   'message': 'File downloaded',

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:p2p_file_sharing/screens/home.dart';
+import 'package:p2p_file_sharing/services/transfer_service.dart';
 import 'package:p2p_file_sharing/utils/notificatioItem.dart';
 
 class NotificationPanel extends StatefulWidget {
@@ -83,6 +83,7 @@ class _NotificationPanelState extends State<NotificationPanel> {
                       color: isDarkMode ? Colors.greenAccent : Colors.green,
                     ),
                     IconButton(
+                      tooltip: 'clear all notifications',
                       onPressed: _clearNotifications,
                       icon: const Icon(Icons.clear_all),
                       color: isDarkMode ? Colors.redAccent : Colors.red,

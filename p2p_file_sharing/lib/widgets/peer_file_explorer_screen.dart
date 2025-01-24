@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:p2p_file_sharing/services/transfer_service.dart';
 import 'package:path/path.dart' as path;
 
-
 class PeerFileExplorer extends StatefulWidget {
   final Map<String, dynamic> directoryStructure;
   final String peer;
@@ -112,7 +111,7 @@ class _PeerFileExplorerState extends State<PeerFileExplorer> {
       }
     } else {
       _showMessage("No file selected. Select a file to send");
-        }
+    }
   }
 
   void _showMessage(String message) {
@@ -137,19 +136,26 @@ class _PeerFileExplorerState extends State<PeerFileExplorer> {
 
   List<Widget> _buildAppBarActions() {
     return [
-      _buildActionButton('Download File', Icons.download, _handleDownload),
+      _buildActionButton(
+          'Download File', Icons.download, _handleDownload, Colors.blue),
       const SizedBox(width: 16),
-      _buildActionButton('Send File', Icons.send,
-          () => _handleSend(_extractIpAddress(widget.peer), 9091)),
+      _buildActionButton(
+          'Send File',
+          Icons.send,
+          () => _handleSend(_extractIpAddress(widget.peer), 9091),
+          Colors.green),
       const SizedBox(width: 20),
     ];
   }
 
   ElevatedButton _buildActionButton(
-      String label, IconData icon, VoidCallback onPressed) {
+      String label, IconData icon, VoidCallback onPressed, Color color) {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
+        backgroundColor: color, // Set the button color to blue
+        foregroundColor: Colors.white, // Set the text color to white
+
         elevation: 20.0,
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
         shape: RoundedRectangleBorder(
