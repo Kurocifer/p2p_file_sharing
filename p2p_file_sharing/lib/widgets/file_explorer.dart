@@ -150,12 +150,12 @@ Widget _buildHeader() {
       children: [
         Flexible(
           child: ElevatedButton.icon(
-            onPressed: _selectFileToUpload, // Handle file upload
+            onPressed: _selectFileToUpload,
             icon: const Icon(Icons.upload_file),
             label: const Text("Upload File"),
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.blue, // Set the button color to blue
-              foregroundColor: Colors.white, // Set the text color to white
+              backgroundColor: Colors.blue,
+              foregroundColor: Colors.white,
             ),
           ),
         ),
@@ -273,7 +273,7 @@ Widget _buildHeader() {
       context: context,
       position: RelativeRect.fromLTRB(
           position.dx, position.dy, position.dx, position.dy),
-      items: _buildContextMenuItems(), // Build context menu items
+      items: _buildContextMenuItems(),
     );
 
     switch (result) {
@@ -353,7 +353,7 @@ Widget _buildHeader() {
         );
       }
     });
-    _savePrivatePaths(); // Save the updated private paths
+    _savePrivatePaths();
   }
 
   // Create a new folder
@@ -394,7 +394,7 @@ Widget _buildHeader() {
       final newFolderPath = path.join(parentPath, folderName);
 
       try {
-        Directory(newFolderPath).createSync(); // Create the directory
+        Directory(newFolderPath).createSync(); 
         setState(() {
           final updatedNode = node.copyWith(
             children: [
@@ -497,10 +497,10 @@ Widget _buildHeader() {
           actions: [
             TextButton(
               onPressed: () {
-                File(node.key).deleteSync(); // Delete the file or directory
+                File(node.key).deleteSync();
                 if (privatePaths.contains(node.key)) {
                   privatePaths.remove(node.key);
-                  _savePrivatePaths(); // Update private paths
+                  _savePrivatePaths();
                 }
 
                 setState(() {

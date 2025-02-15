@@ -3,10 +3,10 @@ import 'package:p2p_file_sharing/services/transfer_service.dart';
 import 'package:p2p_file_sharing/utils/notificatioItem.dart';
 
 class NotificationPanel extends StatefulWidget {
-  final int notificationCount; // Keeps the requirement intact
+  final int notificationCount;
   final Function(String)
-      onEditNotificationCounts; // Callback for clearing notifications
-  final VoidCallback onClosePanel; // Callback for closing the panel
+      onEditNotificationCounts;
+  final VoidCallback onClosePanel;
 
   const NotificationPanel({
     super.key,
@@ -51,7 +51,7 @@ class _NotificationPanelState extends State<NotificationPanel> {
     setState(() {
       notifications.clear();
     });
-    widget.onEditNotificationCounts("clear"); // Notify parent about clearing
+    widget.onEditNotificationCounts("clear");
   }
 
   @override
@@ -71,7 +71,6 @@ class _NotificationPanelState extends State<NotificationPanel> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Header with title and buttons
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -107,7 +106,6 @@ class _NotificationPanelState extends State<NotificationPanel> {
             const SizedBox(height: 8.0),
             const Divider(),
             const SizedBox(height: 8.0),
-            // Notification list or empty state
             Expanded(
               child: notifications.isNotEmpty
                   ? ListView.separated(
@@ -123,7 +121,7 @@ class _NotificationPanelState extends State<NotificationPanel> {
                           ),
                           title: Text(
                             notifications[index]
-                                .message, // Use the message from NotificationItem
+                                .message,
                             style: theme.textTheme.bodyMedium?.copyWith(
                               color: isDarkMode ? Colors.white : Colors.black87,
                             ),

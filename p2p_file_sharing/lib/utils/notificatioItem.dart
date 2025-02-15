@@ -25,7 +25,7 @@ class NotificationItem {
 class NotificationService {
   final String _filePath = '${Platform.environment['HOME']}/deezapp/.deezapp/.notifications.json';
 
-  // Method to write notifications to the file
+  // Method to write notifications.
   Future<void> writeNotifications(List<NotificationItem> notifications) async {
     final file = File(_filePath);
     // Create the directory if it doesn't exist
@@ -34,19 +34,18 @@ class NotificationService {
     // Convert notifications to JSON
     final jsonList = notifications.map((item) => item.toJson()).toList();
     
-    // Write to the file, overwriting existing content
     await file.writeAsString(jsonEncode(jsonList));
   }
 
-  // Method to delete notifications from the file
+  // Method to delete notifications.
   Future<void> deleteNotifications() async {
     final file = File(_filePath);
     if (await file.exists()) {
-      await file.delete(); // Delete the file
+      await file.delete();
     }
   }
 
-  // Method to read notifications from the file (if needed)
+  // Method to load notifications
   Future<List<NotificationItem>> readNotifications() async {
     final file = File(_filePath);
     if (await file.exists()) {

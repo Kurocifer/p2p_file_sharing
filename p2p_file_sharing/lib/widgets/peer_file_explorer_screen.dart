@@ -153,8 +153,8 @@ class _PeerFileExplorerState extends State<PeerFileExplorer> {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        backgroundColor: color, // Set the button color to blue
-        foregroundColor: Colors.white, // Set the text color to white
+        backgroundColor: color,
+        foregroundColor: Colors.white,
 
         elevation: 20.0,
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),

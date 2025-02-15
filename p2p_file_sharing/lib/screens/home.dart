@@ -67,7 +67,7 @@ class _HomeState extends State<Home> {
     _transferService = TransferService.create(); // Initialize TransferService
 
     // Start the timer to update notificationCount every 3 seconds
-    _notificationTimer = Timer.periodic(Duration(seconds: 3), (timer) {
+    _notificationTimer = Timer.periodic(const Duration(seconds: 3), (timer) {
       setState(() {
         notificationCount = notifications.length;
       });
@@ -159,8 +159,8 @@ class _HomeState extends State<Home> {
   void dispose() {
     _peerSubscription.cancel();
     _peerDiscoveryService.stopBroadcasting();
-    _notificationTimer?.cancel(); // Cancel the timer
-    logger.dispose(); // Close logger resources
+    _notificationTimer?.cancel();
+    logger.dispose();
     _writeNotifs();
     super.dispose();
   }
@@ -208,7 +208,7 @@ class _HomeState extends State<Home> {
                           builder: (context, snapshot) {
                             if (snapshot.connectionState ==
                                 ConnectionState.waiting) {
-                              return Center(child: CircularProgressIndicator());
+                              return const Center(child: CircularProgressIndicator());
                             } else if (snapshot.hasError) {
                               return Center(
                                   child: Text('Error: ${snapshot.error}'));
@@ -230,10 +230,10 @@ class _HomeState extends State<Home> {
                                       transferService: snapshot
                                           .data!, // Pass TransferService
                                       notify:
-                                          () {}, // No need for manual notify
+                                          () {},
                                     );
                             } else {
-                              return Center(child: Text('No data available.'));
+                              return const Center(child: Text('No data available.'));
                             }
                           },
                         ),
@@ -267,7 +267,7 @@ class _HomeState extends State<Home> {
       bottomSheet: _isNotificationPanelVisible
           ? Container(
               color: Theme.of(context)
-                  .scaffoldBackgroundColor, // Matches background
+                  .scaffoldBackgroundColor,
 
               child: NotificationPanel(
                 notificationCount: notificationCount,
@@ -319,7 +319,7 @@ class _HomeState extends State<Home> {
           onPressed: _toggleLogsPanel,
           style: ElevatedButton.styleFrom(
             elevation: 0,
-            backgroundColor: Colors.transparent, // Match `AppBar` style
+            backgroundColor: Colors.transparent,
             foregroundColor: Theme.of(context).colorScheme.onSurface,
           ),
           child: Text(_isLogsPanelCollapsed ? 'Show Logs' : 'Hide Logs'),
@@ -353,13 +353,5 @@ class _HomeState extends State<Home> {
         ThemeButton(changeThemeMode: widget.changeTheme),
       ],
     );
-  }
-
-  void _clearNotifications() {
-    setState(() {
-      notificationCount = 0;
-      _isNotificationPanelVisible = false;
-    });
-    logger.logMessage(message: "Cleared all notifications.");
   }
 }

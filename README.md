@@ -34,6 +34,10 @@ A cross-platform desktop application (Linux, Windows, Mac) built with Flutter fo
 1. **Home View (Dark Mode)**
    
    ![Home View - Dark Mode](shots/dark-main.png)
+   
+3. **Notification (Dark Mode)**
+
+   ![Notification - Dark Mode](shots/dark-notification.png)
 
 2. **Home View (Light Mode)**
    
